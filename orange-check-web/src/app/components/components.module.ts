@@ -23,6 +23,14 @@ import { ComponentsComponent } from './components.component';
 import { RouterModule, Routes } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { reducer } from './reducer';
+import { ViewOneCommentComponent } from './view-one-comment/view-one-comment.component';
+import { ViewOneIssueComponent } from './view-one-issue/view-one-issue.component';
+import { ViewOneMessageComponent } from './view-one-message/view-one-message.component';
+import { ViewOneUserComponent } from './view-one-user/view-one-user.component';
+import { ViewAllCommentsComponent } from './view-all-comments/view-all-comments.component';
+import { ViewAllIssuesComponent } from './view-all-issues/view-all-issues.component';
+import { ViewAllUsersComponent } from './view-all-users/view-all-users.component';
+import { ViewAllMessagesComponent } from './view-all-messages/view-all-messages.component';
 
 const routes: Routes = [
   {
@@ -38,6 +46,17 @@ const routes: Routes = [
       { path: 'edit-issue', component: EditIssueComponent },
       { path: 'edit-user', component: EditUserComponent },
       { path: 'edit-message', component: EditMessageComponent },
+      // View One
+      { path: 'view-one-comment', component: ViewOneCommentComponent },
+      { path: 'view-one-issue', component: ViewOneIssueComponent },
+      { path: 'view-one-message', component: ViewOneMessageComponent },
+      { path: 'view-one-user', component: ViewOneUserComponent },
+      // View All
+      { path: 'view-all-comments', component: ViewAllCommentsComponent },
+      { path: 'view-all-issues', component: ViewAllIssuesComponent },
+      { path: 'view-all-messages', component: ViewAllMessagesComponent },
+      { path: 'view-all-users', component: ViewAllUsersComponent },
+
 
 
     ]
@@ -58,6 +77,14 @@ const routes: Routes = [
     EditMessageComponent,
     EditUserComponent,
     ComponentsComponent,
+    ViewOneCommentComponent,
+    ViewOneIssueComponent,
+    ViewOneMessageComponent,
+    ViewOneUserComponent,
+    ViewAllCommentsComponent,
+    ViewAllIssuesComponent,
+    ViewAllUsersComponent,
+    ViewAllMessagesComponent,
   ],
   imports: [
     CommonModule,
