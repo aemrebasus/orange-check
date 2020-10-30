@@ -11,6 +11,9 @@
       ],
       "@components/*": [
         "src/app/components/*"
+      ],
+      "@data/*": [
+        "src/app/data/*"
       ]
     },
     "baseUrl": "./",

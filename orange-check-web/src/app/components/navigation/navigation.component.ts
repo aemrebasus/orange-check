@@ -26,7 +26,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
   public navigation = NAVIGATION;
   public currentLocation = '';
 
-  private routerSubscription: Subscription;
+  private routerEventSubs: Subscription;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -43,13 +43,13 @@ export class NavigationComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.updateLocations();
 
-    this.routerSubscription = this.router.events.subscribe(event => {
+    this.routerEventSubs = this.router.events.subscribe(event => {
       this.updateLocations();
     });
   }
 
   ngOnDestroy(): void {
-    this.routerSubscription.unsubscribe();
+    this.routerEventSubs.unsubscribe();
   }
 
 

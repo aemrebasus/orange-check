@@ -1,4 +1,5 @@
 $primaryColor: #303030;
+$activeColor: #303030;
 
 // Transition animation
 .transition {
@@ -41,6 +42,22 @@ $primaryColor: #303030;
   @extend .transition;
 }
 
-.location-path:hover {
+.mat-list-item {
+  padding-left: 0px;
+  border-left: 0px solid transparent;
+  border-top-left-radius: 30px;
+  transition: background-color, padding-left, border-left ease-in-out 400ms;
+  overflow: hidden;
+}
+
+.mat-list-item:active,
+.mat-list-item:focus,
+.is-active {
+  background-color: $activeColor;
   border: 1px solid orange;
+  border-left: 12px solid orange;
+}
+
+.mat-list-item:hover {
+  background-color: lighten($color: $activeColor, $amount: 20);
 }

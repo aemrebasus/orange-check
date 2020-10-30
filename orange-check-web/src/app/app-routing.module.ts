@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DispacherComponent } from './dispacher/dispacher.component';
+import { DispacherComponent } from './controller/dispacher.component';
 
 const routes: Routes = [
   { path: 'pages', loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule) },
