@@ -1,9 +1,11 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { State } from '@data/state';
+import { IProject } from '@models/index';
 import { Store } from '@ngrx/store';
-import { Subscription } from 'rxjs';
-import { APPLICATION_BASE_ROUTE, WEBSITE_BASE_ROUTE } from '../routes.consts';
+import { ProjectService } from '@services/project.service';
+import { Observable, Subscription } from 'rxjs';
+import { APPLICATION_BASE_ROUTE, WEBSITE_BASE_ROUTE } from '../contants';
+import { AppState } from '../store.config';
 
 @Component({
   selector: 'app-dispacher',
@@ -18,14 +20,15 @@ export class DispacherComponent implements OnInit, AfterViewInit, OnDestroy {
 
   loading = true;
   isLoggedIn = false;
+  projects: Observable<IProject[]>;
 
-  constructor(public router: Router, public store: Store<State>) { }
+  constructor(public router: Router, public store: Store<AppState>) { }
 
   ngOnInit(): void {
     this.storeSubscription = this.store.subscribe(data => {
       // NOTE: do not add any code but ASSIGNMENT inside the subscription
       // because it will run each time the state chages, which causes performance problem
-      this.isLoggedIn = data.session.isLoggedIn;
+      this.isLoggedIn = data.isLoggedIn;
     });
   }
 
@@ -34,7 +37,7 @@ export class DispacherComponent implements OnInit, AfterViewInit, OnDestroy {
       this.isLoggedIn ?
         this.router.navigate([APPLICATION_BASE_ROUTE])
         : this.router.navigate([WEBSITE_BASE_ROUTE]);
-    }, 2000);
+    }, 10000);
   }
 
   ngOnDestroy(): void {

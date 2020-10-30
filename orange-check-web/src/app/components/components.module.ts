@@ -14,7 +14,6 @@ import { MatBadgeModule } from '@angular/material/badge';
 
 import { RouterModule, Routes } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
-import { reducer } from './reducer';
 
 import { ComponentsComponent } from './components.component';
 import { NavigationComponent } from './navigation/navigation.component';
@@ -45,6 +44,8 @@ import { ViewOneProjectComponent } from './view-one-project/view-one-project.com
 import { ViewAllProjectsComponent } from './view-all-projects/view-all-projects.component';
 import { EditProjectComponent } from './edit-project/edit-project.component';
 import { CreateNewProjectComponent } from './create-new-project/create-new-project.component';
+import { HttpClientModule } from '@angular/common/http';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 
@@ -127,6 +128,7 @@ const routes: ApplicationRoutes = [
   ],
   imports: [
     CommonModule,
+    HttpClientModule,
     MatCommonModule,
     MatGridListModule,
     MatCardModule,
@@ -138,8 +140,9 @@ const routes: ApplicationRoutes = [
     MatSidenavModule,
     MatListModule,
     MatBadgeModule,
+    MatProgressSpinnerModule,
     RouterModule.forChild(routes),
-    StoreModule.forFeature('application', reducer)
+    StoreModule.forFeature('application', {})
   ]
 })
 export class ComponentsModule { }

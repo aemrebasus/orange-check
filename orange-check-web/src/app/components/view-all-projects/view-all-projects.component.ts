@@ -1,27 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import { IProject } from '@data/IProject';
-import { State } from '@data/state';
-import { Store } from '@ngrx/store';
-import { IconType } from 'ng-icon-type';
+import { AfterViewInit, Component } from '@angular/core';
+import { IProject } from 'src/app/models';
+
+import { ProjectService } from '@services/project.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-view-all-projects',
   templateUrl: './view-all-projects.component.html',
   styleUrls: ['./view-all-projects.component.scss']
 })
-export class ViewAllProjectsComponent implements OnInit {
-  projects: IProject[];
+export class ViewAllProjectsComponent {
 
-  // Icons
-  likeIcon: IconType = 'thumb_up';
-  deleteIcon: IconType = 'delete';
-  shareIcon: IconType = 'share';
-  constructor(public store: Store<State>) { }
+  loading: Observable<boolean> = this.projectService.loading$;
+  projects: Observable<IProject[]> = this.projectService.entities$;
 
-  ngOnInit(): void {
-    this.store.subscribe(data => {
-      this.projects = data.data.projects;
-    });
+  constructor(public projectService: ProjectService) {
+    this.projectService.getAll();
   }
 
 }

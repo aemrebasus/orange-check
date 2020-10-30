@@ -1,6 +1,6 @@
 <div class="card-container">
     <div class="card-container">
-        <mat-card *ngFor="let project of projects" matBadge="100" matBadgeColor="primary">
+        <mat-card *ngFor="let project of projects | async" matBadge="100" matBadgeColor="primary">
             <mat-card-header>
                 <mat-card-title>{{project.name}}</mat-card-title>
             </mat-card-header>
@@ -12,5 +12,9 @@
             </mat-card-content>
         </mat-card>
     </div>
-    <app-create-new-project></app-create-new-project>
+    <div>
+        <h1>Project Form (waiting)</h1>
+        <hr>
+        <app-create-new-project></app-create-new-project>
+    </div>
 </div>

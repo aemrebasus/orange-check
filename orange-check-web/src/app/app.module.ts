@@ -4,15 +4,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
-import { reducers, metaReducers } from './data/state';
-import { EntityDataModule } from '@ngrx/data';
-import { entityConfig } from './entity-metadata';
+import { DefaultDataServiceConfig, EntityDataModule } from '@ngrx/data';
+import { defaultDataServiceConfig, entityConfig } from 'src/app/store.config';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { DispacherComponent } from './controller/dispacher.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { DataInterceptor } from '@services/data.interceptor';
 
 
 @NgModule({
@@ -26,14 +26,17 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     BrowserAnimationsModule,
     HttpClientModule,
     MatProgressSpinnerModule,
-    StoreModule.forRoot(reducers, {
-      metaReducers
-    }),
-    EntityDataModule.forRoot(entityConfig),
+    StoreModule.forRoot({}),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     EffectsModule.forRoot([]),
+    EntityDataModule.forRoot(entityConfig),
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: DataInterceptor, multi: true },
+    { provide: DefaultDataServiceConfig, useValue: defaultDataServiceConfig }
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+}
