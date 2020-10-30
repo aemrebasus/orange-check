@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { State } from '@data/main';
+import { State } from '@data/state';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { APPLICATION_BASE_ROUTE, WEBSITE_BASE_ROUTE } from '../routes.consts';
