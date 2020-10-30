@@ -2,14 +2,17 @@ import { createReducer } from '@ngrx/store';
 import { IComment } from './IComment';
 import { IMessage } from './IMessage';
 import { IOrganization } from './IOrganization';
+import { IProject } from './IProject';
 import { Issue } from './Issue';
 import { IUser } from './IUser';
-
+import { projects, users, issues, comments, messages } from './state.mock-data';
 
 export interface DataState {
     openedMessage: IMessage;
     openedIssue: Issue;
     openedUser: IUser;
+    openedProject: IProject;
+    projects: IProject[];
     users: IUser[];
     messages: IMessage[];
     issues: Issue[];
@@ -22,10 +25,12 @@ const initialState: DataState = {
     openedIssue: null,
     openedUser: null,
     organization: null,
-    users: [],
-    messages: [],
-    issues: [],
-    comments: [],
+    openedProject: null,
+    projects,
+    users,
+    messages,
+    issues,
+    comments
 
 };
 

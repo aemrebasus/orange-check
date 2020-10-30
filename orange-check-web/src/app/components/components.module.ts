@@ -10,6 +10,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatCommonModule } from '@angular/material/core';
+import { MatBadgeModule } from '@angular/material/badge';
+
 import { RouterModule, Routes } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { reducer } from './reducer';
@@ -43,6 +45,8 @@ import { ViewOneProjectComponent } from './view-one-project/view-one-project.com
 import { ViewAllProjectsComponent } from './view-all-projects/view-all-projects.component';
 import { EditProjectComponent } from './edit-project/edit-project.component';
 import { CreateNewProjectComponent } from './create-new-project/create-new-project.component';
+
+
 
 const routes: ApplicationRoutes = [
   {
@@ -133,6 +137,7 @@ const routes: ApplicationRoutes = [
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
+    MatBadgeModule,
     RouterModule.forChild(routes),
     StoreModule.forFeature('application', reducer)
   ]

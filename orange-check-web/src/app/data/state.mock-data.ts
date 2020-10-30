@@ -1,6 +1,7 @@
 import { IComment } from './IComment';
 import { IMessage } from './IMessage';
 import { IOrganization } from './IOrganization';
+import { IProject } from './IProject';
 import { Issue } from './Issue';
 import { IUser } from './IUser';
 
@@ -39,6 +40,15 @@ export const organizations: IOrganization[] = [
     { id: 3, name: 'o' },
     { id: 4, name: 'o' },
 ];
+
+
+export const projects: IProject[] = [
+    { id: 1, name: 'prj', description: 'Description' },
+    { id: 2, name: 'prj', description: 'Description' },
+    { id: 3, name: 'prj', description: 'Description' },
+    { id: 4, name: 'prj', description: 'Description' },
+];
+
 
 
 

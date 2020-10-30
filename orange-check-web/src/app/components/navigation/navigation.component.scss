@@ -54,8 +54,8 @@ $activeColor: #303030;
 .mat-list-item:focus,
 .is-active {
   background-color: $activeColor;
-  border: 1px solid orange;
-  border-left: 12px solid orange;
+  border: 1px solid orangered;
+  border-left: 12px solid orangered;
 }
 
 .mat-list-item:hover {
