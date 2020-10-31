@@ -7,7 +7,9 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "build:site": "ng build --prod --base-href=./orange-check-web",
+    "deploy": "gh-pages -d dist/orange-check-web"
   },
   "private": true,
   "dependencies": {
@@ -29,6 +31,7 @@
     "ng-icon-type": "^1.0.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
+    "validator": "^13.1.17",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {

@@ -1,4 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+    height: 100%;
+}
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+// Card Style
+.mat-card {
+    border: 1px solid white;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    background-color: #303030;
+    box-shadow: 0px 0px 5px black;
+}
+
+.mat-card .mat-icon {
+    color: white;
+}
+
+.mat-card .mat-button-base {
+    background-color: orangered;
+}
+
+// Form Style
+.mat-form-field {
+    width: 100%;
+    
+}

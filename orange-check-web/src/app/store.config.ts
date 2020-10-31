@@ -1,6 +1,7 @@
 import { EntityMetadataMap, EntityDataModuleConfig, DefaultDataServiceConfig } from '@ngrx/data';
 import { environment } from 'src/environments/environment';
 import { IMessage, Issue, IUser, IProject } from '@models/index';
+import { API_BASE_ROUTE } from './contants';
 
 // Use the Browser's session storage to store the application state.
 export interface AppState {
@@ -12,7 +13,7 @@ export interface AppState {
   loggedInUser: IUser;
 }
 
-const basePath = environment.production ? 'api/v1' : 'assets/api';
+
 
 const entityMetadata: EntityMetadataMap = {
   Project: {},
@@ -32,7 +33,7 @@ export const entityConfig: EntityDataModuleConfig = {
 
 // Default Configuration
 export const defaultDataServiceConfig: DefaultDataServiceConfig = {
-  root: basePath,
+  root: API_BASE_ROUTE,
   timeout: 3000,
   getDelay: 1000,
 };

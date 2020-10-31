@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, OnDestroy } fr
 import { Router } from '@angular/router';
 import { IProject } from '@models/index';
 import { Store } from '@ngrx/store';
-import { ProjectService } from '@services/project.service';
+import { ProjectService } from '@services/entities.service';
 import { Observable, Subscription } from 'rxjs';
 import { APPLICATION_BASE_ROUTE, WEBSITE_BASE_ROUTE } from '../contants';
 import { AppState } from '../store.config';

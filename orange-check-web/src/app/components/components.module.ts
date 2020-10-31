@@ -11,6 +11,10 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatCommonModule } from '@angular/material/core';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+
+
 
 import { RouterModule, Routes } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
@@ -129,6 +133,7 @@ const routes: ApplicationRoutes = [
   imports: [
     CommonModule,
     HttpClientModule,
+    // Material Modules
     MatCommonModule,
     MatGridListModule,
     MatCardModule,
@@ -141,6 +146,9 @@ const routes: ApplicationRoutes = [
     MatListModule,
     MatBadgeModule,
     MatProgressSpinnerModule,
+    MatInputModule,
+    MatFormFieldModule,
+    // Material Modules end
     RouterModule.forChild(routes),
     StoreModule.forFeature('application', {})
   ]
