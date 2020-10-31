@@ -1,0 +1,110 @@
+{
+  "configVersion": 1,
+  "timestamp": 1604131793711,
+  "index": "./orange-check-web/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "./orange-check-web/4.4085f8dcfa85573bf677.js",
+        "./orange-check-web/4.c9aec09ed3236dd0bb58.js",
+        "./orange-check-web/5.088cfdf1e71fd0345972.js",
+        "./orange-check-web/5.decea73bc3bccbf6d096.js",
+        "./orange-check-web/favicon.ico",
+        "./orange-check-web/index.html",
+        "./orange-check-web/main.99b94a9ef10688a580fb.js",
+        "./orange-check-web/main.b5fbf5ee1de9b0dd9418.js",
+        "./orange-check-web/main.c2366f753075d6e27622.js",
+        "./orange-check-web/manifest.webmanifest",
+        "./orange-check-web/ngsw-worker.js",
+        "./orange-check-web/polyfills.35a5ca1855eb057f016a.js",
+        "./orange-check-web/runtime.0f04bbc2080ae904a07c.js",
+        "./orange-check-web/runtime.6d587b296c7267d6b87e.js",
+        "./orange-check-web/safety-worker.js",
+        "./orange-check-web/styles.7448b7964c02e187883c.css",
+        "./orange-check-web/styles.cab6a620b002cc85a222.css",
+        "./orange-check-web/worker-basic.min.js"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "./orange-check-web/assets/api/comments",
+        "./orange-check-web/assets/api/issues",
+        "./orange-check-web/assets/api/messages",
+        "./orange-check-web/assets/api/projects",
+        "./orange-check-web/assets/icons/icon-128x128.png",
+        "./orange-check-web/assets/icons/icon-144x144.png",
+        "./orange-check-web/assets/icons/icon-152x152.png",
+        "./orange-check-web/assets/icons/icon-192x192.png",
+        "./orange-check-web/assets/icons/icon-384x384.png",
+        "./orange-check-web/assets/icons/icon-512x512.png",
+        "./orange-check-web/assets/icons/icon-72x72.png",
+        "./orange-check-web/assets/icons/icon-96x96.png"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "./orange-check-web/4.4085f8dcfa85573bf677.js": "2c68031d0fd237df5d32ded79bdb0cb3b1845ab1",
+    "./orange-check-web/4.c9aec09ed3236dd0bb58.js": "45e34e5f5a6fb5d546dcebb50a7d648491bfe059",
+    "./orange-check-web/5.088cfdf1e71fd0345972.js": "4213cc1bdc3e616dd526ac34033692860d2fa887",
+    "./orange-check-web/5.decea73bc3bccbf6d096.js": "72b53f69f1de1a7cb1101735c51c3eb42d1f4f67",
+    "./orange-check-web/assets/api/comments": "1796b7ca2fbb0bd5b3db84feda7cf44d482454e9",
+    "./orange-check-web/assets/api/issues": "8206e531473d03e6cc26477b0cc9b01ce26619c2",
+    "./orange-check-web/assets/api/messages": "bb0ec6cdc5f8f166a3fd5c2751d4563abf7e7ee9",
+    "./orange-check-web/assets/api/projects": "980016f29f7641e5c4551d698b6f4b2649760490",
+    "./orange-check-web/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
+    "./orange-check-web/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
+    "./orange-check-web/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
+    "./orange-check-web/assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
+    "./orange-check-web/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
+    "./orange-check-web/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
+    "./orange-check-web/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
+    "./orange-check-web/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "./orange-check-web/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
+    "./orange-check-web/index.html": "112953cf57538b60d39f1d5de929e7c366c19ca9",
+    "./orange-check-web/main.99b94a9ef10688a580fb.js": "c8fa2f7c756ec1d21df478e75cde8b7eb94d8d08",
+    "./orange-check-web/main.b5fbf5ee1de9b0dd9418.js": "8113ba93f8f4e47022d1b20eb6e376f75263c265",
+    "./orange-check-web/main.c2366f753075d6e27622.js": "536dae718bc1afef1ebdd897908771cf2f814e86",
+    "./orange-check-web/manifest.webmanifest": "8fde99d59a30ca6503754bb651bec16de5ff065e",
+    "./orange-check-web/ngsw-worker.js": "601253069e8f1d4f717e0bd54332587669d68261",
+    "./orange-check-web/polyfills.35a5ca1855eb057f016a.js": "578360d24ce37383f261c7ef63b1f822d28e8dde",
+    "./orange-check-web/runtime.0f04bbc2080ae904a07c.js": "2f57d7cc083315946d99c472401164b9338410c4",
+    "./orange-check-web/runtime.6d587b296c7267d6b87e.js": "aa01b0a28db4d8be6950736aa1cbab8d1a65eeca",
+    "./orange-check-web/safety-worker.js": "f532926317210be6e2679d21748dc44a35389807",
+    "./orange-check-web/styles.7448b7964c02e187883c.css": "7439855879934b9bf8f088a9659c3bfe6d61e7c9",
+    "./orange-check-web/styles.cab6a620b002cc85a222.css": "cacdcabaa949650a0bac924f677579186be22b1e",
+    "./orange-check-web/worker-basic.min.js": "f532926317210be6e2679d21748dc44a35389807"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ]
+}
