@@ -12,7 +12,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { DispacherComponent } from './controller/dispacher.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { DataInterceptor } from '@services/data.interceptor';
+import { DataInterceptor } from '@services/http.intercepter.service';
 
 
 @NgModule({
@@ -33,7 +33,7 @@ import { DataInterceptor } from '@services/data.interceptor';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: DataInterceptor, multi: true },
-    { provide: DefaultDataServiceConfig, useValue: defaultDataServiceConfig }
+    { provide: DefaultDataServiceConfig, useValue: defaultDataServiceConfig },
   ],
   bootstrap: [AppComponent]
 })

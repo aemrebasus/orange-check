@@ -1,26 +1,29 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { ApplicationRouteMap } from './components.routes';
+import { ComponentsStoreModule } from './components.store';
+
+// Materials
+import { MatCommonModule } from '@angular/material/core';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
 import { LayoutModule } from '@angular/cdk/layout';
+import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
-import { MatCommonModule } from '@angular/material/core';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatBadgeModule } from '@angular/material/badge';
-import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-
-
-
-import { RouterModule, Routes } from '@angular/router';
-import { StoreModule } from '@ngrx/store';
+import { MatInputModule } from '@angular/material/input';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+// Materials
 
 import { ComponentsComponent } from './components.component';
-import { NavigationComponent } from './navigation/navigation.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { CreateNewIssueComponent } from './create-new-issue/create-new-issue.component';
@@ -43,57 +46,17 @@ import { ViewAllIssuesComponent } from './view-all-issues/view-all-issues.compon
 import { ViewAllUsersComponent } from './view-all-users/view-all-users.component';
 import { ViewAllMessagesComponent } from './view-all-messages/view-all-messages.component';
 
-import { ApplicationRoutes } from './navigation';
 import { ViewOneProjectComponent } from './view-one-project/view-one-project.component';
 import { ViewAllProjectsComponent } from './view-all-projects/view-all-projects.component';
 import { EditProjectComponent } from './edit-project/edit-project.component';
 import { CreateNewProjectComponent } from './create-new-project/create-new-project.component';
-import { HttpClientModule } from '@angular/common/http';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { WrapperComponent } from './wrapper/wrapper.component';
+import { NavigationComponent } from './navigation/navigation.component';
+import { RouterModule } from '@angular/router';
+import { ProjectResolverService } from '@services/projects.resolver';
+import { WrapperResolverService } from '@services/wrapper.resolver';
+import { AeDynamicFormModule } from 'ae-dynamic-form';
 
-
-
-const routes: ApplicationRoutes = [
-  {
-    path: '', component: ComponentsComponent, children: [
-
-      // Dashboard
-      { path: 'dashboard', component: DashboardComponent },
-
-      // Create
-
-      { path: 'create-new-project', component: CreateNewProjectComponent },
-      { path: 'create-new-issue', component: CreateNewIssueComponent },
-      { path: 'create-new-comment', component: CreateNewCommentComponent },
-      { path: 'create-new-message', component: CreateNewMessageComponent },
-      { path: 'create-new-user', component: CreateNewUserComponent },
-
-      // Edit
-      { path: 'edit-project', component: EditProjectComponent },
-      { path: 'edit-issue', component: EditIssueComponent },
-      { path: 'edit-comment', component: EditCommentComponent },
-      { path: 'edit-message', component: EditMessageComponent },
-      { path: 'edit-user', component: EditUserComponent },
-
-      // View One
-      { path: 'view-one-project', component: ViewOneProjectComponent },
-      { path: 'view-one-issue', component: ViewOneIssueComponent },
-      { path: 'view-one-comment', component: ViewOneCommentComponent },
-      { path: 'view-one-user', component: ViewOneUserComponent },
-      { path: 'view-one-message', component: ViewOneMessageComponent },
-
-      // View All
-      { path: 'view-all-projects', component: ViewAllProjectsComponent },
-      { path: 'view-all-comments', component: ViewAllCommentsComponent },
-      { path: 'view-all-issues', component: ViewAllIssuesComponent },
-      { path: 'view-all-messages', component: ViewAllMessagesComponent },
-      { path: 'view-all-users', component: ViewAllUsersComponent },
-
-
-
-    ]
-  }
-];
 
 
 @NgModule({
@@ -128,12 +91,14 @@ const routes: ApplicationRoutes = [
     ViewAllIssuesComponent,
     ViewAllUsersComponent,
     ViewAllMessagesComponent,
-
+    WrapperComponent,
   ],
   imports: [
     CommonModule,
     HttpClientModule,
-    // Material Modules
+
+    RouterModule.forChild(ApplicationRouteMap),
+    // Materials
     MatCommonModule,
     MatGridListModule,
     MatCardModule,
@@ -148,9 +113,18 @@ const routes: ApplicationRoutes = [
     MatProgressSpinnerModule,
     MatInputModule,
     MatFormFieldModule,
-    // Material Modules end
-    RouterModule.forChild(routes),
-    StoreModule.forFeature('application', {})
+    MatTooltipModule,
+    MatProgressBarModule,
+    // Materials
+
+    // Form Builder Module
+    AeDynamicFormModule,
+
+    ComponentsStoreModule
+  ],
+  providers: [
+    ProjectResolverService,
+    WrapperResolverService,
   ]
 })
 export class ComponentsModule { }

@@ -11,6 +11,7 @@
   ],
   "include": [
     "src/**/*.d.ts",
-    "src/app/data/**/*.ts"
+    "src/app/models/**/*.ts",
+    "src/app/services/**/*.ts"
   ]
 }

@@ -1,0 +1,13 @@
+<div>
+    <mat-toolbar *ngIf="input?.toolbar">
+        <button mat-icon-button [disabled]="tool.disabled" *ngFor="let tool of input.toolbar" [matTooltip]="tool.tooltip"
+            [matTooltipPosition]="'above'" (click)="tool.action()">
+            <mat-icon>{{tool.icon}}</mat-icon>
+        </button>
+    </mat-toolbar>
+    <mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+    <mat-progress-bar mode="determinate" value="100" *ngIf="!loading"></mat-progress-bar>
+    <div class="wrapper-content">
+        <ng-content></ng-content>
+    </div>
+</div>

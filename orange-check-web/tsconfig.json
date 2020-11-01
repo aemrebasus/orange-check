@@ -18,6 +18,9 @@
       "@services/*": [
         "src/app/services/*"
       ],
+      "@models": [
+        "src/app/models"
+      ],
       "@models/*": [
         "src/app/models/*"
       ]

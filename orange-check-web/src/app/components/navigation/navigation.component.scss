@@ -1,5 +1,5 @@
-$primaryColor: #303030;
-$activeColor: #303030;
+$primaryColor: #fdfdfd;
+$activeColor: #ffffff;
 
 // Transition animation
 .transition {
@@ -24,23 +24,6 @@ $activeColor: #303030;
   z-index: 1;
 }
 
-.location-path {
-  border: 1px solid $primaryColor;
-  //  top right bottom left
-  padding: 2px 15px 2px 5px;
-  margin: 0px 3px 0px 0px;
-  border-radius: 5px 50% 50% 5px;
-  background-color: $primaryColor;
-  box-shadow: 0px 0px 10px $primaryColor;
-  cursor: pointer;
-
-  // font size
-  line-height: 12pt;
-  font-size: 9pt;
-
-  // animation
-  @extend .transition;
-}
 
 .mat-list-item {
   padding-left: 0px;

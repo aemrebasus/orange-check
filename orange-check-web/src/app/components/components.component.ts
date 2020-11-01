@@ -1,6 +1,6 @@
+import { animate, animateChild, query, style, transition, trigger, group, } from '@angular/animations';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { Subscription } from 'rxjs';
+
 
 @Component({
   selector: 'app-components',
