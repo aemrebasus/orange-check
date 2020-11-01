@@ -10,18 +10,13 @@ import { AeDynamicForm, AeDynamicFormComponent, AeFormBuilder } from 'ae-dynamic
 })
 export class CreateNewProjectComponent implements OnInit {
 
-  @ViewChild(AeDynamicFormComponent) formComponent: AeDynamicFormComponent;
-
   form: AeDynamicForm = new AeFormBuilder()
     .title('Project Form')
-    .newControl('name')
-    .autocomplete('off').required()
-    .placeholder('Type Project Name').label('Project Name')
-    .buildFormControl()
+    .newControl('name').autocomplete('off').required()
+    .icon('edit').placeholder('Type Project Name').label('Project Name').buildFormControl()
 
-    .newControl('description')
-    .autocomplete('off').required().minLength(10).maxLength(100)
-    .placeholder('Type description').label('Description')
+    .newControl('description').autocomplete('off').required().minLength(10).maxLength(100)
+    .icon('description').placeholder('Type description').label('Description')
     .buildFormControl()
 
     .submitButtonLabel('Create Project')
