@@ -29,6 +29,7 @@
     "@ngrx/entity": "10.0.1",
     "@ngrx/store": "10.0.1",
     "ae-dynamic-form": "^1.1.4",
+    "ae-material": "^1.6.3",
     "ng-icon-type": "1.0.1",
     "rxjs": "6.6.0",
     "tslib": "2.0.0",

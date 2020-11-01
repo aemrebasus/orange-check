@@ -1,15 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { IssueService } from '@services/entities.service';
 
 @Component({
   selector: 'app-view-one-issue',
   templateUrl: './view-one-issue.component.html',
   styleUrls: ['./view-one-issue.component.scss']
 })
-export class ViewOneIssueComponent implements OnInit {
+export class ViewOneIssueComponent implements OnInit, OnDestroy {
 
-  constructor() { }
+  constructor(public issueService: IssueService) { }
 
   ngOnInit(): void {
+
+  }
+
+  ngOnDestroy(): void {
+
   }
 
 }

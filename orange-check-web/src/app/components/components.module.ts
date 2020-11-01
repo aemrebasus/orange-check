@@ -22,6 +22,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTableModule } from '@angular/material/table';
 // Materials
 
 import { ComponentsComponent } from './components.component';
@@ -58,7 +59,12 @@ import { ProjectResolverService } from '@services/projects.resolver';
 import { WrapperResolverService } from '@services/wrapper.resolver';
 import { AeDynamicFormModule } from 'ae-dynamic-form';
 import { AlertMessageComponent } from './alert-message/alert-message.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
+
+// Ae MAterial
+import { AeTableModule } from 'ae-material';
+// Ae Material
 
 
 @NgModule({
@@ -119,7 +125,14 @@ import { AlertMessageComponent } from './alert-message/alert-message.component';
     MatTooltipModule,
     MatProgressBarModule,
     MatSnackBarModule,
+    MatTableModule,
+    MatPaginatorModule,
     // Materials
+
+    // Ae material
+    AeTableModule,
+    // Ae material
+
 
     // Form Builder Module
     AeDynamicFormModule,

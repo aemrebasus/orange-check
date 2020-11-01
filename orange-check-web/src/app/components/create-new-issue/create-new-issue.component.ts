@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Issue } from '@models';
 import { IssueService } from '@services/entities.service';
 import { AeDynamicForm, AeFormBuilder } from 'ae-dynamic-form';
@@ -9,6 +9,8 @@ import { AeDynamicForm, AeFormBuilder } from 'ae-dynamic-form';
   styleUrls: ['./create-new-issue.component.scss']
 })
 export class CreateNewIssueComponent implements OnInit {
+
+  @Output() submitted = new EventEmitter<Issue>();
 
   form: AeDynamicForm = new AeFormBuilder().title('Issue Form')
     .newControl('title').required().maxLength(20)
@@ -28,12 +30,15 @@ export class CreateNewIssueComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  submitForm(form: Issue): void {
-    // Temporary --- Monitor the application state and store selected users, project, issues.
-    // So additional data can be attached to the form here.
 
+  submitForm(form: Issue): void {
     this.issueService.add(form);
-    this.issueService.addOneToCache(form);
+    this.issueService.addOneToCache({ id: this.generateId(), ...form });
+    this.submitted.emit(form);
   }
 
+
+  generateId(): number {
+    return Math.floor(Math.random() * 1000000 + 1000000);
+  }
 }
