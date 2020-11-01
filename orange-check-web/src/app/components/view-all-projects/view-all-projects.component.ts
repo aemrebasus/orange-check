@@ -5,6 +5,7 @@ import { ProjectService } from '@services/entities.service';
 import { Observable, Subscription } from 'rxjs';
 import { ToolbarItem, Wrapper } from '@components/wrapper/wrapper.class';
 import { IconType } from 'ng-icon-type';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 type EventTypes = 'select' | 'select-all' | 'delete' | 'add' | 'open-project';
@@ -44,10 +45,13 @@ export class ViewAllProjectsComponent implements OnDestroy {
   loading: Observable<boolean> = this.projectService.loading$;
   projects: Observable<IProject[]> = this.projectService.entities$;
   isFormActive = false;
-  selectedItems: IProject[] = [];
+  selectedProjects: IProject[] = [];
   isMultiSelectActive = false;
 
-  constructor(public projectService: ProjectService) {
+  projectCount = this.projectService.count$;
+  selectedProjectCount = 0;
+
+  constructor(public projectService: ProjectService, private snackBar: MatSnackBar) {
     this.projectService.getAll();
     this.initEventObserver();
   }
@@ -58,6 +62,10 @@ export class ViewAllProjectsComponent implements OnDestroy {
 
   initEventObserver(): void {
     this.eventSubscription = this.eventEmitter.subscribe(event => {
+
+      this.selectedProjectCount = this.selectedProjects.length;
+
+      console.log(this.selectedProjectCount);
 
       switch (event as EventTypes) {
         case 'select-all':
@@ -113,7 +121,7 @@ export class ViewAllProjectsComponent implements OnDestroy {
   deleteProject(): void {
     const isConfirmed = confirm('Are you sure to delete selected projects?');
     if (isConfirmed) {
-      this.selectedItems.forEach(item => {
+      this.selectedProjects.forEach(item => {
         this.projectService.removeOneFromCache({ ...item });
         this.projectService.delete({ ...item });
       });
@@ -128,40 +136,44 @@ export class ViewAllProjectsComponent implements OnDestroy {
   }
 
   deselectItem(project: IProject): void {
-    this.selectedItems[this.selectedItems.indexOf(project)] = null;
-    this.selectedItems = this.selectedItems.filter(i => i);
+    this.selectedProjects[this.selectedProjects.indexOf(project)] = null;
+    this.selectedProjects = this.selectedProjects.filter(i => i);
   }
 
   selectItem(project: IProject): void {
-    if (this.selectedItems.includes(project)) {
+
+
+    if (this.selectedProjects.includes(project)) {
       this.deselectItem(project);
-      if (this.selectedItems.length === 0) {
+      if (this.selectedProjects.length === 0) {
         this.changeIconStatus('delete', true);
         this.changeIconStatus('open_in_new', true);
       }
       return;
     }
     if (this.isMultiSelectActive) {
-      this.selectedItems.push(project);
+      this.selectedProjects.push(project);
     } else {
-      this.selectedItems = [project];
+      this.selectedProjects = [project];
     }
-    if (this.selectedItems.length > 0) {
+    if (this.selectedProjects.length > 0) {
       this.changeIconStatus('delete', false);
       this.changeIconStatus('open_in_new', false);
     }
+
+    this.eventEmitter.emit('select');
   }
 
 
   selectAll(): void {
     this.projects.subscribe(data => {
       const items = data.map(e => e);
-      if (items.length === this.selectedItems.length) {
-        this.selectedItems = [];
+      if (items.length === this.selectedProjects.length) {
+        this.selectedProjects = [];
         this.changeIconStatus('delete', true);
         this.changeIconStatus('open_in_new', true);
       } else {
-        this.selectedItems = items;
+        this.selectedProjects = items;
         this.changeIconStatus('delete', false);
         this.changeIconStatus('open_in_new', false);
       }
@@ -173,6 +185,18 @@ export class ViewAllProjectsComponent implements OnDestroy {
     this.selectAll();
   }
 
+
+  afterFormSubmitted(form: IProject): void {
+    this.snackMessage('Closing the project form');
+    setTimeout(() => {
+      this.closeForm();
+    }, 1000);
+  }
+
+
+  snackMessage(msg: string, duration = 2000): void {
+    this.snackBar.open(msg, null, { duration, horizontalPosition: 'center', verticalPosition: 'top' });
+  }
 
 
 }

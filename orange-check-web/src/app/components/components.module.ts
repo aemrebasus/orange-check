@@ -21,6 +21,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 // Materials
 
 import { ComponentsComponent } from './components.component';
@@ -56,6 +57,7 @@ import { RouterModule } from '@angular/router';
 import { ProjectResolverService } from '@services/projects.resolver';
 import { WrapperResolverService } from '@services/wrapper.resolver';
 import { AeDynamicFormModule } from 'ae-dynamic-form';
+import { AlertMessageComponent } from './alert-message/alert-message.component';
 
 
 
@@ -92,6 +94,7 @@ import { AeDynamicFormModule } from 'ae-dynamic-form';
     ViewAllUsersComponent,
     ViewAllMessagesComponent,
     WrapperComponent,
+    AlertMessageComponent,
   ],
   imports: [
     CommonModule,
@@ -115,6 +118,7 @@ import { AeDynamicFormModule } from 'ae-dynamic-form';
     MatFormFieldModule,
     MatTooltipModule,
     MatProgressBarModule,
+    MatSnackBarModule,
     // Materials
 
     // Form Builder Module

@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { IProject } from '@models';
 import { ProjectService } from '@services/entities.service';
 import { AeDynamicForm, AeDynamicFormComponent, AeFormBuilder } from 'ae-dynamic-form';
@@ -9,6 +9,8 @@ import { AeDynamicForm, AeDynamicFormComponent, AeFormBuilder } from 'ae-dynamic
   styleUrls: ['./create-new-project.component.scss']
 })
 export class CreateNewProjectComponent implements OnInit {
+
+  @Output() submitted = new EventEmitter<IProject>();
 
   form: AeDynamicForm = new AeFormBuilder()
     .title('Project Form')
@@ -23,13 +25,12 @@ export class CreateNewProjectComponent implements OnInit {
     .buildForm();
 
   constructor(public projectService: ProjectService) { }
-
   ngOnInit(): void {
   }
-
   submitForm(form: IProject): void {
     this.projectService.add(form);
     this.projectService.addOneToCache({ id: this.generateId(), ...form });
+    this.submitted.emit(form);
   }
 
 
