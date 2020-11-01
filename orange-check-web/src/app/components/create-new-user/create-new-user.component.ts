@@ -9,7 +9,7 @@ import { AeDynamicForm, AeFormBuilder } from 'ae-dynamic-form';
   styleUrls: ['./create-new-user.component.scss']
 })
 export class CreateNewUserComponent implements OnInit {
-  
+
   form: AeDynamicForm = new AeFormBuilder()
     .title('User Form')
     .newControl('firstName').placeholder('Type First Name').label('First Name').required().buildFormControl()
