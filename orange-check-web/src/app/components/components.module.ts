@@ -58,7 +58,6 @@ import { RouterModule } from '@angular/router';
 import { ProjectResolverService } from '@services/projects.resolver';
 import { WrapperResolverService } from '@services/wrapper.resolver';
 import { AeDynamicFormModule } from 'ae-dynamic-form';
-import { AlertMessageComponent } from './alert-message/alert-message.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
 
@@ -100,7 +99,6 @@ import { AeTableModule } from 'ae-material';
     ViewAllUsersComponent,
     ViewAllMessagesComponent,
     WrapperComponent,
-    AlertMessageComponent,
   ],
   imports: [
     CommonModule,
