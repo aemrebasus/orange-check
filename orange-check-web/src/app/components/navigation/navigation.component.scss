@@ -24,7 +24,6 @@ $activeColor: #ffffff;
   z-index: 1;
 }
 
-
 .mat-list-item {
   padding-left: 0px;
   border: 1px solid transparent;
@@ -32,8 +31,6 @@ $activeColor: #ffffff;
   overflow: hidden;
 }
 
-.mat-list-item:active,
-.mat-list-item:focus,
 .is-active {
   background-color: $activeColor;
   border: 1px solid orangered;
