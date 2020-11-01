@@ -27,6 +27,7 @@ export class CreateNewProjectComponent implements OnInit {
   constructor(public projectService: ProjectService) { }
   ngOnInit(): void {
   }
+
   submitForm(form: IProject): void {
     this.projectService.add(form);
     this.projectService.addOneToCache({ id: this.generateId(), ...form });
