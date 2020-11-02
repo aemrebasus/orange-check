@@ -1,9 +1,9 @@
-<app-wrapper [input]="wrapper" [loading]="loading | async">
+<app-wrapper [input]="wrapper" [loading]="loading ">
     <div>
         <mat-card>
             <mat-card-content>
-                You selected <strong> {{selectedProjectCount | async}}</strong> out of
-                <strong>{{projectCount  | async}}</strong>
+                You selected <strong> {{selectedProjectCount }}</strong> out of
+                <strong>{{projectCount  }}</strong>
                 projects.
             </mat-card-content>
         </mat-card>
@@ -23,8 +23,9 @@
         </mat-card>
 
         <div class="flex flex-wrap">
-            <mat-card class="m-5 hover-border cursor-pointer" *ngFor="let project of projects | async" matBadge="100"
-                matBadgeColor="primary" (click)="selectOneProject(project)" [class.selected-item]="project.selected">
+            <mat-card class="m-5 hover-border cursor-pointer" *ngFor="let project of projects " matBadge="100"
+                matBadgeColor="primary" (click)="selectOneProject(project)"
+                [class.selected-item]="selectedProjects.includes(project.id)">
                 <mat-card-header>
                     <mat-card-title>{{project.name}}</mat-card-title>
                 </mat-card-header>

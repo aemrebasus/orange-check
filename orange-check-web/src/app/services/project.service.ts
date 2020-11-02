@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { ISelectItem } from './core/ISelectItem';
-import { actions as ACTIONS } from '@services/core/main.reducers';
+import { actions as ACTIONS, ApplicationState } from '@services/core/main.reducers';
 import { Observable, of } from 'rxjs';
 import { IProject } from '@models';
 import { EntityCollectionServiceBase, EntityCollectionServiceElementsFactory } from '@ngrx/data';
@@ -13,18 +13,18 @@ import { map } from 'rxjs/operators';
 })
 export class ProjectService extends EntityCollectionServiceBase<IProject> implements ISelectItem {
 
-    selected$: Observable<number[]> = of(null);
-    current$: Observable<number> = of(null);
-    selectedCount$: Observable<number> = of(0);
+    private selected$: Observable<number[]> = this.store.pipe(map(s => (s as any).state.project.selected));
+
     private multiSelect = false;
     private actions = ACTIONS.project;
 
     constructor(servcieElementsFactory: EntityCollectionServiceElementsFactory) {
         super('Project', servcieElementsFactory);
         this.getAll();
-        this.selected$.subscribe(selectedProject => {
-            this.selectedCount$ = of(selectedProject?.length);
-        });
+    }
+
+    selectedProjects(): Observable<number[]> {
+        return this.selected$;
     }
 
     activateMultiSelect(): Observable<boolean> {
@@ -51,6 +51,7 @@ export class ProjectService extends EntityCollectionServiceBase<IProject> implem
         }
         this.store.dispatch(this.actions.selectOneProject({ id }));
     }
+
 
     deselectOne(id: number): void {
         this.store.dispatch(this.actions.deselectOneProject({ id }));

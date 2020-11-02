@@ -1,16 +1,11 @@
-import { Component, EventEmitter, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { IProject } from 'src/app/models';
 
-import { Observable, of, Subscription } from 'rxjs';
-import { ToolbarBuilder, ToolbarItem, Wrapper } from '@components/wrapper/wrapper.class';
+import { Observable, } from 'rxjs';
+import { ToolbarBuilder, Wrapper } from '@components/wrapper/wrapper.class';
 import { IconType } from 'ng-icon-type';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ProjectService } from '@services/project.service';
-import { ObserveOnMessage } from 'rxjs/internal/operators/observeOn';
-import { map } from 'rxjs/operators';
-
-
-type EventTypes = 'select' | 'select-all' | 'delete' | 'add' | 'open-project';
 
 
 @Component({
@@ -20,16 +15,22 @@ type EventTypes = 'select' | 'select-all' | 'delete' | 'add' | 'open-project';
 })
 export class ViewAllProjectsComponent implements OnInit, OnDestroy {
 
-
   // Data
-  projects: Observable<IProject[]> = this.projectService.entities$;
-  selectedProjects: Observable<number[]> = this.projectService.selected$;
-  projectCount: Observable<number> = this.projectService.count$;
-  selectedProjectCount: Observable<number> = this.projectService.selectedCount$;
+  projects: IProject[];
+
+  // Selecteds
+  selectedProjects: number[] = [];
+  selectedProjectCount = 0;
+  projectCount = 0;
 
   // Conditions
-  loading: Observable<boolean> = this.projectService.loading$;
+  loading = false;
   isFormActive = false;
+
+  // Subscriptions
+  selectedProjectSubs;
+  loadingSubs;
+  projectsSubs;
 
   // Toolbar
   wrapper: Wrapper = {
@@ -44,31 +45,49 @@ export class ViewAllProjectsComponent implements OnInit, OnDestroy {
       }).getToolbar()
   };
 
-
-
-
   constructor(public projectService: ProjectService, private snackBar: MatSnackBar) {
 
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
 
-  ngOnDestroy(): void {
+    // Subscribing data
+    this.projectsSubs = this.projectService.getAll().subscribe(projects => {
+      this.projects = projects;
+      this.projectCount = projects.length;
+    });
+
+    this.selectedProjectSubs = this.projectService.selectedProjects().subscribe(s => {
+      this.selectedProjects = s;
+      this.selectedProjectCount = s.length;
+    });
+
+    this.loadingSubs = this.projectService.loading$.subscribe(l => {
+      this.loading = l;
+    });
+
   }
 
+  ngOnDestroy(): void {
+    this.projectsSubs.unsubscribe();
+    this.selectedProjectSubs.unsubscribe();
+    this.loadingSubs.unsubscribe();
+  }
 
   selectOneProject(id: number): void {
     this.projectService.selectOne(id);
   }
 
+  // Form Related
   openForm(): void { this.isFormActive = true; }
 
   closeForm(): void { this.isFormActive = false; }
 
-  openCurrentProject(): void {    /* TODO **/ }
-
   afterFormSubmitted(form: IProject): void { this.snackMessage(`${form} is submitted`); }
 
+  openCurrentProject(): void {    /* TODO **/ }
+
+  // Alert/popup
   snackMessage(msg: string, duration = 2000): void {
     this.snackBar.open(msg, null, { duration, horizontalPosition: 'center', verticalPosition: 'top' });
   }
