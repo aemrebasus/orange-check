@@ -12,7 +12,6 @@ export class CreateNewUserComponent implements OnInit {
 
   @Output() submitted = new EventEmitter<IUser>();
 
-
   form: AeDynamicForm = new AeFormBuilder()
     .title('User Form')
     .newControl('firstName').required().maxLength(50).placeholder('Type First Name').label('First Name').buildFormControl()
@@ -32,17 +31,13 @@ export class CreateNewUserComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
   submitForm(form: IUser): void {
     this.userService.add(form);
     this.userService.addOneToCache({ id: this.generateId(), ...form });
     this.submitted.emit(form);
   }
 
-
   generateId(): number {
     return Math.floor(Math.random() * 1000000 + 1000000);
   }
-
-
 }
