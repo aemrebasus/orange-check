@@ -35,14 +35,15 @@ export class ViewAllProjectsComponent implements OnInit, OnDestroy {
   // Toolbar
   wrapper: Wrapper = {
     toolbar: new ToolbarBuilder()
-      .newItem(1)('done_all')('Select All')(() => {
-        this.setTollbarIconById(1, this.projectService.selectAll() ? 'close' : 'done_all');
-      })
-      .newItem(2)('add')('Add New Project')(() => this.openForm())
-      .newItem(3)('delete')('Delete Selected Projects')(() => this.projectService.deleteSelectedProjects())
-      .newItem(4)('check_box_outline_blank')('Multi Select')(() => {
-        this.setTollbarIconById(4, this.projectService.activateMultiSelect() ? 'check_box' : 'check_box_outline_blank');
-      }).getToolbar()
+      .newItem(1).icon('done_all').tooltip('Select All')
+      .action(() => { this.setTollbarIconById(1, this.projectService.selectAll() ? 'close' : 'done_all'); })
+      .newItem(2).icon('add').tooltip('Add New Project')
+      .action(() => this.openForm())
+      .newItem(3).icon('delete').tooltip('Delete Selected Projects')
+      .action(() => this.projectService.deleteSelectedProjects())
+      .newItem(4).icon('check_box_outline_blank').tooltip('Multi Select')
+      .action(() => { this.setTollbarIconById(4, this.projectService.activateMultiSelect() ? 'check_box' : 'check_box_outline_blank'); })
+      .getToolbar()
   };
 
   constructor(public projectService: ProjectService, private snackBar: MatSnackBar) {
