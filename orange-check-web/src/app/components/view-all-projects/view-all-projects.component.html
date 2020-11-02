@@ -24,7 +24,7 @@
 
         <div class="flex flex-wrap">
             <mat-card class="m-5 hover-border cursor-pointer" *ngFor="let project of projects " matBadge="100"
-                matBadgeColor="primary" (click)="selectOneProject(project)"
+                matBadgeColor="primary" (click)="selectOneProject(project.id)"
                 [class.selected-item]="selectedProjects.includes(project.id)">
                 <mat-card-header>
                     <mat-card-title>{{project.name}}</mat-card-title>

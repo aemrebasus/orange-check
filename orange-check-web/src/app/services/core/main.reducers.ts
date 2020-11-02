@@ -54,9 +54,9 @@ const projectSelectReducer = createReducer(
         if (state.selected.includes(payload.id)) {
             return state;
         }
-        return ({ ...state, selected: [...state.selected, payload.id] })
+        return ({ ...state, selected: [...state.selected, payload.id] });
     }),
-    on(deselectOneProject, (state, payload) => ({ ...state, selected: state.selected.filter(e => e.id !== payload.id) })),
+    on(deselectOneProject, (state, payload) => ({ ...state, selected: state.selected.filter(e => e !== payload.id) })),
     on(selectAllProjects, (state, payload) => ({ ...state, selected: payload.ids })),
     on(deselectAllProjects, (state) => ({ ...state, selected: [] })),
     on(selectCurrentProject, (state, payload) => ({ ...state, current: payload.id }))
@@ -68,9 +68,9 @@ const issueSelectReducer = createReducer(
         if (state.selected.includes(payload.id)) {
             return state;
         }
-        return ({ ...state, selected: [...state.selected, payload.id] })
+        return ({ ...state, selected: [...state.selected, payload.id] });
     }),
-    on(deselectOneIssue, (state, payload) => ({ ...state, selected: state.selected.filter(e => e.id !== payload.id) })),
+    on(deselectOneIssue, (state, payload) => ({ ...state, selected: state.selected.filter(e => e !== payload.id) })),
     on(selectAllIssues, (state, payload) => ({ ...state, selected: payload.ids })),
     on(deselectAllIssues, (state) => ({ ...state, selected: [] })),
     on(selectCurrentIssue, (state, payload) => ({ ...state, current: payload.id }))
@@ -82,9 +82,9 @@ const userSelectReducer = createReducer(
         if (state.selected.includes(payload.id)) {
             return state;
         }
-        return ({ ...state, selected: [...state.selected, payload.id] })
+        return ({ ...state, selected: [...state.selected, payload.id] });
     }),
-    on(deselectOneUser, (state, payload) => ({ ...state, selected: state.selected.filter(e => e.id !== payload.id) })),
+    on(deselectOneUser, (state, payload) => ({ ...state, selected: state.selected.filter(e => e !== payload.id) })),
     on(selectAllUsers, (state, payload) => ({ ...state, selected: payload.ids })),
     on(deselectAllUsers, (state) => ({ ...state, selected: [] })),
     on(selectCurrentUser, (state, payload) => ({ ...state, current: payload.id }))
@@ -96,9 +96,9 @@ const messageSelectReducer = createReducer(
         if (state.selected.includes(payload.id)) {
             return state;
         }
-        return ({ ...state, selected: [...state.selected, payload.id] })
+        return ({ ...state, selected: [...state.selected, payload.id] });
     }),
-    on(deselectOneMessage, (state, payload) => ({ ...state, selected: state.selected.filter(e => e.id !== payload.id) })),
+    on(deselectOneMessage, (state, payload) => ({ ...state, selected: state.selected.filter(e => e !== payload.id) })),
     on(selectAllMessages, (state, payload) => ({ ...state, selected: payload.ids })),
     on(deselectAllMessages, (state) => ({ ...state, selected: [] })),
     on(selectCurrentMessage, (state, payload) => ({ ...state, current: payload.id }))

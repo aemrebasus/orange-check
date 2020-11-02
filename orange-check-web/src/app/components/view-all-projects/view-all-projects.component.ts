@@ -35,13 +35,13 @@ export class ViewAllProjectsComponent implements OnInit, OnDestroy {
   // Toolbar
   wrapper: Wrapper = {
     toolbar: new ToolbarBuilder()
-      .newItem(1)('select_all')('Select All')(() => this.projectService.selectAll())
+      .newItem(1)('done_all')('Select All')(() => {
+        this.setTollbarIconById(1, this.projectService.selectAll() ? 'close' : 'done_all');
+      })
       .newItem(2)('add')('Add New Project')(() => this.openForm())
       .newItem(3)('delete')('Delete Selected Projects')(() => this.projectService.deleteSelectedProjects())
       .newItem(4)('check_box_outline_blank')('Multi Select')(() => {
-        this.projectService.activateMultiSelect().toPromise().then(isMultiSelect => {
-          this.setTollbarIconById(4, isMultiSelect ? 'check_box' : 'check_box_outline_blank');
-        });
+        this.setTollbarIconById(4, this.projectService.activateMultiSelect() ? 'check_box' : 'check_box_outline_blank');
       }).getToolbar()
   };
 
@@ -52,7 +52,7 @@ export class ViewAllProjectsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
 
     // Subscribing data
-    this.projectsSubs = this.projectService.getAll().subscribe(projects => {
+    this.projectsSubs = this.projectService.entities$.subscribe(projects => {
       this.projects = projects;
       this.projectCount = projects.length;
     });
@@ -60,6 +60,7 @@ export class ViewAllProjectsComponent implements OnInit, OnDestroy {
     this.selectedProjectSubs = this.projectService.selectedProjects().subscribe(s => {
       this.selectedProjects = s;
       this.selectedProjectCount = s.length;
+      console.log('selected projecst', s);
     });
 
     this.loadingSubs = this.projectService.loading$.subscribe(l => {

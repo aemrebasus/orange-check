@@ -13,28 +13,42 @@ import { map } from 'rxjs/operators';
 })
 export class ProjectService extends EntityCollectionServiceBase<IProject> implements ISelectItem {
 
-    private selected$: Observable<number[]> = this.store.pipe(map(s => (s as any).state.project.selected));
+    snapshot$: IProject[] = [];
+    selectedSnapshot$: number[] = [];
+    selected$: Observable<number[]> = this.store.pipe(map(s => (s as any).state.project.selected));
 
-    private multiSelect = false;
+    isMultiSelectActive = false;
+    isAllSelectActive = false;
+
     private actions = ACTIONS.project;
+    private timer = 0;
+
+
 
     constructor(servcieElementsFactory: EntityCollectionServiceElementsFactory) {
         super('Project', servcieElementsFactory);
         this.getAll();
+
+        this.entities$.subscribe(projects => {
+            console.log('[ProjectService] Subscription Control -Snapshot', this.timer++);
+            this.snapshot$ = [...projects];
+        });
+
+        this.selected$.subscribe(sp => {
+            console.log('[ProjectService] Subscription Control -SelectedSnapSHot', sp, this.timer++);
+            this.selectedSnapshot$ = [...sp];
+        });
     }
 
     selectedProjects(): Observable<number[]> {
         return this.selected$;
     }
 
-    activateMultiSelect(): Observable<boolean> {
-        if (this.multiSelect) {
-            this.multiSelect = false;
-            return of(false);
-        } else {
-            this.multiSelect = true;
-            return of(true);
+    activateMultiSelect(): boolean {
+        if (this.isMultiSelectActive) {
+            this.deselectAll();
         }
+        return this.isMultiSelectActive = this.isMultiSelectActive ? false : true;
     }
 
     deleteSelectedProjects(): void {
@@ -46,10 +60,20 @@ export class ProjectService extends EntityCollectionServiceBase<IProject> implem
     }
 
     selectOne(id: number): void {
-        if (!this.multiSelect) {
+        console.log('Snapshot', this.selectedSnapshot$);
+        if (!this.isMultiSelectActive) {
             this.deselectAll();
+            this.store.dispatch(this.actions.selectOneProject({ id }));
+        } else {
+            if (this.selectedSnapshot$.includes(id)) {
+                this.deselectOne(id);
+                return;
+            } else {
+                this.store.dispatch(this.actions.selectOneProject({ id }));
+            }
         }
-        this.store.dispatch(this.actions.selectOneProject({ id }));
+        console.log('After --------<> Snapshot', this.selectedSnapshot$);
+
     }
 
 
@@ -57,15 +81,17 @@ export class ProjectService extends EntityCollectionServiceBase<IProject> implem
         this.store.dispatch(this.actions.deselectOneProject({ id }));
     }
 
-    selectAll(): void {
-        this.multiSelect = true;
-        this.getAll().toPromise().then(data => {
-            this.store.dispatch(this.actions.selectAllProjects({ ids: data.map(e => e.id) }));
-        });
+    selectAll(): boolean {
+        if (this.isAllSelectActive) {
+            return this.deselectAll();
+        }
+        this.store.dispatch(this.actions.selectAllProjects({ ids: this.snapshot$.map(e => e.id) }));
+        return this.isAllSelectActive = true;
     }
 
-    deselectAll(): void {
+    deselectAll(): boolean {
         this.store.dispatch(this.actions.deselectAllProjects());
+        return this.isAllSelectActive = false;
     }
 
     selectCurrent(id: number): void {
