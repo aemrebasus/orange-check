@@ -20,9 +20,7 @@ export class ToolbarBuilder {
 
     private toolbar: ToolbarItem[] = [];
     private holder: ToolbarItem;
-    /**
-     * 4 chains --- id -> icon -> tooltip -> action
-     */
+
     constructor() { }
 
     newItem(id: number): ToolbarBuilder {
@@ -50,6 +48,11 @@ export class ToolbarBuilder {
 
     color(color: string): ToolbarBuilder {
         this.holder = { ...this.holder, color };
+        return this;
+    }
+
+    disabled(): ToolbarBuilder {
+        this.holder = { ...this.holder, disabled: true };
         return this;
     }
 

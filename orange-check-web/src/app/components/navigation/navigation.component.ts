@@ -4,7 +4,7 @@ import { Observable, Subscription } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { ApplicationRoutes } from '@components/navigation';
 import { Router } from '@angular/router';
-
+import { ProjectService } from '@services/project.service';
 
 const NAVIGATION: ApplicationRoutes = [
   { label: 'Dashboard', path: 'dashboard', icon: 'dashboard' },
@@ -14,8 +14,6 @@ const NAVIGATION: ApplicationRoutes = [
   { label: 'Messages', path: 'view-all-messages', icon: 'message' }
 ];
 
-
-
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
@@ -23,10 +21,12 @@ const NAVIGATION: ApplicationRoutes = [
 })
 export class NavigationComponent implements OnInit, OnDestroy {
 
-  public navigation = NAVIGATION;
-  public currentLocation = '';
+  navigation = NAVIGATION;
+  currentLocation = '';
+  currentProjectName = 'Project Name';
 
-  private routerEventSubs: Subscription;
+  routerEventSubs: Subscription;
+  projectNameSubs: Subscription;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -34,13 +34,17 @@ export class NavigationComponent implements OnInit, OnDestroy {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, public router: Router) { }
+  constructor(private breakpointObserver: BreakpointObserver, public router: Router, public projectService: ProjectService) { }
 
-  private updateLocations(): void {
+  updateLocations(): void {
     this.currentLocation = this.router.url.split('/').pop().toUpperCase().replace(/-/g, ' ');
   }
 
   ngOnInit(): void {
+    this.projectService.currentProject$.subscribe(prc => {
+      this.currentProjectName = prc.name;
+    });
+
     this.updateLocations();
 
     this.routerEventSubs = this.router.events.subscribe(event => {
@@ -50,6 +54,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.routerEventSubs.unsubscribe();
+    this.projectNameSubs.unsubscribe();
   }
 
 

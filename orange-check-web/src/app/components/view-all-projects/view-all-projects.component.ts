@@ -43,6 +43,9 @@ export class ViewAllProjectsComponent implements OnInit, OnDestroy {
       .action(() => this.projectService.deleteSelectedProjects())
       .newItem(4).icon('check_box_outline_blank').tooltip('Multi Select')
       .action(() => { this.setTollbarIconById(4, this.projectService.activateMultiSelect() ? 'check_box' : 'check_box_outline_blank'); })
+      .newItem(5).icon('open_in_new').tooltip('Open Project')
+      .disabled()
+      .action(() => { this.openCurrentProject(); })
       .getToolbar()
   };
 
@@ -61,7 +64,6 @@ export class ViewAllProjectsComponent implements OnInit, OnDestroy {
     this.selectedProjectSubs = this.projectService.selectedProjects().subscribe(s => {
       this.selectedProjects = s;
       this.selectedProjectCount = s.length;
-      console.log('selected projecst', s);
     });
 
     this.loadingSubs = this.projectService.loading$.subscribe(l => {
@@ -78,6 +80,7 @@ export class ViewAllProjectsComponent implements OnInit, OnDestroy {
 
   selectOneProject(id: number): void {
     this.projectService.selectOne(id);
+    this.setToolbarDisabledById(5, !this.projectService.canIOpenAnyProject());
   }
 
   // Form Related
@@ -87,7 +90,9 @@ export class ViewAllProjectsComponent implements OnInit, OnDestroy {
 
   afterFormSubmitted(form: IProject): void { this.snackMessage(`${form} is submitted`); }
 
-  openCurrentProject(): void {    /* TODO **/ }
+  openCurrentProject(): void {
+
+  }
 
   // Alert/popup
   snackMessage(msg: string, duration = 2000): void {
@@ -97,6 +102,10 @@ export class ViewAllProjectsComponent implements OnInit, OnDestroy {
   // Toolbar Utils
   setTollbarIconById(id: number, icon: IconType): void {
     this.wrapper.toolbar.find(e => e.id === id).icon = icon;
+  }
+
+  setToolbarDisabledById(id: number, disabled: boolean): void {
+    this.wrapper.toolbar.find(e => e.id === id).disabled = disabled;
   }
 
 }
