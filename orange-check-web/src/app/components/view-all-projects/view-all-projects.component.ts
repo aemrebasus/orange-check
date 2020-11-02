@@ -39,13 +39,12 @@ export class ViewAllProjectsComponent implements OnInit, OnDestroy {
       .action(() => { this.setTollbarIconById(1, this.projectService.selectAll() ? 'close' : 'done_all'); })
       .newItem(2).icon('add').tooltip('Add New Project')
       .action(() => this.openForm())
-      .newItem(3).icon('delete').tooltip('Delete Selected Projects')
-      .action(() => this.projectService.deleteSelectedProjects())
       .newItem(4).icon('check_box_outline_blank').tooltip('Multi Select')
       .action(() => { this.setTollbarIconById(4, this.projectService.activateMultiSelect() ? 'check_box' : 'check_box_outline_blank'); })
       .newItem(5).icon('open_in_new').tooltip('Open Project')
-      .disabled()
-      .action(() => { this.openCurrentProject(); })
+      .disabled().action(() => { this.openCurrentProject(); })
+      .newItem(3).icon('delete').tooltip('Delete Selected Projects')
+      .action(() => this.projectService.deleteSelectedProjects())
       .getToolbar()
   };
 

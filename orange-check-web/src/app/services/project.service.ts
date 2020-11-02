@@ -32,12 +32,9 @@ export class ProjectService extends EntityCollectionServiceBase<IProject> implem
 
         this.selected$.subscribe(sp => {
             this.selectedSnapshot$ = [...sp];
-
             if (this.selectedSnapshot$.length === 1) {
-                console.log('working ');
                 this.currentProject$.next(this.snapshot$.find(e => e.id === sp[0]));
             }
-
         });
 
     }
@@ -58,11 +55,10 @@ export class ProjectService extends EntityCollectionServiceBase<IProject> implem
     }
 
     deleteSelectedProjects(): void {
-        this.selected$.toPromise().then(ids => {
-            ids.forEach(id => {
-                this.delete(id);
-            });
+        this.selectedSnapshot$.forEach(e => {
+            this.delete(e);
         });
+        this.removeManyFromCache(this.selectedSnapshot$);
     }
 
     selectOne(id: number): void {
