@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { IssueService } from '@services/entities.service';
+import { IssueService } from '@services/core/entities.service';
 
 @Component({
   selector: 'app-view-one-issue',

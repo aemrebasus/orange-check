@@ -2,7 +2,7 @@ import { Component, EventEmitter, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Wrapper } from '@components/wrapper/wrapper.class';
 import { IMessage } from '@models';
-import { MessageService, UserService } from '@services/entities.service';
+import { MessageService, UserService } from '@services/core/entities.service';
 import { AeTable } from 'ae-material';
 import { Subscription } from 'rxjs';
 

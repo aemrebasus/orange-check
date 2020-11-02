@@ -1,7 +1,7 @@
 import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { IProject } from '@models';
-import { ProjectService } from '@services/entities.service';
-import { AeDynamicForm, AeDynamicFormComponent, AeFormBuilder } from 'ae-dynamic-form';
+import { ProjectService } from '@services/project.service';
+import { AeDynamicForm,  AeFormBuilder } from 'ae-dynamic-form';
 
 @Component({
   selector: 'app-create-new-project',

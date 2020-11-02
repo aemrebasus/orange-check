@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Issue } from '@models';
-import { IssueService } from '@services/entities.service';
+import { IssueService } from '@services/core/entities.service';
 import { AeDynamicForm, AeFormBuilder } from 'ae-dynamic-form';
 
 @Component({

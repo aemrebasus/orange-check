@@ -2,7 +2,7 @@ import { AfterViewInit, Component, EventEmitter, OnDestroy, OnInit } from '@angu
 import { MatTableDataSource } from '@angular/material/table';
 import { Wrapper } from '@components/wrapper/wrapper.class';
 import { Issue } from '@models';
-import { IssueService } from '@services/entities.service';
+import { IssueService } from '@services/core/entities.service';
 import { AeTable } from 'ae-material';
 import { Subscription } from 'rxjs';
 

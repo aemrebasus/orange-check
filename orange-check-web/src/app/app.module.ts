@@ -5,14 +5,14 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
 import { DefaultDataServiceConfig, EntityDataModule } from '@ngrx/data';
-import { defaultDataServiceConfig, entityConfig } from 'src/app/store.config';
+import { defaultDataServiceConfig, entityConfig } from '@services/core/store.config';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { DispacherComponent } from './controller/dispacher.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { DataInterceptor } from '@services/http.intercepter.service';
+import { DataInterceptor } from '@services/core/http.intercepter.service';
 
 
 @NgModule({

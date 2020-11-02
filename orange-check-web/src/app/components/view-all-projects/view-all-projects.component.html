@@ -2,12 +2,13 @@
     <div>
         <mat-card>
             <mat-card-content>
-                You selected <strong> {{selectedProjectCount}}</strong> out of
+                You selected <strong> {{selectedProjectCount | async}}</strong> out of
                 <strong>{{projectCount  | async}}</strong>
                 projects.
             </mat-card-content>
         </mat-card>
     </div>
+
     <div class="flex align-base p-5">
         <mat-card *ngIf="isFormActive" style="width: 400px;">
             <mat-card-header>
@@ -23,8 +24,7 @@
 
         <div class="flex flex-wrap">
             <mat-card class="m-5 hover-border cursor-pointer" *ngFor="let project of projects | async" matBadge="100"
-                matBadgeColor="primary" (click)="selectItem(project)"
-                [class.selected-item]="selectedProjects.includes(project)">
+                matBadgeColor="primary" (click)="selectOneProject(project)" [class.selected-item]="project.selected">
                 <mat-card-header>
                     <mat-card-title>{{project.name}}</mat-card-title>
                 </mat-card-header>

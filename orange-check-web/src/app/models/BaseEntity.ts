@@ -1,5 +1,5 @@
 /**
- * @field id number 
+ * @field id number
  * @field createdAt date string
  */
 export interface BaseEntity {

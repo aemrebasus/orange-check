@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { IUser } from '@models';
-import { UserService } from '@services/entities.service';
+import { UserService } from '@services/core/entities.service';
 import { AeDynamicForm, AeFormBuilder } from 'ae-dynamic-form';
 
 @Component({

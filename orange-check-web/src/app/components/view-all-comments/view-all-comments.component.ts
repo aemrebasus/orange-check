@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IComment } from '@models/index';
 import { Observable } from 'rxjs';
-import { CommentService } from '@services/entities.service';
+import { CommentService } from '@services/core/entities.service';
 @Component({
   selector: 'app-view-all-comments',
   templateUrl: './view-all-comments.component.html',
