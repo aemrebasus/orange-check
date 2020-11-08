@@ -2,6 +2,7 @@ package com.ocheck.api.services;
 
 import com.ocheck.api.models.User;
 import com.ocheck.api.repositories.UserRepository;
+import com.ocheck.api.security.GetOrgId;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -21,6 +22,18 @@ public class UserService implements IService<User> {
     @Autowired
     private UserRepository repo;
 
+    @Autowired
+    private GetOrgId oid; // Organization ID;
+
+
+    public List<User> findInMyOrg() {
+        return repo.findByOrgId(this.oid.get());
+    }
+
+    public Optional<User> findInMyOrgById(Long id) {
+        return repo.findByOrgIdAndId(this.oid.get(), id);
+    }
+
     @Override
     public List<User> findAll() {
         return repo.findAll();
@@ -28,25 +41,26 @@ public class UserService implements IService<User> {
 
     @Override
     public Optional<User> findById(Long id) {
-        return repo.findById(id);
+        return repo.findByOrgIdAndId(this.oid.get(), id);
     }
-
 
     @Override
     public void saveOne(User user) {
+        user.setOrgId(this.oid.get());
         repo.save(user);
     }
 
     @Override
     public void updateOneById(Long id, User updatedUser) {
-        User existingUser = repo.findById(id).get();
+        User existingUser = repo.findByOrgIdAndId(this.oid.get(), id).get();
         BeanUtils.copyProperties(updatedUser, existingUser, "id", "username", "created_at");
+        existingUser.setOrgId(this.oid.get());
         this.repo.save(existingUser);
     }
 
     @Override
     public void deleteById(Long id) {
-        repo.deleteById(id);
+        repo.deleteByOrgIdAndId(this.oid.get(), id);
     }
 
     @Override
@@ -54,9 +68,8 @@ public class UserService implements IService<User> {
         return repo.findByOrgId(id);
     }
 
-
     public Optional<User> findByUserName(String userName) {
-        return repo.findByUserName(userName);
+        return repo.findByOrgIdAndUserNameContains(this.oid.get(), userName);
     }
 
     public List<User> findByFirstName(String firstName) {
@@ -67,6 +80,5 @@ public class UserService implements IService<User> {
         return repo.findByLastNameContains(lastName);
     }
 
-
-
 }
+

@@ -24,10 +24,10 @@ public class Subscription {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private Long orgId;
 
     @Column(nullable = false)
     private String orgName;
-
     private String firstName;
     private String lastName;
     private String middleName;

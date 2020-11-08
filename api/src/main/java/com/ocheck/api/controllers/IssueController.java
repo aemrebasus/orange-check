@@ -1,13 +1,12 @@
 package com.ocheck.api.controllers;
 
 import com.ocheck.api.models.Issue;
-import com.ocheck.api.security.OrgSecurity;
+import com.ocheck.api.security.AuthUserDetails;
 import com.ocheck.api.services.IssueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
-import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,36 +21,29 @@ public class IssueController {
     @Autowired
     private IssueService issueService;
 
-    @Autowired
-    private OrgSecurity orgSecurity;
-
     @GetMapping
-    public List<Issue> findAll(@RequestParam Long orgId, Authentication authentication) {
-        if (orgSecurity.hasOrgId(orgId, authentication)) {
-            return issueService.findByOrgId(orgId);
-        } else {
-            return null;
-        }
+    public List<Issue> findAll() {
+//        return issueService.findByOrgId();
+        return null;
     }
 
     @GetMapping({"/{id}"})
-    public Optional<Issue> findById(@PathVariable Long id) {
+    public Optional<Issue> findById(@PathVariable Long id, Authentication authentication) {
         return issueService.findById(id);
     }
 
-
     @PostMapping
-    public void saveOne(@RequestBody Issue issue) {
+    public void saveOne(@RequestBody Issue issue, Authentication authentication) {
         issueService.saveOne(issue);
     }
 
     @PutMapping("/{id}")
-    public void updateOneById(@PathVariable Long id, @RequestBody Issue updatedIssue) {
+    public void updateOneById(@PathVariable Long id, @RequestBody Issue updatedIssue, Authentication authentication) {
         issueService.updateOneById(id, updatedIssue);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteById(@PathVariable Long id) {
+    public void deleteById(@PathVariable Long id, Authentication authentication) {
         issueService.deleteById(id);
     }
 

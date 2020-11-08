@@ -1,19 +1,14 @@
 package com.ocheck.api.controllers;
 
-import com.nimbusds.oauth2.sdk.http.HTTPResponse;
-import com.ocheck.api.security.AuthUserDetails;
-import com.ocheck.api.security.OrgSecurity;
-import com.ocheck.api.services.UserSessionService;
 import com.ocheck.api.models.User;
 import com.ocheck.api.services.UserService;
+import com.ocheck.api.services.UserSessionService;
+import org.hibernate.validator.constraints.SafeHtml;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
-import java.security.Principal;
-import java.util.ArrayList;
+import javax.websocket.server.PathParam;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,20 +24,12 @@ public class UserController {
     private UserService userService;
 
     @Autowired
-    private OrgSecurity orgSecurity;
-
-    @Autowired
     private UserSessionService session;
 
     @GetMapping
-    public List<User> findAll(@RequestParam Long orgId, Authentication authentication) {
-        if (orgSecurity.hasOrgId(orgId, authentication)) {
-            return userService.findByOrgId(orgId);
-        } else {
-            return null;
-        }
+    public List<User> findAll() {
+        return userService.findAll();
     }
-
 
     @GetMapping({"/{id}"})
     public Optional<User> findById(@PathVariable Long id) {

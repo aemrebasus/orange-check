@@ -8,7 +8,9 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -30,8 +32,11 @@ public class SecurityAdapter extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
         http.authorizeRequests()
+
+                .antMatchers("/login", "/login/**", "/logout").permitAll()
+
+                .antMatchers("/", "/css", "/css/**", "/js", "js/**", "/assets", "/assets/**").permitAll()
 
                 .antMatchers(HttpMethod.GET, "/api/v1/users", "/api/v1/users/**")
                 .hasAnyAuthority("ADMIN", "SCRUMMASTER")
@@ -39,15 +44,22 @@ public class SecurityAdapter extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/api/v1/issues", "/api/v1/issues/**")
                 .hasAnyAuthority("DEVELOPER", "ADMIN", "SCRUMMASTER")
 
-                .antMatchers(HttpMethod.GET, "/api/v1/subscriptions")
+                .antMatchers(HttpMethod.GET, "/api/v1/subs", "/api/v1/subs/**")
                 .hasAnyAuthority("SUPERUSER")
 
-                .anyRequest().authenticated().and().formLogin();
+                .and().httpBasic();
     }
 
     @Bean
     public PasswordEncoder getPasswordEncoder() {
-        return NoOpPasswordEncoder.getInstance();
+        return new BCryptPasswordEncoder(10);
+    }
+
+    @Override
+    @Bean
+    protected UserDetailsService userDetailsService() {
+
+        return super.userDetailsService();
     }
 
 }

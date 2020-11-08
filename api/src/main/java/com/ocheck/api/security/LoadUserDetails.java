@@ -18,11 +18,10 @@ import java.util.Optional;
  */
 
 @Service
-public class AuthUserDetailsService implements UserDetailsService {
+public class LoadUserDetails implements UserDetailsService {
 
     @Autowired
-    UserService userService;
-
+    private UserService userService;
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {

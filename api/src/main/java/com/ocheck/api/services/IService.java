@@ -19,4 +19,5 @@ public interface IService<T> {
     void updateOneById(Long id, T updated);
     void deleteById(Long id);
     List<T> findByOrgId(Long id);
+
 }

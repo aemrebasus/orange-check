@@ -32,12 +32,6 @@ public class Message{
     private String message;
     private String tags;
 
-    @Column(nullable = false)
-    private String firstName;
-    @Column(nullable = false)
-    private String lastName;
-    private String middleName;
-
     private Long to_whom;
     private Long from_who;
 
