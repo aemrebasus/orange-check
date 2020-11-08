@@ -5,6 +5,7 @@ import com.ocheck.api.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,14 +30,19 @@ public class UserController {
         return userService.findById(id);
     }
 
+    @GetMapping({"/username/{userName}"})
+    public Optional<User> findByUserName(@PathVariable String userName) {
+        return userService.findByUserName(userName);
+    }
+
     @GetMapping({"/firstname/{firstName}"})
-    public List<User> findByFirstName(@PathVariable String name) {
-        return userService.findByFirstName(name);
+    public List<User> findByFirstName(@PathVariable String firstName) {
+        return userService.findByFirstName(firstName);
     }
 
     @GetMapping({"/lastname/{lastName}"})
-    public List<User> findByLastName(@PathVariable String name) {
-        return userService.findByLastName(name);
+    public List<User> findByLastName(@PathVariable String lastName) {
+        return userService.findByLastName(lastName);
     }
 
     @PostMapping
@@ -53,8 +59,5 @@ public class UserController {
     public void deleteById(@PathVariable Long id) {
         userService.deleteById(id);
     }
-
-
-
 
 }

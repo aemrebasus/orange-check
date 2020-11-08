@@ -15,7 +15,7 @@ import java.util.Optional;
  */
 
 @Service
-public class UserService implements IUserService{
+public class UserService implements IService<User> {
 
     @Autowired
     private UserRepository userRepository;
@@ -24,24 +24,10 @@ public class UserService implements IUserService{
     public List<User> findAll() {
         return userRepository.findAll();
     }
+
     @Override
     public Optional<User> findById(Long id) {
         return userRepository.findById(id);
-    }
-
-    @Override
-    public Optional<User> findByUserName(String userName) {
-        return userRepository.findByUserName(userName);
-    }
-
-    @Override
-    public List<User> findByFirstName(String firstName) {
-        return userRepository.findByFirstNameContains(firstName);
-    }
-
-    @Override
-    public List<User> findByLastName(String lastName) {
-        return userRepository.findByLastNameContains(lastName);
     }
 
     @Override
@@ -52,12 +38,26 @@ public class UserService implements IUserService{
     @Override
     public void updateOneById(Long id, User updatedUser) {
         User existingUser = userRepository.findById(id).get();
-        BeanUtils.copyProperties(updatedUser, existingUser, "id");
+        BeanUtils.copyProperties(updatedUser, existingUser, "id", "username", "created_at");
+        this.userRepository.save(existingUser);
     }
 
     @Override
     public void deleteById(Long id) {
         userRepository.deleteById(id);
+    }
+
+
+    public Optional<User> findByUserName(String userName) {
+        return userRepository.findByUserName(userName);
+    }
+
+    public List<User> findByFirstName(String firstName) {
+        return userRepository.findByFirstNameContains(firstName);
+    }
+
+    public List<User> findByLastName(String lastName) {
+        return userRepository.findByLastNameContains(lastName);
     }
 
 }

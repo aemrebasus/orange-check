@@ -1,3 +1,4 @@
+
 package com.ocheck.api.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -9,45 +10,40 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Date;
 
 /**
- * @author Ahmet Emrebas on 11/4/2020 1:04 AM
+ * @author Ahmet Emrebas on 11/7/2020 8:37 AM
  * @project api
  */
+
+enum ISSUE_STATUS {
+    NEW, DONE, IN_PROGRESS, CANCELED
+}
+
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Accessors(chain = true)
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
-
+public class Issue {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String firstName;
-    private String lastName;
-
-    @Column(unique = true)
-    private String email;
-
-    @Column(unique = true)
-    private String userName;
-    private String password;
-    private String roles;
-    private Boolean active = true;
+    private String title;
+    private String description;
+    private ISSUE_STATUS status;
+    private String tags;
+    private String due;
+    private Long project_id;
+    private Long user_id;
+    private Long creator_id;
 
     @CreationTimestamp
     private Date created_at;
     @UpdateTimestamp
     private Date updated_at;
-}
-
-
-class Timestamp  implements Serializable {
-
 }
