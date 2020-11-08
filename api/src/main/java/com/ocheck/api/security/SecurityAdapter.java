@@ -30,17 +30,19 @@ public class SecurityAdapter extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-//        http.csrf().disable();
-//        http.authorizeRequests().antMatchers(HttpMethod.POST).permitAll();
-//        http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/v1/users").permitAll();
-//        http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/v1/users").permitAll();
-//        http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/v1/users").permitAll();
-//        http.authorizeRequests().antMatchers(HttpMethod.POST, "**").permitAll();
 
-        http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/v1/users")
-                .hasAuthority("ADMIN");
+        http.authorizeRequests()
 
-        http.authorizeRequests().anyRequest().authenticated().and().formLogin();
+                .antMatchers(HttpMethod.GET, "/api/v1/users", "/api/v1/users/**")
+                .hasAnyAuthority("ADMIN", "SCRUMMASTER")
+
+                .antMatchers(HttpMethod.GET, "/api/v1/issues", "/api/v1/issues/**")
+                .hasAnyAuthority("DEVELOPER", "ADMIN", "SCRUMMASTER")
+
+                .antMatchers(HttpMethod.GET, "/api/v1/subscriptions")
+                .hasAnyAuthority("SUPERUSER")
+
+                .anyRequest().authenticated().and().formLogin();
     }
 
     @Bean

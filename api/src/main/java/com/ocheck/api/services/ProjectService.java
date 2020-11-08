@@ -18,33 +18,38 @@ import java.util.Optional;
 public class ProjectService implements IService<Project> {
 
     @Autowired
-    private ProjectRepository repository;
+    private ProjectRepository repo;
 
     @Override
     public List<Project> findAll() {
-        return this.repository.findAll();
+        return this.repo.findAll();
     }
 
     @Override
     public Optional<Project> findById(Long id) {
-        return this.repository.findById(id);
+        return this.repo.findById(id);
     }
 
     @Override
     public void saveOne(Project entity) {
-        this.repository.save(entity);
+        this.repo.save(entity);
     }
 
     @Override
     public void updateOneById(Long id, Project updated) {
-        Project existing = repository.findById(id).get();
+        Project existing = repo.findById(id).get();
         BeanUtils.copyProperties(updated, existing, "id");
-        this.repository.save(existing);
+        this.repo.save(existing);
     }
 
     @Override
     public void deleteById(Long id) {
-        this.repository.deleteById(id);
+        this.repo.deleteById(id);
+    }
+
+    @Override
+    public List<Project> findByOrgId(Long id) {
+        return repo.findByOrgId(id);
     }
 }
 

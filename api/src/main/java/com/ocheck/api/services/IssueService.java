@@ -17,32 +17,37 @@ import java.util.Optional;
 @Service
 public class IssueService implements IService<Issue> {
     @Autowired
-    private IssueRepository repository;
+    private IssueRepository repo;
 
     @Override
     public List<Issue> findAll() {
-        return this.repository.findAll();
+        return this.repo.findAll();
     }
 
     @Override
     public Optional<Issue> findById(Long id) {
-        return this.repository.findById(id);
+        return this.repo.findById(id);
     }
 
     @Override
     public void saveOne(Issue issue) {
-        this.repository.save(issue);
+        this.repo.save(issue);
     }
 
     @Override
     public void updateOneById(Long id, Issue updated) {
-        Issue existingIssue= this.repository.findById(id).get();
+        Issue existingIssue= this.repo.findById(id).get();
         BeanUtils.copyProperties(updated, existingIssue, "id","created_at");
-        this.repository.save(existingIssue);
+        this.repo.save(existingIssue);
     }
 
     @Override
     public void deleteById(Long id) {
-        this.repository.deleteById(id);
+        this.repo.deleteById(id);
+    }
+
+    @Override
+    public List<Issue> findByOrgId(Long id) {
+        return repo.findByOrgId(id);
     }
 }

@@ -17,32 +17,37 @@ import java.util.Optional;
 public class MessageService implements IService<Message> {
 
     @Autowired
-    private MessageRepository repository;
+    private MessageRepository repo;
 
     @Override
     public List<Message> findAll() {
-        return this.repository.findAll();
+        return this.repo.findAll();
     }
 
     @Override
     public Optional<Message> findById(Long id) {
-        return this.repository.findById(id);
+        return this.repo.findById(id);
     }
 
     @Override
     public void saveOne(Message msg) {
-        this.repository.save(msg);
+        this.repo.save(msg);
     }
 
     @Override
     public void updateOneById(Long id, Message updated) {
-        Message existing = repository.findById(id).get();
+        Message existing = repo.findById(id).get();
         BeanUtils.copyProperties(updated, existing, "id", "created_at", "from_who", "to_whom");
-        this.repository.save(existing);
+        this.repo.save(existing);
     }
 
     @Override
     public void deleteById(Long id) {
-        this.repository.deleteById(id);
+        this.repo.deleteById(id);
+    }
+
+    @Override
+    public List<Message> findByOrgId(Long id) {
+        return repo.findByOrgId(id);
     }
 }

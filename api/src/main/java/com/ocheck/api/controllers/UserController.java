@@ -39,7 +39,7 @@ public class UserController {
         if (orgSecurity.hasOrgId(orgId, authentication)) {
             return userService.findByOrgId(orgId);
         } else {
-            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "The request is forbidden!");
+            return null;
         }
     }
 
