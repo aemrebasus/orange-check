@@ -1,0 +1,44 @@
+//package com.ocheck.api.controllers;
+//
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.web.bind.annotation.*;
+//
+//import java.util.List;
+//import java.util.Optional;
+//
+//class
+//
+//
+//@RestController
+//@RequestMapping("/api/v1/templates")
+//public class Template {
+//    @Autowired
+//    private TemplateService service;
+//
+//    @GetMapping
+//    public List<Template> findAll() {
+//        return service.findAll();
+//    }
+//
+//    @GetMapping({"/{id}"})
+//    public Optional<Template> findById(@PathVariable Long id) {
+//        return service.findById(id);
+//    }
+//
+//
+//    @PostMapping
+//    public void saveOne(@RequestBody Template entity) {
+//        service.saveOne(entity);
+//    }
+//
+//    @PutMapping("/{id}")
+//    public void updateOneById(@PathVariable Long id, @RequestBody Template updated) {
+//        service.updateOneById(id, updated);
+//    }
+//
+//    @DeleteMapping("/{id}")
+//    public void deleteById(@PathVariable Long id) {
+//        service.deleteById(id);
+//    }
+//
+//}

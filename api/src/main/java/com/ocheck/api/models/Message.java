@@ -1,4 +1,3 @@
-
 package com.ocheck.api.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -9,41 +8,37 @@ import lombok.experimental.Accessors;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.Date;
 
 /**
- * @author Ahmet Emrebas on 11/7/2020 8:37 AM
+ * @author Ahmet Emrebas on 11/7/2020 6:41 PM
  * @project api
  */
-
-enum ISSUE_STATUS {
-    NEW, DONE, IN_PROGRESS, CANCELED
-}
 
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Accessors(chain = true)
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class Issue {
+@AllArgsConstructor
+public class Message{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String title;
-    private String description;
-    private ISSUE_STATUS status = ISSUE_STATUS.NEW;
+    private String message;
     private String tags;
-    private Date due = new Date();
-    private Long project_id;
-    private Long user_id;
-    private Long creator_id;
+
+    private Long to_whom;
+    private Long from_who;
 
     @CreationTimestamp
     private Date created_at;
     @UpdateTimestamp
-    private Date updated_at;
+    private Date  updated_at;
 }

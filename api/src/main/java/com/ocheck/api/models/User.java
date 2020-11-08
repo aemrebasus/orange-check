@@ -47,7 +47,3 @@ public class User {
     private Date updated_at;
 }
 
-
-class Timestamp  implements Serializable {
-
-}

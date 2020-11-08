@@ -15,7 +15,7 @@ public interface IService<T> {
 
     List<T> findAll();
     Optional<T> findById(Long id);
-    void saveOne(T user);
+    void saveOne(T entity);
     void updateOneById(Long id, T updated);
     void deleteById(Long id);
 }
