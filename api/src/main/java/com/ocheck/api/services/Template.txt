@@ -1,0 +1,34 @@
+//@Service
+//public class TeamplateService implements IService<Teamplate> {
+//
+//    @Autowired
+//    private TeamplateRepository repository;
+//
+//    @Override
+//    public List<Teamplate> findAll() {
+//        return this.repository.findAll();
+//    }
+//
+//    @Override
+//    public Optional<Teamplate> findById(Long id) {
+//        return this.repository.findById(id);
+//    }
+//
+//    @Override
+//    public void saveOne(Teamplate entity) {
+//        this.repository.save(entity);
+//    }
+//
+//    @Override
+//    public void updateOneById(Long id, Teamplate updated) {
+//        Teamplate existing = repository.findById(id).get();
+//        BeanUtils.copyProperties(updated, existing, "id");
+//        this.repository.save(existing);
+//    }
+//
+//    @Override
+//    public void deleteById(Long id) {
+//        this.repository.deleteById(id);
+//    }
+//}
+//

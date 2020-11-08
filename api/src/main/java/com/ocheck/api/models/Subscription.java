@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.experimental.Accessors;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -12,37 +11,39 @@ import javax.persistence.*;
 import java.util.Date;
 
 /**
- * @author Ahmet Emrebas on 11/7/2020 6:41 PM
+ * @author Ahmet Emrebas on 11/7/2020 7:15 PM
  * @project api
  */
 
 @Entity
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-@Accessors(chain = true)
 @Data
-@NoArgsConstructor
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @AllArgsConstructor
-public class Message{
-
+@NoArgsConstructor
+public class Subscription {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String message;
-    private String tags;
+    @Column(nullable = false)
+    private String orgName;
 
-    @Column(nullable = false)
     private String firstName;
-    @Column(nullable = false)
     private String lastName;
     private String middleName;
 
-    private Long to_whom;
-    private Long from_who;
+    @Column(unique = true)
+    private String email;
+
+    @Column(unique = true)
+    private String userName;
+
+    private String password;
+
+    private Date expiration;
 
     @CreationTimestamp
     private Date created_at;
-
     @UpdateTimestamp
-    private Date  updated_at;
+    private Date updated_at;
 }

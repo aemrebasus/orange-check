@@ -1,17 +1,7 @@
-//package com.ocheck.api.controllers;
-//
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.web.bind.annotation.*;
-//
-//import java.util.List;
-//import java.util.Optional;
-//
-//class
-//
-//
+
 //@RestController
-//@RequestMapping("/api/v1/templates")
-//public class Template {
+//@RequestMapping("/api/v1/Templates")
+//public class TemplateController {
 //    @Autowired
 //    private TemplateService service;
 //

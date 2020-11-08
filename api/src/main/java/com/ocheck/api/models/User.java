@@ -9,7 +9,6 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -24,13 +23,14 @@ import java.util.Date;
 @NoArgsConstructor
 public class User {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String firstName;
     private String lastName;
+    private String middleName;
+
 
     @Column(unique = true)
     private String email;
@@ -38,6 +38,8 @@ public class User {
     @Column(unique = true)
     private String userName;
     private String password;
+
+
     private String roles;
     private Boolean active = true;
 
@@ -45,5 +47,6 @@ public class User {
     private Date created_at;
     @UpdateTimestamp
     private Date updated_at;
+
 }
 
