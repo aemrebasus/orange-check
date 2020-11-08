@@ -5,6 +5,7 @@ import com.ocheck.api.services.IssueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,11 +16,12 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/v1/issues")
 public class IssueController {
+
     @Autowired
     private IssueService issueService;
 
-    @GetMapping
-    public List<Issue> findAll() {
+    @GetMapping({"{orgID"})
+    public List<Issue> findAll(@PathVariable Long orgID, Principal principal) {
         return issueService.findAll();
     }
 

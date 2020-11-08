@@ -4,6 +4,7 @@ import com.ocheck.api.models.User;
 import com.ocheck.api.repositories.UserRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,6 +30,7 @@ public class UserService implements IService<User> {
     public Optional<User> findById(Long id) {
         return userRepository.findById(id);
     }
+
 
     @Override
     public void saveOne(User user) {
@@ -59,5 +61,10 @@ public class UserService implements IService<User> {
     public List<User> findByLastName(String lastName) {
         return userRepository.findByLastNameContains(lastName);
     }
+
+    public List<User> findByOrgId(Long id){
+        return userRepository.findByOrgId(id);
+    }
+
 
 }

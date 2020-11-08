@@ -27,6 +27,7 @@ public class Message{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private Long orgId;
 
     private String message;
     private String tags;
