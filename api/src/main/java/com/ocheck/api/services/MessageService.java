@@ -20,7 +20,6 @@ public class MessageService implements IService<Message> {
     @Autowired
     private MessageRepository repository;
 
-
     @Override
     public List<Message> findAll() {
         return this.repository.findAll();
