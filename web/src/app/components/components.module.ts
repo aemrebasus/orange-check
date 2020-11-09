@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { ApplicationRouteMap } from './components.routes';
-import { ComponentsStoreModule } from './components.store';
+import { ComponentsStoreModule } from '@store/components.store';
 
 // Materials
 import { MatCommonModule } from '@angular/material/core';
@@ -33,36 +33,23 @@ import { CreateNewUserComponent } from './create-new-user/create-new-user.compon
 import { CreateNewMessageComponent } from './create-new-message/create-new-message.component';
 import { CreateNewCommentComponent } from './create-new-comment/create-new-comment.component';
 
-import { EditCommentComponent } from './edit-comment/edit-comment.component';
-import { EditIssueComponent } from './edit-issue/edit-issue.component';
-import { EditMessageComponent } from './edit-message/edit-message.component';
-import { EditUserComponent } from './edit-user/edit-user.component';
-
-import { ViewOneCommentComponent } from './view-one-comment/view-one-comment.component';
-import { ViewOneIssueComponent } from './view-one-issue/view-one-issue.component';
-import { ViewOneMessageComponent } from './view-one-message/view-one-message.component';
-import { ViewOneUserComponent } from './view-one-user/view-one-user.component';
-
 import { ViewAllCommentsComponent } from './view-all-comments/view-all-comments.component';
 import { ViewAllIssuesComponent } from './view-all-issues/view-all-issues.component';
 import { ViewAllUsersComponent } from './view-all-users/view-all-users.component';
 import { ViewAllMessagesComponent } from './view-all-messages/view-all-messages.component';
 
-import { ViewOneProjectComponent } from './view-one-project/view-one-project.component';
 import { ViewAllProjectsComponent } from './view-all-projects/view-all-projects.component';
-import { EditProjectComponent } from './edit-project/edit-project.component';
 import { CreateNewProjectComponent } from './create-new-project/create-new-project.component';
 import { WrapperComponent } from './wrapper/wrapper.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { RouterModule } from '@angular/router';
-import { ProjectResolverService } from '@services/projects.resolver';
-import { WrapperResolverService } from '@services/wrapper.resolver';
 import { AeDynamicFormModule } from 'ae-dynamic-form';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 // Ae MAterial
 import { AeTableModule } from 'ae-material';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 // Ae Material
 
 
@@ -78,19 +65,6 @@ import { AeTableModule } from 'ae-material';
     CreateNewMessageComponent,
     CreateNewCommentComponent,
 
-    // Edit
-    EditProjectComponent,
-    EditCommentComponent,
-    EditIssueComponent,
-    EditMessageComponent,
-    EditUserComponent,
-
-    // View One
-    ViewOneProjectComponent,
-    ViewOneIssueComponent,
-    ViewOneCommentComponent,
-    ViewOneUserComponent,
-    ViewOneMessageComponent,
 
     // View All
     ViewAllProjectsComponent,
@@ -104,7 +78,10 @@ import { AeTableModule } from 'ae-material';
     CommonModule,
     HttpClientModule,
 
+    ComponentsStoreModule,
     RouterModule.forChild(ApplicationRouteMap),
+
+
     // Materials
     MatCommonModule,
     MatGridListModule,
@@ -125,6 +102,7 @@ import { AeTableModule } from 'ae-material';
     MatSnackBarModule,
     MatTableModule,
     MatPaginatorModule,
+    MatSlideToggleModule,
     // Materials
 
     // Ae material
@@ -135,11 +113,7 @@ import { AeTableModule } from 'ae-material';
     // Form Builder Module
     AeDynamicFormModule,
 
-    ComponentsStoreModule
   ],
-  providers: [
-    ProjectResolverService,
-    WrapperResolverService,
-  ]
+  providers: []
 })
 export class ComponentsModule { }

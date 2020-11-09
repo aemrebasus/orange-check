@@ -7,6 +7,7 @@ export interface ToolbarItem {
     tooltip?: string;
     action?: () => void;
     disabled?: boolean;
+    tooltipPositon?: 'above' | 'below' | 'right' | 'left';
 }
 
 export interface Wrapper {

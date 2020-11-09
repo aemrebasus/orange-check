@@ -2,7 +2,7 @@ import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { IProject } from '@models/index';
 import { Store } from '@ngrx/store';
-import { ApplicationState } from 'src/app/reducers/main.reducers';
+import { ApplicationState } from '@store/select.reducer';
 import { Observable, Subscription } from 'rxjs';
 import { APPLICATION_BASE_ROUTE, WEBSITE_BASE_ROUTE } from '@config';
 

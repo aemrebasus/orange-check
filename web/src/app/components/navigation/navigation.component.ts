@@ -11,7 +11,8 @@ const NAVIGATION: ApplicationRoutes = [
   { label: 'Projects', path: 'view-all-projects', icon: 'menu_book' },
   { label: 'Issues', path: 'view-all-issues', icon: 'view_list' },
   { label: 'Users', path: 'view-all-users', icon: 'people' },
-  { label: 'Messages', path: 'view-all-messages', icon: 'message' }
+  { label: 'Messages', path: 'view-all-messages', icon: 'message' },
+  { label: 'View All Items', path: 'view-all-items', icon: 'border_all' }
 ];
 
 @Component({

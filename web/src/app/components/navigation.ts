@@ -27,7 +27,8 @@ export type NavigationPathType =
     | 'view-all-comments'
     | 'view-all-messages'
     | 'view-all-users'
-    | '';
+    | ''
+    | string;
 
 interface ApplicationRoute extends Route {
     path: NavigationPathType;

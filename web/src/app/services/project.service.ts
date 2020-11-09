@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ISelectItem } from './ISelectItem';
-import { actions as ACTIONS, ApplicationState } from 'src/app/reducers/main.reducers';
+import { actions as ACTIONS, ApplicationState } from '@store/select.reducer';
 import { Observable, of, Subject } from 'rxjs';
 import { IProject } from '@models';
 import { EntityCollectionServiceBase, EntityCollectionServiceElementsFactory, } from '@ngrx/data';
@@ -10,7 +9,7 @@ import { map } from 'rxjs/operators';
 @Injectable({
     providedIn: 'root'
 })
-export class ProjectService extends EntityCollectionServiceBase<IProject> implements ISelectItem {
+export class ProjectService extends EntityCollectionServiceBase<IProject>  {
 
     snapshot$: IProject[] = [];
     selectedSnapshot$: number[] = [];

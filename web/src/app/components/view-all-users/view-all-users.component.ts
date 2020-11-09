@@ -28,6 +28,7 @@ export class ViewAllUsersComponent implements OnInit {
   dataSubscription: Subscription;
   tableData: AeTable<IUser>;
   isReady = false;
+  isEmpty = true;
 
   constructor(private issueService: UserService) {
     this.issueService.getAll();
@@ -42,8 +43,9 @@ export class ViewAllUsersComponent implements OnInit {
       };
 
       if (data.length > 0) {
-        this.isReady = true;
+        this.isEmpty = false;
       }
+      this.isReady = true;
 
     });
 

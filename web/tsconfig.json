@@ -3,32 +3,53 @@
   "compileOnSave": false,
   "compilerOptions": {
     "paths": {
+      "@shared": [
+        "src/app/shared/index"
+      ],
       "@shared/*": [
         "src/app/shared/*"
+      ],
+      "@pages": [
+        "src/app/pages/index"
       ],
       "@pages/*": [
         "src/app/pages/*"
       ],
+      "@components": [
+        "src/app/components/index"
+      ],
       "@components/*": [
         "src/app/components/*"
       ],
+      "@data": [
+        "src/app/data/index"
+      ],
       "@data/*": [
         "src/app/data/*"
+      ],
+      "@services": [
+        "src/app/services/index"
       ],
       "@services/*": [
         "src/app/services/*"
       ],
       "@models": [
-        "src/app/models"
+        "src/app/models/index"
       ],
       "@models/*": [
         "src/app/models/*"
       ],
       "@config": [
-        "src/app/config"
-      ], 
-      "@reducer":[
-        "src/app/reducers"
+        "src/app/config/index"
+      ],
+      "@config/*": [
+        "src/app/config/*"
+      ],
+      "@store": [
+        "src/app/store/index"
+      ],
+      "@store/*": [
+        "src/app/store/*"
       ]
     },
     "baseUrl": "./",
