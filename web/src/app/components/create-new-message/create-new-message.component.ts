@@ -25,23 +25,13 @@ export class CreateNewMessageComponent implements OnInit {
       .newControl('body').maxLength(500).required()
       .icon('message').placeholder('Type Message').label('Message').buildFormControl()
 
-      .newControl('to').required().type('select')
-      .options(this.users.map(u => ({ label: u.firstName + '  ' + u.lastName, value: u.id.toString() })))
-      .buildFormControl()
 
       .submitButtonLabel('Send')
       .buildForm();
   }
 
-
   submitForm(form: IMessage): void {
-    this.messageService.add(form);
-    this.messageService.addOneToCache({ id: this.generateId(), ...form });
+    this.messageService.upsert({ id: -1, ...form });
     this.submitted.emit(form);
-  }
-
-
-  generateId(): number {
-    return Math.floor(Math.random() * 1000000 + 1000000);
   }
 }

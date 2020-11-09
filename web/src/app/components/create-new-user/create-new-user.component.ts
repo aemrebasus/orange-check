@@ -32,12 +32,9 @@ export class CreateNewUserComponent implements OnInit {
   }
 
   submitForm(form: IUser): void {
-    this.userService.add(form);
-    this.userService.addOneToCache({ id: this.generateId(), ...form });
+    this.userService.upsert({ id: -1, ...form });
     this.submitted.emit(form);
   }
 
-  generateId(): number {
-    return Math.floor(Math.random() * 1000000 + 1000000);
-  }
+
 }

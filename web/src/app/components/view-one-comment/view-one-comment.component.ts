@@ -11,6 +11,6 @@ export class ViewOneCommentComponent {
     id: 1,
     from: 'Ahmet Emrebas',
     text: 'Some comment from Ahmet Emrebas',
-    createdAt: '12:25 PM - 10/10/2020'
+    created_at: '12:25 PM - 10/10/2020'
   };
 }

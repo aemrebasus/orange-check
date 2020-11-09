@@ -1,7 +1,7 @@
 import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
-import { IProject } from '@models';
+import { IProject } from '@models/IProject';
 import { ProjectService } from '@services/project.service';
-import { AeDynamicForm,  AeFormBuilder } from 'ae-dynamic-form';
+import { AeDynamicForm, AeFormBuilder } from 'ae-dynamic-form';
 
 @Component({
   selector: 'app-create-new-project',
@@ -13,9 +13,12 @@ export class CreateNewProjectComponent implements OnInit {
   @Output() submitted = new EventEmitter<IProject>();
 
   form: AeDynamicForm = new AeFormBuilder()
+
     .title('Project Form')
+
     .newControl('name').autocomplete('off').required()
     .icon('edit').placeholder('Type Project Name').label('Project Name').buildFormControl()
+
 
     .newControl('description').autocomplete('off').required().minLength(10).maxLength(100)
     .icon('description').placeholder('Type description').label('Description')
@@ -25,18 +28,13 @@ export class CreateNewProjectComponent implements OnInit {
     .buildForm();
 
   constructor(public projectService: ProjectService) { }
+
   ngOnInit(): void {
   }
 
   submitForm(form: IProject): void {
-    this.projectService.add(form);
-    this.projectService.addOneToCache({ id: this.generateId(), ...form });
+    this.projectService.upsert({ id: -1, ...form });
     this.submitted.emit(form);
-  }
-
-
-  generateId(): number {
-    return Math.floor(Math.random() * 1000000 + 1000000);
   }
 
 }

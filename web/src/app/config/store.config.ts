@@ -1,9 +1,8 @@
 import { EntityMetadataMap, EntityDataModuleConfig, DefaultDataServiceConfig } from '@ngrx/data';
-import { environment } from 'src/environments/environment';
 import { API_BASE } from './api.base';
 
 const entityMetadata: EntityMetadataMap = {
-  Project: {  },
+  Project: {},
   Issue: {},
   Message: {},
   Comment: {},

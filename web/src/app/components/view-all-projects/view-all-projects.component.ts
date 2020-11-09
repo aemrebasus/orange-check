@@ -87,7 +87,7 @@ export class ViewAllProjectsComponent implements OnInit, OnDestroy {
 
   closeForm(): void { this.isFormActive = false; }
 
-  afterFormSubmitted(form: IProject): void { this.snackMessage(`${form} is submitted`); }
+  afterFormSubmitted(form: IProject): void { this.snackMessage(`${{ name: form.name, description: form.description }} is submitted`); }
 
   openCurrentProject(): void {
 

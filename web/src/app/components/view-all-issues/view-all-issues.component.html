@@ -11,7 +11,7 @@
                 <app-create-new-issue (submitted)="afterFormSubmitted($event)"></app-create-new-issue>
             </mat-card-content>
         </mat-card>
-        <div class="p-5 m-5" style="box-shadow: 0px 0px 4px black; width: 100%;">
+        <div class="p-5 m-5" style="box-shadow: 0px 0px 4px black; width: 100%;" *ngIf="!isEmpty">
             <ae-table [input]="tableData" *ngIf="isReady"></ae-table>
         </div>
     </div>

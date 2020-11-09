@@ -30,15 +30,8 @@ export class CreateNewIssueComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
   submitForm(form: Issue): void {
-    this.issueService.add(form);
-    this.issueService.addOneToCache({ id: this.generateId(), ...form });
+    this.issueService.upsert({ id: -1, ...form });
     this.submitted.emit(form);
-  }
-
-
-  generateId(): number {
-    return Math.floor(Math.random() * 1000000 + 1000000);
   }
 }

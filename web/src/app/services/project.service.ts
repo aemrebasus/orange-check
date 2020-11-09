@@ -3,8 +3,9 @@ import { ISelectItem } from './ISelectItem';
 import { actions as ACTIONS, ApplicationState } from 'src/app/reducers/main.reducers';
 import { Observable, of, Subject } from 'rxjs';
 import { IProject } from '@models';
-import { EntityCollectionServiceBase, EntityCollectionServiceElementsFactory } from '@ngrx/data';
+import { EntityCollectionServiceBase, EntityCollectionServiceElementsFactory, } from '@ngrx/data';
 import { map } from 'rxjs/operators';
+
 
 @Injectable({
     providedIn: 'root'
@@ -19,11 +20,11 @@ export class ProjectService extends EntityCollectionServiceBase<IProject> implem
     isAllSelectActive = false;
 
     private actions = ACTIONS.project;
-    private timer = 0;
 
     constructor(servcieElementsFactory: EntityCollectionServiceElementsFactory) {
 
         super('Project', servcieElementsFactory);
+
         this.getAll();
 
         this.entities$.subscribe(projects => {
@@ -38,6 +39,9 @@ export class ProjectService extends EntityCollectionServiceBase<IProject> implem
         });
 
     }
+
+
+
 
     selectedProjects(): Observable<number[]> {
         return this.selected$;

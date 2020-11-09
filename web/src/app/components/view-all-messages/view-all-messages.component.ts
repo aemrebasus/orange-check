@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Wrapper } from '@components/wrapper/wrapper.class';
 import { IMessage } from '@models';
@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './view-all-messages.component.html',
   styleUrls: ['./view-all-messages.component.scss']
 })
-export class ViewAllMessagesComponent implements OnInit {
+export class ViewAllMessagesComponent implements OnInit, OnDestroy {
 
   eventEmitter = new EventEmitter<string>();
 
@@ -27,7 +27,7 @@ export class ViewAllMessagesComponent implements OnInit {
   dataSubscription: Subscription;
   tableData: AeTable<IMessage>;
   isReady = false;
-
+  isEmpty = true;
 
   users = this.userService.entities$;
 
@@ -45,16 +45,14 @@ export class ViewAllMessagesComponent implements OnInit {
       };
 
       if (data.length > 0) {
-        this.isReady = true;
+        this.isEmpty = false;
       }
+      this.isReady = true;
 
     });
 
-
   }
 
-  ngAfterViewInit(): void {
-  }
 
   ngOnDestroy(): void {
     this.dataSubscription.unsubscribe();

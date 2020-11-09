@@ -4,7 +4,8 @@
  */
 export interface BaseEntity {
     id: number;
-    createdAt?: string;
+    created_at?: string;
+    updated_at?: string;
 }
 
 

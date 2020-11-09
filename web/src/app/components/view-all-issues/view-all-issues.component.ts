@@ -27,9 +27,9 @@ export class ViewAllIssuesComponent implements OnInit, AfterViewInit, OnDestroy 
   dataSubscription: Subscription;
   tableData: AeTable<Issue>;
   isReady = false;
+  isEmpty = true;
 
   constructor(private issueService: IssueService) {
-    this.issueService.getAll();
 
   }
 
@@ -40,9 +40,11 @@ export class ViewAllIssuesComponent implements OnInit, AfterViewInit, OnDestroy 
         onClick: (id: any) => { /* */ }
       };
 
+      this.isReady = true;
       if (data.length > 0) {
-        this.isReady = true;
+        this.isEmpty = false;
       }
+
 
     });
 
@@ -50,7 +52,6 @@ export class ViewAllIssuesComponent implements OnInit, AfterViewInit, OnDestroy 
   }
 
   ngAfterViewInit(): void {
-
 
   }
 
@@ -62,9 +63,11 @@ export class ViewAllIssuesComponent implements OnInit, AfterViewInit, OnDestroy 
   openForm(): void {
     this.isFormActive = true;
   }
+
   closeForm(): void {
     this.isFormActive = false;
   }
+
   afterFormSubmitted(form: Issue): void {
 
   }

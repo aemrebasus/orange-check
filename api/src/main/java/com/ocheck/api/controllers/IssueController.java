@@ -13,7 +13,7 @@ import java.util.Optional;
  * @project api
  */
 @RestController
-@RequestMapping("/api/v1/issues")
+@RequestMapping({"/api/v1/issues", "/api/v1/issue"})
 public class IssueController {
 
     @Autowired
