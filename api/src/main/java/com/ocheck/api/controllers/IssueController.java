@@ -3,6 +3,7 @@ package com.ocheck.api.controllers;
 import com.ocheck.api.models.Issue;
 import com.ocheck.api.services.IssueService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,16 +31,19 @@ public class IssueController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAuthority('issue:write')")
     public void saveOne(@RequestBody Issue issue) {
         issueService.saveOne(issue);
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAuthority('issue:write')")
     public void updateOneById(@PathVariable Long id, @RequestBody Issue updatedIssue) {
         issueService.updateOneById(id, updatedIssue);
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('issue:write')")
     public void deleteById(@PathVariable Long id) {
         issueService.deleteById(id);
     }

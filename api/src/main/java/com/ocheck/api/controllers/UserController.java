@@ -3,6 +3,7 @@ package com.ocheck.api.controllers;
 import com.ocheck.api.models.UserModel;
 import com.ocheck.api.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
@@ -14,7 +15,7 @@ import java.util.Optional;
  * @project api
  */
 @RestController
-@RequestMapping("/api/v1/users")
+@RequestMapping({"/api/v1/users", "/api/v1/user"})
 public class UserController {
 
     @Autowired
@@ -49,16 +50,19 @@ public class UserController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAuthority('user:write')")
     public void saveOne(@RequestBody UserModel user) {
         userService.saveOne(user);
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAuthority('user:write')")
     public void updateOneById(@PathVariable Long id, @RequestBody UserModel updatedUser) {
         userService.updateOneById(id, updatedUser);
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('user:write')")
     public void deleteById(@PathVariable Long id) {
         userService.deleteById(id);
     }

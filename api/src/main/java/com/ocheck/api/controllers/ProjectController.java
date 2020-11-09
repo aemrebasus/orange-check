@@ -3,6 +3,7 @@ package com.ocheck.api.controllers;
 import com.ocheck.api.models.Project;
 import com.ocheck.api.services.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -32,16 +33,19 @@ public class ProjectController {
 
 
     @PostMapping
+    @PreAuthorize("hasAuthority('project:write')")
     public void saveOne(@RequestBody Project entity) {
         service.saveOne(entity);
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAuthority('project:write')")
     public void updateOneById(@PathVariable Long id, @RequestBody Project updated) {
         service.updateOneById(id, updated);
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('project:write')")
     public void deleteById(@PathVariable Long id) {
         service.deleteById(id);
     }

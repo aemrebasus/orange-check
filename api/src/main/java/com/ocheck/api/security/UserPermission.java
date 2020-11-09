@@ -25,11 +25,9 @@ public enum UserPermission {
     REPORT_READ("report:read"),
     REPORT_WRITE("report:write"),
 
-    SUB_READ("sub:read"),
-    SUB_WRITE("sub:write"),
 
-    SUPER_READ("all:read"),
-    SUPER_WRITE("all:write");
+    SUPER_READ("super:read"),
+    SUPER_WRITE("super:write");
 
     private final String permission;
 

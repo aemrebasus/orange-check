@@ -1,0 +1,26 @@
+[
+    {
+        "id":1, 
+        "text":"Comment 1", 
+        "from":"Ahmet Emrebas"
+    },
+    
+    {
+        "id":2, 
+        "text":"Comment 2", 
+        "from":"Ahmet Emrebas"
+    },
+    
+    {
+        "id":3, 
+        "text":"Comment 3", 
+        "from":"Ahmet Emrebas"
+    },
+    
+    {
+        "id":4, 
+        "text":"Comment 4", 
+        "from":"Ahmet Emrebas"
+    }
+    
+]

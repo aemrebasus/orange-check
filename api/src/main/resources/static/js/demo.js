@@ -1,1 +1,0 @@
-console.log('You can access the JS folder');

@@ -39,7 +39,7 @@ public enum UserRoles {
 
     CLIENT(Sets.newHashSet(REPORT_READ)),
 
-    SUPERUSER(Sets.newHashSet(SUPER_READ, SUPER_WRITE));
+    SUPER(Sets.newHashSet(SUPER_READ, SUPER_WRITE));
 
     private final Set<UserPermission> permissions;
 
