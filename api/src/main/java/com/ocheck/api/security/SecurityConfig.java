@@ -8,6 +8,9 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+
+import java.util.concurrent.TimeUnit;
 
 import static com.ocheck.api.security.UserRoles.*;
 import static com.ocheck.api.security.UserPermission.*;
@@ -54,12 +57,29 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .anyRequest()
                 .authenticated()
+
                 .and()
                 .formLogin()
-                .loginPage("/login").permitAll()
+                .loginPage("/login")
+                .permitAll()
                 .defaultSuccessUrl("/", true)
+                .passwordParameter("password")
+                .usernameParameter("username")
+
+//                .and()
+//                .rememberMe()
+//                .tokenValiditySeconds((int) TimeUnit.DAYS.toSeconds(30))
+//                .key("remember-me")
+//                .rememberMeCookieName("remember-me")
+//                .rememberMeParameter("remember-me")
+
                 .and()
-                .rememberMe();
+                .logout()
+                .logoutUrl("/logout")
+                .clearAuthentication(true)
+                .invalidateHttpSession(true)
+                .deleteCookies()
+                .logoutSuccessUrl("/login");
     }
 
 }
