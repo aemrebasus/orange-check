@@ -1,9 +1,7 @@
 package com.ocheck.api.security;
 
 import static com.ocheck.api.security.UserPermission.*;
-
 import com.google.common.collect.Sets;
-
 import java.util.Set;
 
 /**

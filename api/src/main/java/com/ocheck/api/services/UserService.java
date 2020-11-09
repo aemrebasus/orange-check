@@ -1,11 +1,9 @@
 package com.ocheck.api.services;
 
-import com.ocheck.api.models.User;
+import com.ocheck.api.models.UserModel;
 import com.ocheck.api.repositories.UserRepository;
-import com.ocheck.api.security.GetOrgId;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,66 +15,54 @@ import java.util.Optional;
  */
 
 @Service
-public class UserService implements IService<User> {
+public class UserService implements IService<UserModel> {
 
     @Autowired
     private UserRepository repo;
 
-    @Autowired
-    private GetOrgId oid; // Organization ID;
-
-
-    public List<User> findInMyOrg() {
-        return repo.findByOrgId(this.oid.get());
-    }
-
-    public Optional<User> findInMyOrgById(Long id) {
-        return repo.findByOrgIdAndId(this.oid.get(), id);
-    }
 
     @Override
-    public List<User> findAll() {
+    public List<UserModel> findAll() {
         return repo.findAll();
     }
 
     @Override
-    public Optional<User> findById(Long id) {
-        return repo.findByOrgIdAndId(this.oid.get(), id);
+    public Optional<UserModel> findById(Long id) {
+        return this.repo.findById(id);
     }
 
     @Override
-    public void saveOne(User user) {
-        user.setOrgId(this.oid.get());
-        repo.save(user);
+    public void saveOne(UserModel entity) {
+        this.repo.save(entity);
     }
 
+
     @Override
-    public void updateOneById(Long id, User updatedUser) {
-        User existingUser = repo.findByOrgIdAndId(this.oid.get(), id).get();
+    public void updateOneById(Long id, UserModel updatedUser) {
+        UserModel existingUser = repo.findById(id).get();
         BeanUtils.copyProperties(updatedUser, existingUser, "id", "username", "created_at");
-        existingUser.setOrgId(this.oid.get());
         this.repo.save(existingUser);
     }
 
     @Override
     public void deleteById(Long id) {
-        repo.deleteByOrgIdAndId(this.oid.get(), id);
+        repo.deleteById(id);
     }
 
     @Override
-    public List<User> findByOrgId(Long id) {
+    public List<UserModel> findByOrgId(Long id) {
         return repo.findByOrgId(id);
     }
 
-    public Optional<User> findByUserName(String userName) {
-        return repo.findByOrgIdAndUserNameContains(this.oid.get(), userName);
+    public Optional<UserModel> findByUserName(String userName) {
+        return repo.findByUserName(userName);
     }
 
-    public List<User> findByFirstName(String firstName) {
+    public List<UserModel> findByFirstName(String firstName) {
         return repo.findByFirstNameContains(firstName);
     }
 
-    public List<User> findByLastName(String lastName) {
+    public List<UserModel> findByLastName(String lastName) {
         return repo.findByLastNameContains(lastName);
     }
 

@@ -1,7 +1,6 @@
 package com.ocheck.api.services;
 
 import com.ocheck.api.models.Issue;
-import com.ocheck.api.models.User;
 import com.ocheck.api.repositories.IssueRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;

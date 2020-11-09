@@ -1,6 +1,7 @@
 package com.ocheck.api.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.ocheck.api.security.UserRoles;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,7 +22,7 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class UserModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -41,7 +42,7 @@ public class User {
     private String password;
 
 
-    private String roles;
+    private UserRoles roles;
     private Boolean active = true;
 
     @CreationTimestamp
