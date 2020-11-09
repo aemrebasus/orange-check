@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IProject, IComment, IMessage, IUser, Issue } from '@models/index';
+import { IComment, IMessage, IUser, Issue } from '@models/index';
 import { EntityCollectionServiceBase, EntityCollectionServiceElementsFactory } from '@ngrx/data';
 
 

@@ -11,7 +11,14 @@ const entityMetadata: EntityMetadataMap = {
 };
 
 // custom plural name configuration.
-const pluralNames = {};
+const pluralNames = {
+  Project: 'Projects',
+  Issue: 'Issues',
+  Message: 'Messages',
+  Comment: 'Comments',
+  User: 'Users'
+
+};
 
 export const entityConfig: EntityDataModuleConfig = {
   entityMetadata,
@@ -20,7 +27,7 @@ export const entityConfig: EntityDataModuleConfig = {
 
 // Default Configuration
 export const defaultDataServiceConfig: DefaultDataServiceConfig = {
-  root: API_BASE ,
+  root: API_BASE,
   timeout: 3000,
   getDelay: 1000,
 };
