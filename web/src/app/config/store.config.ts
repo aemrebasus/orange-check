@@ -3,7 +3,7 @@ import { environment } from 'src/environments/environment';
 import { API_BASE } from './api.base';
 
 const entityMetadata: EntityMetadataMap = {
-  Project: {},
+  Project: {  },
   Issue: {},
   Message: {},
   Comment: {},
@@ -11,12 +11,7 @@ const entityMetadata: EntityMetadataMap = {
 };
 
 // custom plural name configuration.
-const pluralNames = {
-  Project: 'Projects',
-  Issue: 'Issues',
-  Message: 'Messages',
-  Comment: 'Comments',
-  User: 'Users'
+export const pluralNames = {
 
 };
 

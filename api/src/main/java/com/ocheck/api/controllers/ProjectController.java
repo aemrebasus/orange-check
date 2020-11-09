@@ -14,7 +14,7 @@ import java.util.Optional;
  */
 
 @RestController
-@RequestMapping({"/api/v1/projects"})
+@RequestMapping({"/api/v1/projects", "/api/v1/project"})
 public class ProjectController {
 
     @Autowired
