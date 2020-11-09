@@ -30,18 +30,25 @@ public class SeedData implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+
         UserModel admin = new UserModel()
                 .setUserName("admin")
                 .setPassword(passwordEncoder.encode("password"))
-                .setRoles(UserRoles.ADMIN.name());
+                .setRoles(UserRoles.ADMIN);
 
         UserModel dev = new UserModel()
                 .setUserName("dev")
                 .setPassword(passwordEncoder.encode("password"))
-                .setRoles(UserRoles.DEVELOPER.name());
+                .setRoles(UserRoles.DEVELOPER);
+
+        UserModel sm = new UserModel()
+                .setUserName("sm")
+                .setPassword(passwordEncoder.encode("password"))
+                .setRoles(UserRoles.SCRUMMASTER);
 
         this.userService.saveOne(admin);
         this.userService.saveOne(dev);
+        this.userService.saveOne(sm);
     }
 
 }

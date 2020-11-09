@@ -2,10 +2,10 @@ package com.ocheck.api.controllers;
 
 import com.ocheck.api.models.UserModel;
 import com.ocheck.api.services.UserService;
-import com.ocheck.api.services.UserSessionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,7 +21,7 @@ public class UserController {
     private UserService userService;
 
     @Autowired
-    private UserSessionService session;
+    private HttpSession session;
 
     @GetMapping
     public List<UserModel> findAll() {

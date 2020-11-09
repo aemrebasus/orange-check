@@ -7,11 +7,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.core.GrantedAuthorityDefaults;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
+
+import java.util.stream.Collectors;
 
 
 /**
@@ -32,6 +35,7 @@ public class UserDetailsServiceImp implements UserDetailsService {
                 .username(user.getUserName())
                 .password(user.getPassword())
                 .roles(user.getRoles().name())
+                .authorities(user.getRoles().getGrantedAuthorities())
                 .build();
     }
 }
