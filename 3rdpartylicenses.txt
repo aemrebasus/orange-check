@@ -83,6 +83,8 @@ MIT
 
 ae-dynamic-form
 
+ae-dynamic-table
+
 ae-material
 
 css-loader
