@@ -1,4 +1,5 @@
-import { ActivityState } from './activity.state';
+
+import { ActivityReducers } from './ApplicationState';
 import { EntityActivityReducer } from './EntityActivityReducer';
 
 
@@ -10,9 +11,10 @@ export const entityActivities = {
 };
 
 
-export const reducers: ActivityState = {
+export const reducers: ActivityReducers = {
     project: entityActivities.project.getReducer(),
     issue: entityActivities.issue.getReducer(),
     user: entityActivities.user.getReducer(),
     message: entityActivities.message.getReducer()
-}
+};
+

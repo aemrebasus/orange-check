@@ -1,4 +1,5 @@
 import { EntityCache } from '@ngrx/data';
+import { ActionReducer } from '@ngrx/store';
 
 export interface ApplicationState {
     state: EntityActivityState;
@@ -19,3 +20,11 @@ export interface BaseState<T = number> {
     view: string;
     multiselect: boolean;
 }
+
+export interface ActivityReducers {
+    project: ActionReducer<BaseState>;
+    issue: ActionReducer<BaseState>;
+    message: ActionReducer<BaseState>;
+    user: ActionReducer<BaseState>;
+}
+
