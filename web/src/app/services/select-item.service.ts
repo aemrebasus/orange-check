@@ -3,7 +3,7 @@
 
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { actions, ApplicationState } from '@store/select.reducer';
+import { actions, ApplicationState } from '@store/activity.reducer';
 import { ActiveEntityService } from './active-entity.service';
 
 @Injectable({

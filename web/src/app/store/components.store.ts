@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
-import { reducers } from '@store/select.reducer';
+import { reducers } from '@store/activity.reducer';
 
 
 @NgModule({
