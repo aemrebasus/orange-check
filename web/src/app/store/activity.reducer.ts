@@ -4,10 +4,6 @@ import { EntityActivityReducer } from './create.reducer';
 
 
 
-// export interface ApplicationState {
-//     state: EntityState;
-//     entityCache: EntityCache;
-// }
 
 // interface BaseState<T = number> {
 //     selected: T[];
