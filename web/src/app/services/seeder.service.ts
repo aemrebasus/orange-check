@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { IMessage, IProject, Issue, IUser } from '@models';
-import { IssueService, MessageService, UserService } from './entities.service';
-import { ProjectService } from './project.service';
+import { IssueService, MessageService, ProjectService, UserService } from './entities.service';
+
 
 
 const projects: IProject[] = [
