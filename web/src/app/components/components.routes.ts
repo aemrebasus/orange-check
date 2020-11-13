@@ -42,8 +42,6 @@ export const ApplicationRouteMap: ApplicationRoutes = [
             { path: 'view-all-messages', component: ViewAllMessagesComponent, },
             { path: 'view-all-users', component: ViewAllUsersComponent },
 
-            // ForDev
-            { path: 'view-all-items', component: WrapperComponent }
 
         ]
     }

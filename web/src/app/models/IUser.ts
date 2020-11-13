@@ -7,9 +7,9 @@ import { BaseEntity } from './BaseEntity';
  * @field role: string;
  */
 export interface IUser extends BaseEntity {
-    firstName: string;
-    lastName: string;
-    email: string;
-    role: string;
+    firstName?: string;
+    lastName?: string;
+    email?: string;
+    role?: string;
 }
 

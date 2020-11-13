@@ -8,11 +8,11 @@ import { BaseEntity } from './BaseEntity';
  * @field status new , inprogress, done or ignored.
  */
 export interface Issue extends BaseEntity {
-    title: string;
-    description: string;
-    due: string;
-    assignee: string;
-    status: 'new' | 'inprogress' | 'done' | 'ignored';
+    title?: string;
+    description?: string;
+    due?: string;
+    assignee?: string;
+    status?: 'new' | 'inprogress' | 'done' | 'ignored';
 }
 
 

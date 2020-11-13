@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build:site": "ng build --prod --base-href=./orange-check-web",
+    "build:site": "ng build --prod --output-path=./dist/orange-check-web --base-href=./orange-check-web",
     "deploy": "gh-pages -d dist/orange-check-web"
   },
   "private": true,
@@ -29,6 +29,7 @@
     "@ngrx/entity": "10.0.1",
     "@ngrx/store": "10.0.1",
     "ae-dynamic-form": "^1.1.4",
+    "ae-dynamic-table": "0.0.1",
     "ae-material": "^1.6.3",
     "ng-icon-type": "1.0.1",
     "rxjs": "6.6.0",

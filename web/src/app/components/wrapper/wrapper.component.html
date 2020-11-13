@@ -1,21 +1,33 @@
 <div>
     <mat-toolbar>
-        <div class="toolbar-left">
 
-            <button mat-icon-button [disabled]="tool.disabled" *ngFor="let tool of input.toolbar"
+        <!-- Left Toolbar -->
+        <div class="toolbar-left">
+            <button mat-icon-button [disabled]="tool.disabled" *ngFor="let tool of toolbar"
                 [matTooltip]="tool.tooltip || tool.icon" [matTooltipPosition]="tool.tooltipPositon || 'above'"
                 (click)="tool.action?  tool.action(): null">
                 <mat-icon [color]="tool.color">{{tool.icon}}</mat-icon>
             </button>
         </div>
+
+        <!-- Right Toolbar -->
         <div class="toolbar-right">
-            <mat-slide-toggle matTooltip="Multi Select" matTooltipPosition="above"></mat-slide-toggle>
+            <!-- Multi Select Switch -->
+            <mat-slide-toggle matTooltip="Multi Select" matTooltipPosition="above" [checked]="isMultiSelect"
+                (change)="updateMultiSelect($event)">
+            </mat-slide-toggle>
+
         </div>
+
     </mat-toolbar>
+
+    <!-- Progress bar -->
     <mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
     <mat-progress-bar mode="determinate" value="100" *ngIf="!loading"></mat-progress-bar>
+
+    <!-- Dynamic Content -->
     <div class="wrapper-content">
         <ng-content></ng-content>
-        <ng-component [ngComponentOutlet]="component"></ng-component>
     </div>
+
 </div>

@@ -13,6 +13,7 @@ import { DispacherComponent } from './controller/dispacher.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { DataInterceptor } from '@services/http.intercepter.service';
+import { SeederService } from '@services/seeder.service';
 
 
 @NgModule({
@@ -34,9 +35,10 @@ import { DataInterceptor } from '@services/http.intercepter.service';
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: DataInterceptor, multi: true },
     { provide: DefaultDataServiceConfig, useValue: defaultDataServiceConfig },
+
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
-
+  constructor(private seeder: SeederService) { }
 }

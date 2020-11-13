@@ -6,9 +6,9 @@ import { BaseEntity } from './BaseEntity';
  * @field from string
  */
 export interface IMessage extends BaseEntity {
-    subject: string;
-    body: string;
-    to: string;
+    subject?: string;
+    body?: string;
+    to?: string;
 }
 
 

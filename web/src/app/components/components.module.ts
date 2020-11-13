@@ -48,8 +48,10 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 // Ae MAterial
-import { AeTableModule } from 'ae-material';
+import { AeTableModule, AeToolbarModule } from 'ae-material';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { AeDynamicTableModule } from 'ae-dynamic-table';
+
 // Ae Material
 
 
@@ -107,8 +109,10 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
     // Ae material
     AeTableModule,
+    AeDynamicTableModule,
     // Ae material
 
+    AeToolbarModule,
 
     // Form Builder Module
     AeDynamicFormModule,
