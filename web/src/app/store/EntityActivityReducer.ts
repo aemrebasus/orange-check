@@ -1,27 +1,5 @@
-import { EntityCache } from '@ngrx/data';
 import { ActionReducer, createAction, createReducer, on, props, ActionCreator } from '@ngrx/store';
-import { NotAllowedCheck, Props, TypedAction } from '@ngrx/store/src/models';
-
-
-export interface ApplicationState {
-    state: EntityActivityState;
-    entityCache: EntityCache;
-}
-
-interface EntityActivityState {
-    project: BaseState<number>;
-    issue: BaseState<number>;
-    message: BaseState<number>;
-    user: BaseState<number>;
-}
-
-export interface BaseState<T = number> {
-    selected: T[];
-    query: string;
-    current: T;
-    view: string;
-    multiselect: boolean;
-}
+import { BaseState } from './ApplicationState';
 
 const initialState: BaseState<number> = {
     selected: [],
@@ -31,15 +9,7 @@ const initialState: BaseState<number> = {
     multiselect: false,
 };
 
-type TAction =
-    | 'selectOne'
-    | 'deselectOne'
-    | 'selectAll'
-    | 'deselectAll'
-    | 'selectCurrent'
-    | 'filter'
-    | 'setMultiselect'
-    | 'setView';
+
 
 export class EntityActivityReducer {
 

@@ -1,5 +1,5 @@
 import { Store } from '@ngrx/store';
-import { ApplicationState, EntityActivityReducer } from '@store/create.reducer';
+import { ApplicationState, EntityActivityReducer } from '@store/EntityActivityReducer';
 
 export abstract class ActivityService {
 

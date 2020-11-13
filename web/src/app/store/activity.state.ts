@@ -1,5 +1,5 @@
 import { ActionReducer } from '@ngrx/store';
-import { BaseState } from './create.reducer';
+import { BaseState } from './ApplicationState';
 
 export interface ActivityState {
     project: ActionReducer<BaseState>;
