@@ -1,5 +1,6 @@
 import { EntityCache } from '@ngrx/data';
 import { ActionReducer } from '@ngrx/store';
+import { DynamicTableConfig } from 'ae-dynamic-table';
 
 export interface ApplicationState {
     state: EntityActivityState;
@@ -19,6 +20,7 @@ export interface BaseState<T = number> {
     current: T;
     view: string;
     multiselect: boolean;
+    tableConfig: DynamicTableConfig;
 }
 
 export interface ActivityReducers {

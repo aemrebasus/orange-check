@@ -11,10 +11,30 @@ export const routes: Routes = [
         component: ComponentsComponent,
 
         children: [
-            { path: 'users', component: WrapperComponent },
-            { path: 'projects', component: WrapperComponent },
-            { path: 'issues', component: WrapperComponent },
-            { path: 'messages', component: WrapperComponent },
+            {
+                path: 'users', component: WrapperComponent,
+                children: [
+                    { path: '**', component: UsersComponent },
+                ]
+            },
+            {
+                path: 'projects', component: WrapperComponent,
+                children: [
+                    { path: '', component: ProjectsComponent }
+                ]
+            },
+            {
+                path: 'issues', component: WrapperComponent,
+                children: [
+                    { path: '', component: IssuesComponent }
+                ]
+            },
+            {
+                path: 'messages', component: WrapperComponent,
+                children: [
+                    { path: '', component: MessagesComponent }
+                ]
+            },
             { path: 'configuration', component: ConfigComponent },
             { path: 'help', component: HelpComponent }
         ]
@@ -22,6 +42,10 @@ export const routes: Routes = [
 ];
 
 import { NgModule } from '@angular/core';
+import { UsersComponent } from './users/users.component';
+import { ProjectsComponent } from './projects/projects.component';
+import { IssuesComponent } from './issues/issues.component';
+import { MessagesComponent } from './messages/messages.component';
 
 @NgModule({
     declarations: [],

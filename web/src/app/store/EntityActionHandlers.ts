@@ -1,4 +1,5 @@
 import { createAction, props, ActionCreator, Store } from '@ngrx/store';
+import { DynamicTableConfig } from 'ae-dynamic-table';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ApplicationState } from './ApplicationState';
@@ -23,9 +24,11 @@ export class EntityActionHandlers<T = any> {
     public readonly filter$: ActionCreator<any, (props: { query: string }) => any>;
     public readonly setMultiselect$: ActionCreator<any, (props: { active: boolean }) => any>;
     public readonly setView$: ActionCreator<any, (props: { view: string }) => any>;
+    public readonly setTableConfig$: ActionCreator<any, (props: { config: DynamicTableConfig }) => any>;
 
     private viewSnapshot: string;
     private multiselectSnapShot: boolean;
+    private tableConfigSnapshot: DynamicTableConfig;
 
     constructor(private entityName: string, public store: Store<ApplicationState> = null) {
         this.selectOne$ = createAction(`[${this.entityName}] Select One ${this.entityName}`, props<{ id: number }>());
@@ -36,7 +39,9 @@ export class EntityActionHandlers<T = any> {
         this.filter$ = createAction(`[${this.entityName}] Filter ${this.entityName}s`, props<{ query: string }>());
         this.setMultiselect$ = createAction(`[${this.entityName}] Set ${this.entityName} Multi Select `, props<{ active: boolean }>());
         this.setView$ = createAction(`[${this.entityName}] Set ${this.entityName} View`, props<{ view: string }>());
+        this.setTableConfig$ = createAction(`[${this.entityName}] Set ${this.entityName} Table Configuration`,
 
+            props<{ config: DynamicTableConfig }>());
         // subscriptions
         if (store) {
 
@@ -44,6 +49,7 @@ export class EntityActionHandlers<T = any> {
             this.store.pipe(map(s => s.state[this.entityName.toLowerCase()])).subscribe(data => {
                 this.viewSnapshot = data.view;
                 this.multiselectSnapShot = data.multiselect;
+                this.tableConfigSnapshot = data.tableConfig;
             });
 
         }
@@ -82,16 +88,35 @@ export class EntityActionHandlers<T = any> {
         this.store.dispatch(this.setView$({ view }));
     }
 
+    public setTableConfig(config: DynamicTableConfig): void {
+        this.store.dispatch(this.setTableConfig$({ config }));
+    }
+
     public selected(): Observable<T[]> {
         return this.store.pipe(map(s => s.state[this.entityName].selected));
+    }
+
+    public getView(): Observable<string> {
+        return this.store.pipe(map(s => s.state[this.entityName].view));
     }
 
     public getViewSnapshot(): string {
         return this.viewSnapshot;
     }
 
+    public getMultiselect(): Observable<boolean> {
+        return this.store.pipe(map(s => s.state[this.entityName].multiselect));
+    }
     public getMultiselectSnapshot(): boolean {
         return this.multiselectSnapShot;
+    }
+
+    public getTableConfig(): Observable<DynamicTableConfig> {
+        return this.store.pipe(map(s => s.state[this.entityName].tableConfig))
+    }
+
+    public getTableConfigSnapshot(): DynamicTableConfig {
+        return this.tableConfigSnapshot;
     }
 
 }

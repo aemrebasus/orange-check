@@ -33,7 +33,10 @@ import { TableComponent } from './table/table.component';
 import { CardsComponent } from './cards/cards.component';
 import { FormComponent } from './form/form.component';
 import { HelpComponent } from './help/help.component';
-import { ProjectComponent } from './project/project.component';
+import { ProjectsComponent } from './projects/projects.component';
+import { IssuesComponent } from './issues/issues.component';
+import { MessagesComponent } from './messages/messages.component';
+import { UsersComponent } from './users/users.component';
 
 // Ae Material
 
@@ -49,7 +52,10 @@ import { ProjectComponent } from './project/project.component';
     CardsComponent,
     FormComponent,
     HelpComponent,
-    ProjectComponent,
+    ProjectsComponent,
+    IssuesComponent,
+    MessagesComponent,
+    UsersComponent,
   ],
   imports: [
     CommonModule,

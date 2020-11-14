@@ -1,4 +1,5 @@
 import { ActionReducer, createReducer, on } from '@ngrx/store';
+import { DEFAULT_DYNAMICTABLE_CONFIG } from 'ae-dynamic-table';
 import { BaseState } from './ApplicationState';
 import { EntityActionHandlers } from './EntityActionHandlers';
 
@@ -8,6 +9,7 @@ const initialState: BaseState<number> = {
     current: null,
     view: 'table',
     multiselect: false,
+    tableConfig: DEFAULT_DYNAMICTABLE_CONFIG
 };
 
 export function createEntityReducer(name: string): ActionReducer<BaseState> {
@@ -27,7 +29,9 @@ export function createEntityReducer(name: string): ActionReducer<BaseState> {
         on(newActivityReducer.selectCurrent$, (state, payload) => ({ ...state, current: payload.id })),
         on(newActivityReducer.filter$, (state, payload) => ({ ...state, query: payload.query })),
         on(newActivityReducer.setMultiselect$, (state, payload) => ({ ...state, multiselect: payload.active })),
-        on(newActivityReducer.setView$, (state, payload) => ({ ...state, view: payload.view }))
+        on(newActivityReducer.setView$, (state, payload) => ({ ...state, view: payload.view })),
+        on(newActivityReducer.setTableConfig$,
+            (state, payload) => ({ ...state, tableConfig: { ...state.tableConfig, ...payload.config } })),
     );
     return reducer;
 }
