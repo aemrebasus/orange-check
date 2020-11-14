@@ -8,7 +8,6 @@ import { ComponentsComponent } from './components.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { WrapperComponent } from './wrapper/wrapper.component';
-import { NavigationComponent } from './navigation/navigation.component';
 import { RouterModule } from '@angular/router';
 import { AeDynamicFormModule } from 'ae-dynamic-form';
 
@@ -27,7 +26,6 @@ import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
 import { OverlayModule } from '@angular/cdk/overlay';
-import { LayoutModule } from '@angular/cdk/layout';
 import { AeLayoutModule } from 'ae-layout';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -38,7 +36,6 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 @NgModule({
   declarations: [
     DashboardComponent,
-    NavigationComponent,
     ComponentsComponent,
     WrapperComponent,
   ],
