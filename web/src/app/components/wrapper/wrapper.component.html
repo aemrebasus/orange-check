@@ -27,7 +27,7 @@
 
     <!-- Dynamic Content -->
     <div class="wrapper-content">
-        <ng-container *ngComponentOutlet="component"></ng-container>
+        <ng-container *ngComponentOutlet="component | async"></ng-container>
 
     </div>
 

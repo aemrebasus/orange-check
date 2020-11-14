@@ -3,6 +3,7 @@ import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CardsComponent } from '@components/cards/cards.component';
 import { TableComponent } from '@components/table/table.component';
+import { RouterService } from '@services/router.service';
 import { ToolbarBuilder, ToolbarItem } from '@services/toolbar.builder';
 import { DynamicTableComponent } from 'ae-dynamic-table';
 
@@ -25,14 +26,14 @@ export class WrapperComponent implements OnInit {
 
     .newItem(3).icon('delete').tooltip('Delete').action(() => { console.log('Click works!'); })
 
-    .newItem(4).icon('table_view').tooltip('Table View').action(() => { this.setView('table'); })
+    .newItem(4).icon('table_view').tooltip('Table View').action(() => { this.routerService.setView('table'); })
 
-    .newItem(5).icon('layers').tooltip('Card View').action(() => { this.setView('card'); })
+    .newItem(5).icon('layers').tooltip('Card View').action(() => { this.routerService.setView('card'); })
 
     .getToolbar();
 
 
-  component: any = TableComponent;
+  component: any = this.routerService.component;
 
   componentData: DynamicTableComponent;
 
@@ -42,50 +43,19 @@ export class WrapperComponent implements OnInit {
    */
   isMultiSelect = false;
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(private routerService: RouterService) {
 
   }
 
   ngOnInit(): void {
 
-    this.activatedRoute.queryParams.subscribe(params => {
-      switch (params.view) {
-
-        case 'table':
-          this.component = TableComponent;
-          break;
-
-        case 'card':
-          this.component = CardsComponent;
-          break;
-
-        default:
-          this.component = TableComponent;
-          break;
-
-      }
-    });
   }
 
   /**
    * When user toggles the multi-select-toggle, update the isMultiSelect property.
    */
   updateMultiSelect(event: MatSlideToggleChange): void {
-    this.setMultiselect(event.checked);
+    this.routerService.setMultiselect(event.checked);
     this.isMultiSelect = event.checked;
   }
-
-
-  setView(view: string): void {
-    this.appendParam({ view });
-  }
-
-  setMultiselect(multiselect: boolean): void {
-    this.appendParam({ multiselect });
-  }
-
-  appendParam(param: { [key: string]: any }): void {
-    this.router.navigate([], { queryParams: { ...this.activatedRoute.snapshot.queryParams, ...param } });
-  }
-
 }
