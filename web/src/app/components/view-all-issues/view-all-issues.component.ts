@@ -2,7 +2,8 @@ import { AfterViewInit, Component, EventEmitter, OnDestroy, OnInit } from '@angu
 import { MatTableDataSource } from '@angular/material/table';
 import { Wrapper } from '@components/wrapper/wrapper.class';
 import { Issue } from '@models';
-import { IssueService } from '@services/entities.data.service';
+import { IssueDataService } from '@services/entities.data.service';
+
 import { AeTable } from 'ae-material';
 import { Subscription } from 'rxjs';
 
@@ -29,12 +30,12 @@ export class ViewAllIssuesComponent implements OnInit, AfterViewInit, OnDestroy 
   isReady = false;
   isEmpty = true;
 
-  constructor(private issueService: IssueService) {
+  constructor(private dataService: IssueDataService) {
 
   }
 
   ngOnInit(): void {
-    this.dataSubscription = this.issueService.entities$.subscribe(data => {
+    this.dataSubscription = this.dataService.entities$.subscribe(data => {
       this.tableData = {
         dataSource: new MatTableDataSource(data),
         onClick: (id: any) => { /* */ }

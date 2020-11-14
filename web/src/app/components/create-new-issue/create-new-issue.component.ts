@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Issue } from '@models';
-import { IssueService } from '@services/entities.data.service';
+import { IssueDataService } from '@services/entities.data.service';
 import { AeDynamicForm, AeFormBuilder } from 'ae-dynamic-form';
 
 @Component({
@@ -25,7 +25,7 @@ export class CreateNewIssueComponent implements OnInit {
     .submitButtonLabel('Create')
     .buildForm();
 
-  constructor(private issueService: IssueService) { }
+  constructor(private issueService: IssueDataService) { }
 
   ngOnInit(): void {
   }

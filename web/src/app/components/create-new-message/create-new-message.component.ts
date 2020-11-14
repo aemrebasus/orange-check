@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IMessage, IUser } from '@models';
-import { MessageService } from '@services/entities.data.service';
+import { MessageDataService } from '@services/entities.data.service';
 import { AeDynamicForm, AeFormBuilder } from 'ae-dynamic-form';
 
 @Component({
@@ -15,7 +15,7 @@ export class CreateNewMessageComponent implements OnInit {
 
   form: AeDynamicForm;
 
-  constructor(private messageService: MessageService) { }
+  constructor(private dataService: MessageDataService) { }
 
   ngOnInit(): void {
     this.form = new AeFormBuilder()
@@ -31,7 +31,7 @@ export class CreateNewMessageComponent implements OnInit {
   }
 
   submitForm(form: IMessage): void {
-    this.messageService.upsert({ id: -1, ...form });
+    this.dataService.upsert({ id: -1, ...form });
     this.submitted.emit(form);
   }
 }

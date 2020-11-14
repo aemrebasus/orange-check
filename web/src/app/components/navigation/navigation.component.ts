@@ -4,7 +4,7 @@ import { Observable, Subscription } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { ApplicationRoutes } from '@components/navigation';
 import { Router } from '@angular/router';
-import { ProjectService } from '@services/project.service';
+import { ProjectDataService } from '@services/entities.data.service';
 
 const NAVIGATION: ApplicationRoutes = [
   { label: 'Dashboard', path: 'dashboard', icon: 'dashboard' },
@@ -34,16 +34,16 @@ export class NavigationComponent implements OnInit, OnDestroy {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, public router: Router, public projectService: ProjectService) { }
+  constructor(private breakpointObserver: BreakpointObserver, public router: Router, public dataService: ProjectDataService) { }
 
   updateLocations(): void {
     this.currentLocation = this.router.url.split('/').pop().toUpperCase().replace(/-/g, ' ');
   }
 
   ngOnInit(): void {
-    this.projectService.currentProject$.subscribe(prc => {
-      this.currentProjectName = prc.name;
-    });
+    // this.dataService.currentProject$.subscribe(prc => {
+    //   this.currentProjectName = prc.name;
+    // });
 
     this.updateLocations();
 

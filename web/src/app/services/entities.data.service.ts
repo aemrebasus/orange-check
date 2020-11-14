@@ -6,7 +6,7 @@ import { EntityCollectionServiceBase, EntityCollectionServiceElementsFactory } f
 @Injectable({
     providedIn: 'root'
 })
-export class ProjectService extends EntityCollectionServiceBase<IProject> {
+export class ProjectDataService extends EntityCollectionServiceBase<IProject> {
     constructor(serviceElementFactory: EntityCollectionServiceElementsFactory) {
         super('Project', serviceElementFactory);
     }
@@ -15,7 +15,7 @@ export class ProjectService extends EntityCollectionServiceBase<IProject> {
 @Injectable({
     providedIn: 'root'
 })
-export class CommentService extends EntityCollectionServiceBase<IComment> {
+export class CommentDataService extends EntityCollectionServiceBase<IComment> {
     constructor(serviceElementFactory: EntityCollectionServiceElementsFactory) {
         super('Comment', serviceElementFactory);
     }
@@ -24,7 +24,7 @@ export class CommentService extends EntityCollectionServiceBase<IComment> {
 @Injectable({
     providedIn: 'root'
 })
-export class MessageService extends EntityCollectionServiceBase<IMessage> {
+export class MessageDataService extends EntityCollectionServiceBase<IMessage> {
     constructor(serviceElementFactory: EntityCollectionServiceElementsFactory) {
         super('Message', serviceElementFactory);
     }
@@ -33,7 +33,7 @@ export class MessageService extends EntityCollectionServiceBase<IMessage> {
 @Injectable({
     providedIn: 'root'
 })
-export class IssueService extends EntityCollectionServiceBase<Issue> {
+export class IssueDataService extends EntityCollectionServiceBase<Issue> {
     constructor(serviceElementFactory: EntityCollectionServiceElementsFactory) {
         super('Issue', serviceElementFactory);
     }
@@ -42,7 +42,7 @@ export class IssueService extends EntityCollectionServiceBase<Issue> {
 @Injectable({
     providedIn: 'root'
 })
-export class UserService extends EntityCollectionServiceBase<IUser> {
+export class UserDataService extends EntityCollectionServiceBase<IUser> {
     constructor(serviceElementFactory: EntityCollectionServiceElementsFactory) {
         super('User', serviceElementFactory);
     }

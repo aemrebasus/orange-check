@@ -1,6 +1,7 @@
 import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { IProject } from '@models/IProject';
-import { ProjectService } from '@services/project.service';
+import { ProjectDataService } from '@services/entities.data.service';
+
 import { AeDynamicForm, AeFormBuilder } from 'ae-dynamic-form';
 
 @Component({
@@ -27,13 +28,13 @@ export class CreateNewProjectComponent implements OnInit {
     .submitButtonLabel('Create Project')
     .buildForm();
 
-  constructor(public projectService: ProjectService) { }
+  constructor(public dataService: ProjectDataService) { }
 
   ngOnInit(): void {
   }
 
   submitForm(form: IProject): void {
-    this.projectService.upsert({ id: -1, ...form });
+    this.dataService.upsert({ id: -1, ...form });
     this.submitted.emit(form);
   }
 

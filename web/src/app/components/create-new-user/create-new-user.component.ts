@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { IUser } from '@models';
-import { UserService } from '@services/entities.data.service';
+import { UserDataService } from '@services/entities.data.service';
 import { AeDynamicForm, AeFormBuilder } from 'ae-dynamic-form';
 
 @Component({
@@ -26,13 +26,13 @@ export class CreateNewUserComponent implements OnInit {
     ]).buildFormControl()
     .buildForm();
 
-  constructor(private userService: UserService) { }
+  constructor(private dataService: UserDataService) { }
 
   ngOnInit(): void {
   }
 
   submitForm(form: IUser): void {
-    this.userService.upsert({ id: -1, ...form });
+    this.dataService.upsert({ id: -1, ...form });
     this.submitted.emit(form);
   }
 

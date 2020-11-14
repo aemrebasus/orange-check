@@ -1,4 +1,7 @@
-import { createAction, props, ActionCreator } from '@ngrx/store';
+import { createAction, props, ActionCreator, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { ApplicationState } from './ApplicationState';
 
 export type EntityActionType =
     | 'selectOne'
@@ -10,19 +13,18 @@ export type EntityActionType =
     | 'setMultiselect'
     | 'setView';
 
-
-export class EntityActionHandlers {
+export class EntityActionHandlers<T = any> {
 
     public readonly selectOne$: ActionCreator<any, (props: { id: number }) => any>;
     public readonly deselectOne$: ActionCreator<any, (props: { id: number }) => any>;
     public readonly selectAll$: ActionCreator<any, (props: { ids: number[] }) => any>;
-    public readonly deselectAll$: ActionCreator<any>;
+    public readonly deselectAll$: ActionCreator<any, any>;
     public readonly selectCurrent$: ActionCreator<any, (props: { id: number }) => any>;
     public readonly filter$: ActionCreator<any, (props: { query: string }) => any>;
     public readonly setMultiselect$: ActionCreator<any, (props: { active: boolean }) => any>;
     public readonly setView$: ActionCreator<any, (props: { view: string }) => any>;
 
-    constructor(private entityName: string) {
+    constructor(private entityName: string, private store: Store<ApplicationState> = null) {
         this.selectOne$ = createAction(`[${this.entityName}] Select One ${this.entityName}`, props<{ id: number }>());
         this.deselectOne$ = createAction(`[${this.entityName}] Deselect One ${this.entityName}`, props<{ id: number }>());
         this.selectAll$ = createAction(`[${this.entityName}] Select All ${this.entityName}`, props<{ ids: number[] }>());
@@ -33,36 +35,40 @@ export class EntityActionHandlers {
         this.setView$ = createAction(`[${this.entityName}] Set ${this.entityName} View`, props<{ view: string }>());
     }
 
-    public selectOne(id: number): any {
-        return this.selectOne$({ id });
+    public selectOne(id: number): void {
+        this.store.dispatch(this.selectOne$({ id }));
     }
 
-    public deselectOne(id: number): any {
-        return this.deselectOne$({ id });
+    public deselectOne(id: number): void {
+        this.store.dispatch(this.deselectOne$({ id }));
     }
 
-    public selectAll(ids: number[]): any {
-        return this.selectAll$({ ids });
+    public selectAll(ids: number[]): void {
+        this.store.dispatch(this.selectAll$({ ids }));
     }
 
-    public deselectAll(): any {
-        return this.deselectAll$();
+    public deselectAll(): void {
+        this.store.dispatch(this.deselectAll$());
     }
 
-    public selectCurrent(id: number): any {
-        return this.selectCurrent$({ id });
+    public selectCurrent(id: number): void {
+        this.store.dispatch(this.selectCurrent$({ id }));
     }
 
-    public filter(query: string): any {
-        return this.filter$({ query });
+    public filter(query: string): void {
+        this.store.dispatch(this.filter$({ query }));
     }
 
-    public setMultiselect(active: boolean): any {
-        return this.setMultiselect$({ active });
+    public setMultiselect(active: boolean): void {
+        this.store.dispatch(this.setMultiselect$({ active }));
     }
 
     public setView(view: string): any {
-        return this.setView$({ view });
+        this.store.dispatch(this.setView$({ view }));
+    }
+
+    public selected(): Observable<T[]> {
+        return this.store.pipe(map(s => s.state[this.entityName].selected));
     }
 
 }

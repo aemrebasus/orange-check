@@ -2,7 +2,7 @@ import { Component, EventEmitter, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Wrapper } from '@components/wrapper/wrapper.class';
 import { IUser } from '@models';
-import { UserService } from '@services/entities.data.service';
+import { UserDataService } from '@services/entities.data.service';
 import { AeTable } from 'ae-material';
 import { Subscription } from 'rxjs';
 
@@ -30,13 +30,13 @@ export class ViewAllUsersComponent implements OnInit {
   isReady = false;
   isEmpty = true;
 
-  constructor(private issueService: UserService) {
-    this.issueService.getAll();
+  constructor(private dataService: UserDataService) {
+    this.dataService.getAll();
 
   }
 
   ngOnInit(): void {
-    this.dataSubscription = this.issueService.entities$.subscribe(data => {
+    this.dataSubscription = this.dataService.entities$.subscribe(data => {
       this.tableData = {
         dataSource: new MatTableDataSource(data),
         onClick: (id: any) => { /* */ }

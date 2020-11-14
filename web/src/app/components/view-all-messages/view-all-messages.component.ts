@@ -2,7 +2,8 @@ import { Component, EventEmitter, OnDestroy, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Wrapper } from '@components/wrapper/wrapper.class';
 import { IMessage } from '@models';
-import { MessageService, UserService } from '@services/entities.data.service';
+import { MessageDataService, UserDataService } from '@services/entities.data.service';
+
 import { AeTable } from 'ae-material';
 import { Subscription } from 'rxjs';
 
@@ -29,16 +30,16 @@ export class ViewAllMessagesComponent implements OnInit, OnDestroy {
   isReady = false;
   isEmpty = true;
 
-  users = this.userService.entities$;
+  users = this.userDataSErvice.entities$;
 
 
-  constructor(private issueService: MessageService, private userService: UserService) {
-    this.issueService.getAll();
-    this.userService.getAll();
+  constructor(private issueDataService: MessageDataService, private userDataSErvice: UserDataService) {
+    this.issueDataService.getAll();
+    this.userDataSErvice.getAll();
   }
 
   ngOnInit(): void {
-    this.dataSubscription = this.issueService.entities$.subscribe(data => {
+    this.dataSubscription = this.issueDataService.entities$.subscribe(data => {
       this.tableData = {
         dataSource: new MatTableDataSource(data),
         onClick: (id: any) => { /* */ }

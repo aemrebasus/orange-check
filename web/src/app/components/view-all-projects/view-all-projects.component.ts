@@ -5,7 +5,8 @@ import { Observable, } from 'rxjs';
 import { ToolbarBuilder, Wrapper } from '@components/wrapper/wrapper.class';
 import { IconType } from 'ng-icon-type';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ProjectService } from '@services/project.service';
+import { ProjectDataService } from '@services/entities.data.service';
+import { ProjectActivityService } from '@services/entities.activity.service';
 
 
 @Component({
@@ -36,36 +37,45 @@ export class ViewAllProjectsComponent implements OnInit, OnDestroy {
   wrapper: Wrapper = {
     toolbar: new ToolbarBuilder()
       .newItem(1).icon('done_all').tooltip('Select All')
-      .action(() => { this.setTollbarIconById(1, this.projectService.selectAll() ? 'close' : 'done_all'); })
+      .action(() => {
+        // Select all
+      })
+
       .newItem(2).icon('add').tooltip('Add New Project')
       .action(() => this.openForm())
+
       .newItem(4).icon('check_box_outline_blank').tooltip('Multi Select')
-      .action(() => { this.setTollbarIconById(4, this.projectService.activateMultiSelect() ? 'check_box' : 'check_box_outline_blank'); })
+      .action(() => {
+        // this.activityService.setMultiselect(true);
+        // this.activityService.setMultiselect(false);
+      })
+
       .newItem(5).icon('open_in_new').tooltip('Open Project')
       .disabled().action(() => { this.openCurrentProject(); })
+
       .newItem(3).icon('delete').tooltip('Delete Selected Projects')
-      .action(() => this.projectService.deleteSelectedProjects())
+      .action(() => 'Delete all selected items')
       .getToolbar()
   };
 
-  constructor(public projectService: ProjectService, private snackBar: MatSnackBar) {
+  constructor(public dataService: ProjectDataService, public activityService: ProjectActivityService, private snackBar: MatSnackBar) {
 
   }
 
   ngOnInit(): void {
 
     // Subscribing data
-    this.projectsSubs = this.projectService.entities$.subscribe(projects => {
+    this.projectsSubs = this.dataService.entities$.subscribe(projects => {
       this.projects = projects;
       this.projectCount = projects.length;
     });
 
-    this.selectedProjectSubs = this.projectService.selectedProjects().subscribe(s => {
+    this.selectedProjectSubs = this.activityService.selected().subscribe(s => {
       this.selectedProjects = s;
       this.selectedProjectCount = s.length;
     });
 
-    this.loadingSubs = this.projectService.loading$.subscribe(l => {
+    this.loadingSubs = this.dataService.loading$.subscribe(l => {
       this.loading = l;
     });
 
@@ -78,8 +88,8 @@ export class ViewAllProjectsComponent implements OnInit, OnDestroy {
   }
 
   selectOneProject(id: number): void {
-    this.projectService.selectOne(id);
-    this.setToolbarDisabledById(5, !this.projectService.canIOpenAnyProject());
+    this.activityService.selectOne(id);
+    // this.setToolbarDisabledById(5, !this.activityService.canIOpenAnyProject());
   }
 
   // Form Related
