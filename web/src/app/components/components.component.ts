@@ -1,7 +1,5 @@
-import { animate, animateChild, query, style, transition, trigger, group, } from '@angular/animations';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AeRoute } from 'ae-layout';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { LogoComponent } from './logo/logo.component';
 
 
@@ -15,12 +13,13 @@ export class ComponentsComponent {
   logo = LogoComponent;
 
   routes: AeRoute[] = [
-    { path: 'users', component: DashboardComponent, icon: '360' },
+    { path: 'users' },
+    { path: 'projects' },
+    { path: 'issues' },
+    { path: 'messages' }
   ];
 
   title = 'Orange Check';
-
-
 
   constructor() { }
 }

@@ -1,8 +1,6 @@
-import { AfterViewInit, Component, ComponentRef, ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component,  ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
-import { MatTableDataSource } from '@angular/material/table';
 import { DynamicTableComponent } from 'ae-dynamic-table';
-import { AeTable, AeTableComponent, AeToolbar } from 'ae-material';
 import { ToolbarBuilder, ToolbarItem, Wrapper } from './wrapper.class';
 
 @Component({
@@ -30,6 +28,7 @@ export class WrapperComponent implements OnInit, OnDestroy, AfterViewInit {
    * Toolbar to modify and organize data set
    */
   toolbar: ToolbarItem[] = new ToolbarBuilder()
+
     .newItem(2).icon('add').tooltip('Add').action(() => { console.log('Click works!'); })
 
     .newItem(1).icon('select_all').tooltip('Select All').action(() => { console.log('Click works!'); })
@@ -51,11 +50,6 @@ export class WrapperComponent implements OnInit, OnDestroy, AfterViewInit {
 
   componentData: DynamicTableComponent;
 
-
-  componentInput: AeTable = {
-    dataSource: new MatTableDataSource([{ a: 1, b: 2 }]),
-    onClick: () => { console.log('hello there'); }
-  };
 
   /**
    * When this is true, user is able to select multiple items.
@@ -81,7 +75,6 @@ export class WrapperComponent implements OnInit, OnDestroy, AfterViewInit {
     console.log('Life cycle methods...');
   }
   // Life cycle hooks
-
 
 
   /**

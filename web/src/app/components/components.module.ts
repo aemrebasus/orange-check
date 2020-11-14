@@ -12,8 +12,6 @@ import { RouterModule } from '@angular/router';
 import { AeDynamicFormModule } from 'ae-dynamic-form';
 
 
-// Ae MAterial
-import { AeTableModule, AeToolbarModule } from 'ae-material';
 import { AeDynamicTableModule } from 'ae-dynamic-table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -53,17 +51,15 @@ import { HelpComponent } from './help/help.component';
     HelpComponent,
   ],
   imports: [
-    CommonModule,  
+    CommonModule,
     HttpClientModule,
     ComponentsStoreModule,
     RouterModule.forChild(routes),
     OverlayModule,
 
     // Ae material
-    AeTableModule,
     AeDynamicTableModule,
     AeLayoutModule,
-    AeToolbarModule,
     // Ae material
 
     // Materials
