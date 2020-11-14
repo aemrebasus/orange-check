@@ -14,6 +14,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { DataInterceptor } from '@services/http.intercepter.service';
 import { SeederService } from '@services/seeder.service';
+import { OverlayModule } from '@angular/cdk/overlay';
+import { LayoutModule } from '@angular/cdk/layout';
 
 
 @NgModule({
@@ -25,8 +27,8 @@ import { SeederService } from '@services/seeder.service';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule,
     MatProgressSpinnerModule,
+    HttpClientModule,
     StoreModule.forRoot({}),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     EffectsModule.forRoot([]),

@@ -130,6 +130,46 @@
           }
         }
       }
+    },
+    "featured-navigation": {
+      "projectType": "library",
+      "root": "projects/featured-navigation",
+      "sourceRoot": "projects/featured-navigation/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/featured-navigation/tsconfig.lib.json",
+            "project": "projects/featured-navigation/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/featured-navigation/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/featured-navigation/src/test.ts",
+            "tsConfig": "projects/featured-navigation/tsconfig.spec.json",
+            "karmaConfig": "projects/featured-navigation/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/featured-navigation/tsconfig.lib.json",
+              "projects/featured-navigation/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "orange-check-web"

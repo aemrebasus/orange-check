@@ -5,13 +5,14 @@ import { map, shareReplay } from 'rxjs/operators';
 import { ApplicationRoutes } from '@components/navigation';
 import { Router } from '@angular/router';
 import { ProjectDataService } from '@services/entities.data.service';
+import { WrapperComponent } from '@components/wrapper/wrapper.component';
 
 const NAVIGATION: ApplicationRoutes = [
-  { label: 'Dashboard', path: 'dashboard', icon: 'dashboard' },
-  { label: 'Projects', path: 'view-all-projects', icon: 'menu_book' },
-  { label: 'Issues', path: 'view-all-issues', icon: 'view_list' },
-  { label: 'Users', path: 'view-all-users', icon: 'people' },
-  { label: 'Messages', path: 'view-all-messages', icon: 'message' }
+  { path: 'dashboard', icon: 'dashboard', component: WrapperComponent, },
+  { path: 'projects', icon: 'menu_book', component: WrapperComponent, },
+  { path: 'issues', icon: 'view_list', component: WrapperComponent, },
+  { path: 'users', icon: 'people', component: WrapperComponent, },
+  { path: 'messages', icon: 'message', component: WrapperComponent, }
 ];
 
 @Component({
@@ -41,9 +42,6 @@ export class NavigationComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    // this.dataService.currentProject$.subscribe(prc => {
-    //   this.currentProjectName = prc.name;
-    // });
 
     this.updateLocations();
 

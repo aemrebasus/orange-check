@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IMessage, IProject, Issue, IUser } from '@models';
-import { IssueService, MessageService, ProjectService, UserService } from './entities.data.service';
+import { IssueDataService, MessageDataService, ProjectDataService, UserDataService } from './entities.data.service';
 
 
 
@@ -33,7 +33,7 @@ const messages: IMessage[] = [
 })
 export class SeederService {
 
-    constructor(private ps: ProjectService, private is: IssueService, private us: UserService, private ms: MessageService) {
+    constructor(private ps: ProjectDataService, private is: IssueDataService, private us: UserDataService, private ms: MessageDataService) {
         this.ps.upsertManyInCache(projects);
         this.is.upsertManyInCache(issues);
         this.us.upsertManyInCache(users);
