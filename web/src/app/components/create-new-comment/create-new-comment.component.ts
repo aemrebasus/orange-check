@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IComment } from '@models';
-import { CommentService, UserService } from '@services/entities.service';
+import { CommentService, UserService } from '@services/entities.data.service';
 import { AeDynamicForm, AeFormBuilder, InputOption } from 'ae-dynamic-form';
 
 @Component({

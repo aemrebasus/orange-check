@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IMessage, IProject, Issue, IUser } from '@models';
-import { IssueService, MessageService, ProjectService, UserService } from './entities.service';
+import { IssueService, MessageService, ProjectService, UserService } from './entities.data.service';
 
 
 

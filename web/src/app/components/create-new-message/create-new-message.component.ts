@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IMessage, IUser } from '@models';
-import { MessageService } from '@services/entities.service';
+import { MessageService } from '@services/entities.data.service';
 import { AeDynamicForm, AeFormBuilder } from 'ae-dynamic-form';
 
 @Component({

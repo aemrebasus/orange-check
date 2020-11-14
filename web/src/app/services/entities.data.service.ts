@@ -3,10 +3,6 @@ import { IComment, IMessage, IUser, Issue, IProject } from '@models/index';
 import { EntityCollectionServiceBase, EntityCollectionServiceElementsFactory } from '@ngrx/data';
 
 
-/**
- * Do not add any methods here, crete a new service instead.
- */
-
 @Injectable({
     providedIn: 'root'
 })
