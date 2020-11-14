@@ -1,4 +1,5 @@
 import { ComponentsComponent } from './components.component';
+import { ConfigComponent } from './config/config.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { ApplicationRoutes } from './navigation';
@@ -11,7 +12,8 @@ export const routes: ApplicationRoutes = [
         component: ComponentsComponent,
 
         children: [
-            { path: 'users', component: WrapperComponent }
+            { path: 'users', component: WrapperComponent },
+            { path: 'config', component: ConfigComponent }
         ]
     }
 ];
