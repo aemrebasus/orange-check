@@ -12,7 +12,8 @@ import { LogoComponent } from './logo/logo.component';
 })
 export class ComponentsComponent {
 
-  logo = LogoComponent;  // Logo as component
+  logo = LogoComponent;
+
   routes: AeRoute[] = [
     { path: 'users', component: DashboardComponent, icon: '360' },
   ];

@@ -30,6 +30,8 @@ import { AeLayoutModule } from 'ae-layout';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { LogoComponent } from './logo/logo.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { ConfigComponent } from './config/config.component';
 
 // Ae Material
 
@@ -40,14 +42,14 @@ import { LogoComponent } from './logo/logo.component';
     ComponentsComponent,
     WrapperComponent,
     LogoComponent,
+    ConfigComponent,
   ],
   imports: [
-    CommonModule,
-
-
+    CommonModule,  
     HttpClientModule,
     ComponentsStoreModule,
     RouterModule.forChild(routes),
+    OverlayModule,
 
     // Ae material
     AeTableModule,
@@ -60,7 +62,6 @@ import { LogoComponent } from './logo/logo.component';
     MatIconModule,
     MatButtonModule,
     MatDialogModule,
-    MatTooltipModule,
     MatSlideToggleModule,
     MatToolbarModule,
     MatProgressBarModule,
@@ -70,9 +71,8 @@ import { LogoComponent } from './logo/logo.component';
     MatMenuModule,
     MatProgressSpinnerModule,
     MatProgressBarModule,
-    OverlayModule,
+    MatTooltipModule,
     // MAterials
-
 
     // Form Builder Module
     AeDynamicFormModule,

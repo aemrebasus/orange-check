@@ -14,8 +14,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { DataInterceptor } from '@services/http.intercepter.service';
 import { SeederService } from '@services/seeder.service';
-import { OverlayModule } from '@angular/cdk/overlay';
-import { LayoutModule } from '@angular/cdk/layout';
 
 
 @NgModule({

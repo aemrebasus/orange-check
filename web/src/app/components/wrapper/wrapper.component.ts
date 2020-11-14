@@ -41,7 +41,7 @@ export class WrapperComponent implements OnInit, OnDestroy, AfterViewInit {
    */
   component: 'table' | 'card' | 'list' = 'table';
 
-  componentData:DynamicTableComponent;
+  componentData: DynamicTableComponent;
 
 
   componentInput: AeTable = {
