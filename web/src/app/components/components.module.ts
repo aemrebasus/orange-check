@@ -28,7 +28,6 @@ import { AeLayoutModule } from 'ae-layout';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { LogoComponent } from './logo/logo.component';
-import { LayoutModule } from '@angular/cdk/layout';
 import { ConfigComponent } from './config/config.component';
 import { TableComponent } from './table/table.component';
 import { CardsComponent } from './cards/cards.component';

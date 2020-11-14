@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { map } from 'rxjs/operators';
+import { DynamicTableConfig } from 'ae-dynamic-table';
+
 
 @Component({
   selector: 'app-table',
@@ -8,12 +9,17 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./table.component.scss']
 })
 export class TableComponent implements OnInit {
-  data = this.activatedRoute.data.pipe(map(r => r.resolved.data));
-  config = this.activatedRoute.data.pipe(map(r => r.resolved.config));
+
+  data = [{ id: 1 }, { id: 2 }];
+  
+  config: DynamicTableConfig = {
+    displayedColumns: ['id', 'name']
+  };
 
   constructor(public activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+
   }
 
 }

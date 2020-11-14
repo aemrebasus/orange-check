@@ -1,32 +1,21 @@
-import { AfterViewInit, Component,  ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
+import { Router } from '@angular/router';
+import { TableComponent } from '@components/table/table.component';
+import { ToolbarBuilder, ToolbarItem } from '@services/toolbar.builder';
 import { DynamicTableComponent } from 'ae-dynamic-table';
-import { ToolbarBuilder, ToolbarItem, Wrapper } from './wrapper.class';
 
 @Component({
   selector: 'app-wrapper',
   templateUrl: './wrapper.component.html',
   styleUrls: ['./wrapper.component.scss']
 })
-export class WrapperComponent implements OnInit, OnDestroy, AfterViewInit {
+export class WrapperComponent {
 
   @ViewChild('componentRef') componentRef: ElementRef;
 
-  /**
-   * if the data is still loding, display the progress bar animation
-   * Delete the input decorator.
-   */
-  @Input() loading = false;
+  loading = false;
 
-  /**
-   * Delete this
-   */
-  @Input() input: Wrapper;
-
-
-  /**
-   * Toolbar to modify and organize data set
-   */
   toolbar: ToolbarItem[] = new ToolbarBuilder()
 
     .newItem(2).icon('add').tooltip('Add').action(() => { console.log('Click works!'); })
@@ -43,10 +32,7 @@ export class WrapperComponent implements OnInit, OnDestroy, AfterViewInit {
     .getToolbar();
 
 
-  /**
-   *  The currently shown component.
-   */
-  component: 'table' | 'card' | 'list' = 'table';
+  component = TableComponent;
 
   componentData: DynamicTableComponent;
 
@@ -60,21 +46,6 @@ export class WrapperComponent implements OnInit, OnDestroy, AfterViewInit {
 
   }
 
-  /**
-   * Life cycle hooks
-   */
-  ngOnInit(): void {
-    console.log('Life cycle methods...');
-  }
-
-  ngOnDestroy(): void {
-    console.log('Life cycle methods...');
-  }
-
-  ngAfterViewInit(): void {
-    console.log('Life cycle methods...');
-  }
-  // Life cycle hooks
 
 
   /**
