@@ -1,10 +1,9 @@
-import { Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { ComponentsComponent } from './components.component';
 import { ConfigComponent } from './config/config.component';
 import { HelpComponent } from './help/help.component';
 
 import { WrapperComponent } from './wrapper/wrapper.component';
-
 
 export const routes: Routes = [
     {
@@ -21,3 +20,13 @@ export const routes: Routes = [
         ]
     }
 ];
+
+import { NgModule } from '@angular/core';
+
+@NgModule({
+    declarations: [],
+    imports: [RouterModule.forChild(routes)],
+    exports: [RouterModule],
+
+})
+export class ComponentsRoutingModule { }

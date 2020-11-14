@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { TableComponent } from '@components/table/table.component';
 import { CardsComponent } from '@components/cards/cards.component';
 
@@ -9,14 +9,15 @@ import { Subject } from 'rxjs';
     providedIn: 'root'
 })
 export class RouterService {
+
     component: Subject<any> = new Subject();
 
-    constructor(private router: Router, private activatedRoute: ActivatedRoute) {
-        this.component.next(TableComponent);
-    }
+    constructor(
+        private router: Router,
+        private activatedRoute: ActivatedRoute
+    ) { }
 
     setView(view: string): void {
-
         this.appendParam({ view });
 
         if (view === 'table') {

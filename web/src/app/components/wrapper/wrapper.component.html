@@ -26,7 +26,7 @@
     <mat-progress-bar mode="determinate" value="100" *ngIf="!loading"></mat-progress-bar>
 
     <!-- Dynamic Content -->
-    <div class="wrapper-content">
+    <div class="wrapper-content" *ngIf="component">
         <ng-container *ngComponentOutlet="component | async"></ng-container>
 
     </div>

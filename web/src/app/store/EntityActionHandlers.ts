@@ -25,6 +25,7 @@ export class EntityActionHandlers<T = any> {
     public readonly setView$: ActionCreator<any, (props: { view: string }) => any>;
 
     private viewSnapshot: string;
+    private multiselectSnapShot: boolean;
 
     constructor(private entityName: string, public store: Store<ApplicationState> = null) {
         this.selectOne$ = createAction(`[${this.entityName}] Select One ${this.entityName}`, props<{ id: number }>());
@@ -42,6 +43,7 @@ export class EntityActionHandlers<T = any> {
             // Subscribing Snapshots.
             this.store.pipe(map(s => s.state[this.entityName.toLowerCase()])).subscribe(data => {
                 this.viewSnapshot = data.view;
+                this.multiselectSnapShot = data.multiselect;
             });
 
         }
@@ -86,6 +88,10 @@ export class EntityActionHandlers<T = any> {
 
     public getViewSnapshot(): string {
         return this.viewSnapshot;
+    }
+
+    public getMultiselectSnapshot(): boolean {
+        return this.multiselectSnapShot;
     }
 
 }

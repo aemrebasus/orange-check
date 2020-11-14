@@ -32,42 +32,10 @@ export class ComponentsComponent implements OnInit, OnDestroy {
   routerSubscription: Subscription;
 
   constructor(
-    private router: Router,
-    private projectActivityService: ProjectActivityService,
-    private issueActivityService: IssueActivityService,
-    private messageActivityService: MessageActivityService,
-    private userActivityService: UserActivityService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
-
-    this.routerSubscription = this.router.events.subscribe(e => {
-
-      if (e instanceof NavigationEnd) {
-        const curl = e.url;
-
-        switch (curl) {
-          case '/projects':
-            this.attachViewParam(this.projectActivityService.getViewSnapshot());
-            return;
-
-          case '/issues':
-            this.attachViewParam(this.issueActivityService.getViewSnapshot());
-            return;
-
-          case '/messages':
-            this.attachViewParam(this.messageActivityService.getViewSnapshot());
-            return;
-
-          case '/users':
-            this.attachViewParam(this.userActivityService.getViewSnapshot());
-            return;
-
-        }
-      }
-
-    });
-
 
   }
 

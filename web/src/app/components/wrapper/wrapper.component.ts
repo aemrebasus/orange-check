@@ -26,9 +26,13 @@ export class WrapperComponent implements OnInit {
 
     .newItem(3).icon('delete').tooltip('Delete').action(() => { console.log('Click works!'); })
 
-    .newItem(4).icon('table_view').tooltip('Table View').action(() => { this.routerService.setView('table'); })
+    .newItem(4).icon('table_view').tooltip('Table View').action(() => {
+      this.component.next(TableComponent);
+    })
 
-    .newItem(5).icon('layers').tooltip('Card View').action(() => { this.routerService.setView('card'); })
+    .newItem(5).icon('layers').tooltip('Card View').action(() => {
+      this.component.next(CardsComponent);
+    })
 
     .getToolbar();
 

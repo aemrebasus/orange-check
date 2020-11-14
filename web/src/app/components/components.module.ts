@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { routes } from './components.routes';
+import { ComponentsRoutingModule, routes } from './components-routing.module';
 import { ComponentsStoreModule } from '@store/components.store';
 
 import { ComponentsComponent } from './components.component';
@@ -33,6 +33,7 @@ import { TableComponent } from './table/table.component';
 import { CardsComponent } from './cards/cards.component';
 import { FormComponent } from './form/form.component';
 import { HelpComponent } from './help/help.component';
+import { ProjectComponent } from './project/project.component';
 
 // Ae Material
 
@@ -48,12 +49,13 @@ import { HelpComponent } from './help/help.component';
     CardsComponent,
     FormComponent,
     HelpComponent,
+    ProjectComponent,
   ],
   imports: [
     CommonModule,
     HttpClientModule,
     ComponentsStoreModule,
-    RouterModule.forChild(routes),
+    ComponentsRoutingModule,
     OverlayModule,
 
     // Ae material

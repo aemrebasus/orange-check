@@ -1,7 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-cards',
@@ -10,7 +8,7 @@ import { map } from 'rxjs/operators';
 })
 export class CardsComponent {
 
-  data = [{ id: 1 }, { id: 2 },];
+  data = [{ id: 1 }, { id: 2 }];
 
   constructor(public activatedRoute: ActivatedRoute) { }
 
