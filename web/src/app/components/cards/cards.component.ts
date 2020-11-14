@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
 })
 export class CardsComponent {
 
-  data: Observable<{ [key: string]: any }[]> = this.activatedRoute.data.pipe(map(r => r.data));
+  data = [{ id: 1 }, { id: 2 },];
 
   constructor(public activatedRoute: ActivatedRoute) { }
 

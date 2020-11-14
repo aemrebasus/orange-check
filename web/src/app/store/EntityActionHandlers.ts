@@ -24,7 +24,9 @@ export class EntityActionHandlers<T = any> {
     public readonly setMultiselect$: ActionCreator<any, (props: { active: boolean }) => any>;
     public readonly setView$: ActionCreator<any, (props: { view: string }) => any>;
 
-    constructor(private entityName: string, private store: Store<ApplicationState> = null) {
+    private viewSnapshot: string;
+
+    constructor(private entityName: string, public store: Store<ApplicationState> = null) {
         this.selectOne$ = createAction(`[${this.entityName}] Select One ${this.entityName}`, props<{ id: number }>());
         this.deselectOne$ = createAction(`[${this.entityName}] Deselect One ${this.entityName}`, props<{ id: number }>());
         this.selectAll$ = createAction(`[${this.entityName}] Select All ${this.entityName}`, props<{ ids: number[] }>());
@@ -33,6 +35,17 @@ export class EntityActionHandlers<T = any> {
         this.filter$ = createAction(`[${this.entityName}] Filter ${this.entityName}s`, props<{ query: string }>());
         this.setMultiselect$ = createAction(`[${this.entityName}] Set ${this.entityName} Multi Select `, props<{ active: boolean }>());
         this.setView$ = createAction(`[${this.entityName}] Set ${this.entityName} View`, props<{ view: string }>());
+
+        // subscriptions
+        if (store) {
+
+            // Subscribing Snapshots.
+            this.store.pipe(map(s => s.state[this.entityName.toLowerCase()])).subscribe(data => {
+                this.viewSnapshot = data.view;
+            });
+
+        }
+
     }
 
     public selectOne(id: number): void {
@@ -69,6 +82,10 @@ export class EntityActionHandlers<T = any> {
 
     public selected(): Observable<T[]> {
         return this.store.pipe(map(s => s.state[this.entityName].selected));
+    }
+
+    public getViewSnapshot(): string {
+        return this.viewSnapshot;
     }
 
 }

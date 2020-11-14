@@ -6,7 +6,7 @@ const initialState: BaseState<number> = {
     selected: [],
     query: '',
     current: null,
-    view: '',
+    view: 'table',
     multiselect: false,
 };
 

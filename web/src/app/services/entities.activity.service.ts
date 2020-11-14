@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { ApplicationState } from '@store/ApplicationState';
 import { EntityActionHandlers } from '@store/EntityActionHandlers';
 
 
@@ -6,8 +8,8 @@ import { EntityActionHandlers } from '@store/EntityActionHandlers';
     providedIn: 'root'
 })
 export class ProjectActivityService extends EntityActionHandlers {
-    constructor() {
-        super('Project');
+    constructor(store: Store<ApplicationState>) {
+        super('project', store);
     }
 }
 
@@ -15,8 +17,8 @@ export class ProjectActivityService extends EntityActionHandlers {
     providedIn: 'root'
 })
 export class CommentActivityService extends EntityActionHandlers {
-    constructor() {
-        super('Comment');
+    constructor(store: Store<ApplicationState>) {
+        super('Comment', store);
     }
 }
 
@@ -24,8 +26,8 @@ export class CommentActivityService extends EntityActionHandlers {
     providedIn: 'root'
 })
 export class MessageActivityService extends EntityActionHandlers {
-    constructor() {
-        super('Message');
+    constructor(store: Store<ApplicationState>) {
+        super('Message', store);
     }
 }
 
@@ -33,8 +35,8 @@ export class MessageActivityService extends EntityActionHandlers {
     providedIn: 'root'
 })
 export class IssueActivityService extends EntityActionHandlers {
-    constructor() {
-        super('Issue');
+    constructor(store: Store<ApplicationState>) {
+        super('Issue', store);
     }
 }
 
@@ -42,8 +44,8 @@ export class IssueActivityService extends EntityActionHandlers {
     providedIn: 'root'
 })
 export class UserActivityService extends EntityActionHandlers {
-    constructor() {
-        super('User');
+    constructor(store: Store<ApplicationState>) {
+        super('User', store);
     }
 }
 

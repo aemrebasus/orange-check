@@ -1,5 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
+import {
+  IssueActivityService,
+  MessageActivityService,
+  ProjectActivityService,
+  UserActivityService
+} from '@services/entities.activity.service';
 import { AeRoute } from 'ae-layout';
+import { Subscription } from 'rxjs';
 import { LogoComponent } from './logo/logo.component';
 
 
@@ -8,7 +16,7 @@ import { LogoComponent } from './logo/logo.component';
   templateUrl: './components.component.html',
   styleUrls: ['./components.component.scss']
 })
-export class ComponentsComponent {
+export class ComponentsComponent implements OnInit, OnDestroy {
 
   logo = LogoComponent;
 
@@ -21,5 +29,58 @@ export class ComponentsComponent {
 
   title = 'Orange Check';
 
-  constructor() { }
+  routerSubscription: Subscription;
+
+  constructor(
+    private router: Router,
+    private projectActivityService: ProjectActivityService,
+    private issueActivityService: IssueActivityService,
+    private messageActivityService: MessageActivityService,
+    private userActivityService: UserActivityService,
+  ) { }
+
+  ngOnInit(): void {
+
+    this.routerSubscription = this.router.events.subscribe(e => {
+
+      if (e instanceof NavigationEnd) {
+        const curl = e.url;
+
+        switch (curl) {
+          case '/projects':
+            this.attachViewParam(this.projectActivityService.getViewSnapshot());
+            return;
+
+          case '/issues':
+            this.attachViewParam(this.issueActivityService.getViewSnapshot());
+            return;
+
+          case '/messages':
+            this.attachViewParam(this.messageActivityService.getViewSnapshot());
+            return;
+
+          case '/users':
+            this.attachViewParam(this.userActivityService.getViewSnapshot());
+            return;
+
+        }
+      }
+
+    });
+
+
+  }
+
+  attachViewParam(view: string): void {
+    this.router.navigate([], { queryParams: { view } });
+  }
+
+  ngOnDestroy(): void {
+
+
+
+  }
+
+
+
 }
