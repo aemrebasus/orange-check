@@ -29,6 +29,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { AeLayoutModule } from 'ae-layout';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { LogoComponent } from './logo/logo.component';
 
 // Ae Material
 
@@ -38,6 +39,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     DashboardComponent,
     ComponentsComponent,
     WrapperComponent,
+    LogoComponent,
   ],
   imports: [
     CommonModule,
