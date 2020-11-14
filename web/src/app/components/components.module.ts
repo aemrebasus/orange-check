@@ -32,6 +32,10 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { LogoComponent } from './logo/logo.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { ConfigComponent } from './config/config.component';
+import { TableComponent } from './table/table.component';
+import { CardsComponent } from './cards/cards.component';
+import { FormComponent } from './form/form.component';
+import { HelpComponent } from './help/help.component';
 
 // Ae Material
 
@@ -43,6 +47,10 @@ import { ConfigComponent } from './config/config.component';
     WrapperComponent,
     LogoComponent,
     ConfigComponent,
+    TableComponent,
+    CardsComponent,
+    FormComponent,
+    HelpComponent,
   ],
   imports: [
     CommonModule,  

@@ -1,6 +1,6 @@
 import { ComponentsComponent } from './components.component';
 import { ConfigComponent } from './config/config.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { HelpComponent } from './help/help.component';
 
 import { ApplicationRoutes } from './navigation';
 import { WrapperComponent } from './wrapper/wrapper.component';
@@ -13,7 +13,8 @@ export const routes: ApplicationRoutes = [
 
         children: [
             { path: 'users', component: WrapperComponent },
-            { path: 'config', component: ConfigComponent }
+            { path: 'configuration', component: ConfigComponent },
+            { path: 'help', component: HelpComponent }
         ]
     }
 ];

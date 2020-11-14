@@ -30,9 +30,17 @@ export class WrapperComponent implements OnInit, OnDestroy, AfterViewInit {
    * Toolbar to modify and organize data set
    */
   toolbar: ToolbarItem[] = new ToolbarBuilder()
-    .newItem(1).icon('select_all').tooltip('Select All').action(() => { console.log('Click works!'); })
     .newItem(2).icon('add').tooltip('Add').action(() => { console.log('Click works!'); })
+
+    .newItem(1).icon('select_all').tooltip('Select All').action(() => { console.log('Click works!'); })
+
+
     .newItem(3).icon('delete').tooltip('Delete').action(() => { console.log('Click works!'); })
+
+    .newItem(4).icon('table_view').tooltip('Table View').action(() => { console.log('table view') })
+
+    .newItem(5).icon('layers').tooltip('Card View').action(() => { console.log('card view') })
+
     .getToolbar();
 
 
