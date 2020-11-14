@@ -1,9 +1,7 @@
 
-
-
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { actions, ApplicationState } from '@store/activity.reducer';
+import { ApplicationState } from '@store/ApplicationState';
 import { ActiveEntityService } from './active-entity.service';
 
 @Injectable({
