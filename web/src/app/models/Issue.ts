@@ -11,7 +11,7 @@ export interface Issue extends BaseEntity {
     title?: string;
     description?: string;
     due?: string;
-    assignee?: string;
+    assignee?: number;
     status?: 'new' | 'inprogress' | 'done' | 'ignored';
 }
 

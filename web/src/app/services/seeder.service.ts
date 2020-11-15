@@ -1,45 +1,70 @@
 import { Injectable } from '@angular/core';
 import { IMessage, IProject, Issue, IUser } from '@models';
 import { IssueDataService, MessageDataService, ProjectDataService, UserDataService } from './entities.data.service';
+import { name, date, lorem, address, company, internet } from 'faker';
 
-// tslint:disable: max-line-length
+function guid(): number {
+    return Math.floor(Math.random() * 100000 + 10000);
+}
 
-const projects: IProject[] = [
-    { id: 900000000, name: 'project 1', description: 'Project 1 descriptiopn', created_at: new Date('10/10/2020').toLocaleDateString(), updated_at: new Date('8/12/2020').toLocaleDateString() },
-    { id: 900000001, name: 'project 2', description: 'Project 2  descriptiopn', created_at: new Date('10/10/2020').toLocaleDateString(), updated_at: new Date('8/12/2020').toLocaleDateString() },
-    { id: 900000002, name: 'project 3', description: 'Project 3 descriptiopn', created_at: new Date('10/10/2020').toLocaleDateString(), updated_at: new Date('8/12/2020').toLocaleDateString() },
-    { id: 900000003, name: 'project 4', description: 'Project 3 descriptiopn', created_at: new Date('10/10/2020').toLocaleDateString(), updated_at: new Date('8/12/2020').toLocaleDateString() },
-    { id: 900000004, name: 'project 5', description: 'Project 3 descriptiopn', created_at: new Date('10/10/2020').toLocaleDateString(), updated_at: new Date('8/12/2020').toLocaleDateString() },
-    { id: 900000005, name: 'project 6', description: 'Project 3 descriptiopn', created_at: new Date('10/10/2020').toLocaleDateString(), updated_at: new Date('8/12/2020').toLocaleDateString() },
-];
+function getProject(): IProject {
+    return {
+        id: guid(),
+        name: name.jobArea(),
+        description: lorem.sentence(25),
+        created_at: date.future(2020).toDateString()
+    };
+}
 
-const issues: Issue[] = [
-    { id: 900000000, title: 'Issue  1  title', description: 'Description 1 ', status: 'inprogress', due: '10/10/2020', assignee: ' A. Emre', created_at: new Date('10/10/2020').toLocaleDateString(), updated_at: new Date('8/12/2020').toLocaleDateString() },
-    { id: 900000001, title: 'Issue  2  title', description: 'Description 2 ', status: 'inprogress', due: '10/10/2020', assignee: ' B. Emre', created_at: new Date('10/10/2020').toLocaleDateString(), updated_at: new Date('8/12/2020').toLocaleDateString() },
-    { id: 900000002, title: 'Issue  3  title', description: 'Description 3 ', status: 'inprogress', due: '10/10/2020', assignee: ' C. Emre', created_at: new Date('10/10/2020').toLocaleDateString(), updated_at: new Date('8/12/2020').toLocaleDateString() },
-    { id: 900000004, title: 'Issue  4  title', description: 'Description 3 ', status: 'inprogress', due: '10/10/2020', assignee: ' C. Emre', created_at: new Date('10/10/2020').toLocaleDateString(), updated_at: new Date('8/12/2020').toLocaleDateString() },
-    { id: 900000005, title: 'Issue  5 title', description: 'Description 3 ', status: 'inprogress', due: '10/10/2020', assignee: ' C. Emre', created_at: new Date('10/10/2020').toLocaleDateString(), updated_at: new Date('8/12/2020').toLocaleDateString() },
-    { id: 900000005, title: 'Issue  6 title', description: 'Description 3 ', status: 'inprogress', due: '10/10/2020', assignee: ' C. Emre', created_at: new Date('10/10/2020').toLocaleDateString(), updated_at: new Date('8/12/2020').toLocaleDateString() },
-    { id: 900000007, title: 'Issue  7 title', description: 'Description 3 ', status: 'inprogress', due: '10/10/2020', assignee: ' C. Emre', created_at: new Date('10/10/2020').toLocaleDateString(), updated_at: new Date('8/12/2020').toLocaleDateString() },
-];
+function getIssue(): Issue {
+    return {
+        id: guid(),
+        title: name.jobArea(),
+        description: lorem.sentence(25),
+        status: 'new',
+        assignee: guid(),
+        due: date.future(2020).toDateString(),
+        created_at: date.future(2020).toDateString()
+    };
+}
 
-const users: IUser[] = [
-    { id: 900000000, firstName: 'F. name 1', role: 'admin', lastName: 'L. name 1', email: 'user30@gmail.com', created_at: new Date('10/10/2020').toLocaleDateString(), updated_at: new Date('8/12/2020').toLocaleDateString() },
-    { id: 900000001, firstName: 'F. name 2', role: 'scrummaster', lastName: 'L. name 2', email: 'user1@gmail.com', created_at: new Date('10/10/2020').toLocaleDateString(), updated_at: new Date('8/12/2020').toLocaleDateString() },
-    { id: 900000002, firstName: 'F. name 3', role: 'developer', lastName: 'L. name 3', email: 'user2@gmail.com', created_at: new Date('10/10/2020').toLocaleDateString(), updated_at: new Date('8/12/2020').toLocaleDateString() },
-    { id: 900000004, firstName: 'F. name 4', role: 'developer', lastName: 'L. name 3', email: 'user2@gmail.com', created_at: new Date('10/10/2020').toLocaleDateString(), updated_at: new Date('8/12/2020').toLocaleDateString() },
-    { id: 900000005, firstName: 'F. name 5', role: 'developer', lastName: 'L. name 3', email: 'user2@gmail.com', created_at: new Date('10/10/2020').toLocaleDateString(), updated_at: new Date('8/12/2020').toLocaleDateString() },
-    { id: 900000006, firstName: 'F. name 6', role: 'developer', lastName: 'L. name 3', email: 'user2@gmail.com', created_at: new Date('10/10/2020').toLocaleDateString(), updated_at: new Date('8/12/2020').toLocaleDateString() },
-];
 
-const messages: IMessage[] = [
-    { id: 900000000, body: 'Message Boddy  1', to: 'To someone 1', subject: 'subject 900000000', created_at: new Date('10/10/2020').toLocaleDateString(), updated_at: new Date('8/12/2020').toLocaleDateString() },
-    { id: 900000001, body: 'Message Boddy  2', to: 'To someone 2', subject: 'subject 900000001', created_at: new Date('10/10/2020').toLocaleDateString(), updated_at: new Date('8/12/2020').toLocaleDateString() },
-    { id: 900000002, body: 'Message Boddy  3', to: 'To someone 3', subject: 'subject 900000002', created_at: new Date('10/10/2020').toLocaleDateString(), updated_at: new Date('8/12/2020').toLocaleDateString() },
-    { id: 900000004, body: 'Message Boddy  4', to: 'To someone 3', subject: 'subject 900000002', created_at: new Date('10/10/2020').toLocaleDateString(), updated_at: new Date('8/12/2020').toLocaleDateString() },
-    { id: 900000005, body: 'Message Boddy  5', to: 'To someone 3', subject: 'subject 900000002', created_at: new Date('10/10/2020').toLocaleDateString(), updated_at: new Date('8/12/2020').toLocaleDateString() },
-    { id: 900000006, body: 'Message Boddy  6', to: 'To someone 3', subject: 'subject 900000002', created_at: new Date('10/10/2020').toLocaleDateString(), updated_at: new Date('8/12/2020').toLocaleDateString() },
-];
+function getMessage(): IMessage {
+    return {
+        id: guid(),
+        body: lorem.paragraph(100),
+        to: guid(),
+        subject: lorem.words(4),
+        created_at: date.future(2020).toDateString()
+    };
+}
+
+
+function getUser(): IUser {
+    return {
+        id: guid(),
+        firstName: name.firstName(1),
+        lastName: name.lastName(),
+        email: internet.email(),
+        role: name.jobTitle(),
+        created_at: date.future(2020).toDateString()
+    };
+}
+
+
+function generateMessage(count: number = 20): IMessage[] {
+    return new Array(count).map(e => getMessage());
+}
+function generateIssue(count: number = 20): Issue[] {
+    return new Array(count).map(e => getIssue());
+}
+function generateUser(count: number = 20): IUser[] {
+    return new Array(count).map(e => getUser());
+}
+function generateProject(count: number = 20): IProject[] {
+    return new Array(count).map(e => getProject());
+}
+
 
 @Injectable({
     providedIn: 'root'
@@ -47,10 +72,10 @@ const messages: IMessage[] = [
 export class SeederService {
 
     constructor(private ps: ProjectDataService, private is: IssueDataService, private us: UserDataService, private ms: MessageDataService) {
-        this.ps.upsertManyInCache(projects);
-        this.is.upsertManyInCache(issues);
-        this.us.upsertManyInCache(users);
-        this.ms.upsertManyInCache(messages);
+        this.ps.upsertManyInCache(generateIssue(100));
+        this.is.upsertManyInCache(generateIssue(100));
+        this.us.upsertManyInCache(generateUser(100));
+        this.ms.upsertManyInCache(generateMessage(100));
     }
 
 }
