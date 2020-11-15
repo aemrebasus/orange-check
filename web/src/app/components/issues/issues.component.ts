@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { IssueActivityService } from '@services/entities.activity.service';
+import { IssueDataService } from '@services/entities.data.service';
+import { DynamicTableConfig } from 'ae-dynamic-table';
 
 @Component({
   selector: 'app-issues',
@@ -7,9 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IssuesComponent implements OnInit {
 
-  constructor() { }
+
+  data = this.dataService.filteredEntities$;
+  config: DynamicTableConfig;
+
+  constructor(private dataService: IssueDataService, private activityService: IssueActivityService) { }
 
   ngOnInit(): void {
+    this.activityService.getTableConfig().subscribe(config => {
+      this.config = config;
+    });
+  }
+
+  onRowClick(event): void {
+    console.log(event);
+  }
+
+  columnFilterChange(filteredColumns): void {
+    this.activityService.setTableFilteredColumns([...filteredColumns]);
   }
 
 }

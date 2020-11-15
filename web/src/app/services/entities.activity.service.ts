@@ -35,7 +35,7 @@ export class CommentActivityService extends EntityActionHandlers {
 })
 export class MessageActivityService extends EntityActionHandlers {
     constructor(store: Store<ApplicationState>) {
-        super('Message', store);
+        super('message', store);
         this.setTableConfig(
             {
                 ...DEFAULT_DYNAMICTABLE_CONFIG,
@@ -51,7 +51,7 @@ export class MessageActivityService extends EntityActionHandlers {
 })
 export class IssueActivityService extends EntityActionHandlers {
     constructor(store: Store<ApplicationState>) {
-        super('Issue', store);
+        super('issue', store);
         this.setTableConfig(
             {
                 ...DEFAULT_DYNAMICTABLE_CONFIG,
@@ -67,7 +67,7 @@ export class IssueActivityService extends EntityActionHandlers {
 })
 export class UserActivityService extends EntityActionHandlers {
     constructor(store: Store<ApplicationState>) {
-        super('User', store);
+        super('user', store);
         this.setTableConfig(
             {
                 ...DEFAULT_DYNAMICTABLE_CONFIG,
