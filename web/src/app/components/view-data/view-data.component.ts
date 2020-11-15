@@ -60,7 +60,8 @@ export class ViewDataComponent implements OnInit {
                 this.formOpen = null;
                 break;
             case 'submit':
-                this.dataService.upsertOneInCache({ id: Math.floor(Math.random() * 81923871 + 1287319), ...event.data });
+                this.dataService.upsertOneInCache({ id: Math.floor(Math.random() * 10000 + 1099999183), ...event.data });
+                break;
         }
     }
 }

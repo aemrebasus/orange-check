@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { issueForm, messageForm, projectForm, userForm } from '@components/entity-forms';
-import { EntityCollectionServiceBase } from '@ngrx/data';
+import { EntityCollectionServiceBase, EntityPluralNames } from '@ngrx/data';
+import { EntityNames } from '@store/ApplicationState';
 import { AeDynamicFormComponent } from 'ae-dynamic-form';
 
 
@@ -18,27 +19,27 @@ export class FormComponent implements OnInit {
 
   @ViewChild(AeDynamicFormComponent) formElement: AeDynamicFormComponent;
 
-  @Input() fromType: 'issue' | 'project' | 'user' | 'message';
+  @Input() fromType: EntityNames;
 
   @Output() formEvent = new EventEmitter<FormEventType>();
 
   form = null;
+
   dataService: EntityCollectionServiceBase<any>;
-  constructor(
-  ) { }
+
 
   ngOnInit(): void {
     switch (this.fromType) {
-      case 'issue':
+      case 'Issue':
         this.form = issueForm;
         break;
-      case 'project':
+      case 'Project':
         this.form = projectForm;
         break;
-      case 'user':
+      case 'User':
         this.form = userForm;
         break;
-      case 'message':
+      case 'Message':
         this.form = messageForm;
         break;
     }

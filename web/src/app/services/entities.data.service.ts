@@ -3,6 +3,9 @@ import { IComment, IMessage, IUser, Issue, IProject } from '@models/index';
 import { EntityCollectionServiceBase, EntityCollectionServiceElementsFactory } from '@ngrx/data';
 
 
+
+
+
 @Injectable({
     providedIn: 'root'
 })
@@ -21,6 +24,7 @@ export class CommentDataService extends EntityCollectionServiceBase<IComment> {
         super('Comment', serviceElementFactory);
         this.getAll();
     }
+  
 }
 
 @Injectable({

@@ -3,6 +3,8 @@ import { ActionReducer } from '@ngrx/store';
 import { DynamicTableConfig } from 'ae-dynamic-table';
 
 
+export type EntityNames = 'Project' | 'Issue' | 'Message' | 'User'; 
+
 export interface ApplicationState {
     state: EntityActivityState;
     entityCache: EntityCache;

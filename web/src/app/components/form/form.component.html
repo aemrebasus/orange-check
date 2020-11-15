@@ -1,15 +1,15 @@
-<div
-    style="width: 100vw; height:100vh; position: fixed; top: 0px; left: 0px; display: flex; flex-direction:column; align-items: center;  z-index: 9000000;">
-    <mat-card
-        style="width:300px;  background-color:white; box-shadow: 0px 0px 1000px black;  margin: auto;">
-        <mat-card-header>
-            <mat-card-title>Create {{fromType | titlecase}}</mat-card-title>
-            <span style="width: 40%;"></span>
-
+<div class="card-container">
+    <div class="card">
+        <div class="card-header">
+            <span> Create {{fromType | titlecase}} </span>
             <button mat-icon-button (click)="closeForm()">
                 <mat-icon>close</mat-icon>
             </button>
-        </mat-card-header>
-        <ae-dynamic-form #formElement [input]="form" (submitted)="submitted($event)"></ae-dynamic-form>
-    </mat-card>
+        </div>
+
+        <div class="card-content">
+            <ae-dynamic-form #formElement [input]="form" (submitted)="submitted($event)"></ae-dynamic-form>
+        </div>
+    </div>
+
 </div>
