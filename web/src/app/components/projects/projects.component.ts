@@ -4,7 +4,6 @@ import { ProjectActivityService } from '@services/entities.activity.service';
 import { ProjectDataService } from '@services/entities.data.service';
 import { DynamicTableConfig } from 'ae-dynamic-table';
 
-import { Observable } from 'rxjs';
 
 @Component({
   templateUrl: './projects.component.html',
@@ -14,21 +13,22 @@ export class ProjectsComponent implements OnInit {
 
   data = this.dataService.filteredEntities$;
 
-  config: DynamicTableConfig = {
-    displayedColumns: ['id', 'name']
-  };
+  config: DynamicTableConfig;
 
   constructor(private dataService: ProjectDataService, private activityService: ProjectActivityService, private store: Store) {
+
     this.store.subscribe(data => {
       console.log(data);
     });
 
-    this.activityService.getTableConfig().subscribe(config => {
-      this.config = config;
-    });
   }
 
   ngOnInit(): void {
+    this.activityService.getTableConfig().subscribe(config => {
+      this.config = config;
+      this.config.filteredColumns = config.filteredColumns;
+      console.log('table config: ', config);
+    });
   }
 
   onItemClick(event): void {

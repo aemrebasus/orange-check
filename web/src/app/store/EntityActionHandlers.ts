@@ -35,6 +35,7 @@ export class EntityActionHandlers<T = any> {
     private tableConfigSnapshot: DynamicTableConfig;
 
     constructor(private entityName: string, public store: Store<ApplicationState> = null) {
+
         this.selectOne$ = createAction(`[${this.entityName}] Select One ${this.entityName}`, props<{ id: number }>());
         this.deselectOne$ = createAction(`[${this.entityName}] Deselect One ${this.entityName}`, props<{ id: number }>());
         this.selectAll$ = createAction(`[${this.entityName}] Select All ${this.entityName}`, props<{ ids: number[] }>());
@@ -119,6 +120,7 @@ export class EntityActionHandlers<T = any> {
     public getMultiselect(): Observable<boolean> {
         return this.store.pipe(map(s => ({ ...s.state[this.entityName].multiselect })));
     }
+
     public getMultiselectSnapshot(): boolean {
         return this.multiselectSnapShot;
     }

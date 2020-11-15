@@ -14,7 +14,8 @@ export class ProjectActivityService extends EntityActionHandlers {
         this.setTableConfig(
             {
                 ...DEFAULT_DYNAMICTABLE_CONFIG,
-                displayedColumns: ['id', 'name', 'description', 'created_at', 'updated_at']
+                displayedColumns: ['id', 'name', 'description', 'created_at', 'updated_at'],
+                filteredColumns: ['id', 'name', 'description', 'created_at', 'updated_at'],
             }
         );
     }
