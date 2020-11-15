@@ -37,7 +37,7 @@ export class EntityActionHandlers<T = any> {
 
     constructor(private entityName: string, public store: Store<ApplicationState> = null) {
 
-        this.initState$ = createAction(`[${this.entityName}] Init State ${this.entityName}`, props<BaseState>())
+        this.initState$ = createAction(`[${this.entityName}] Init State ${this.entityName}`, props<BaseState>());
         this.selectOne$ = createAction(`[${this.entityName}] Select One ${this.entityName}`, props<{ id: number }>());
         this.deselectOne$ = createAction(`[${this.entityName}] Deselect One ${this.entityName}`, props<{ id: number }>());
         this.selectAll$ = createAction(`[${this.entityName}] Select All ${this.entityName}`, props<{ ids: number[] }>());
