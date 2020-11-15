@@ -1,11 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import {
-  IssueActivityService,
-  MessageActivityService,
-  ProjectActivityService,
-  UserActivityService
-} from '@services/entities.activity.service';
 import { AeRoute } from 'ae-layout';
 import { Subscription } from 'rxjs';
 import { LogoComponent } from './logo/logo.component';

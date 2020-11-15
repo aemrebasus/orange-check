@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { TableComponent } from '@components/table/table.component';
-import { CardsComponent } from '@components/cards/cards.component';
 
 import { Subject } from 'rxjs';
 
@@ -16,18 +14,6 @@ export class RouterService {
         private router: Router,
         private activatedRoute: ActivatedRoute
     ) { }
-
-    setView(view: string): void {
-        this.appendParam({ view });
-
-        if (view === 'table') {
-            this.component.next(TableComponent);
-        } else if (view === 'card') {
-            this.component.next(CardsComponent);
-        } else {
-            this.component.next(TableComponent);
-        }
-    }
 
     setMultiselect(multiselect: boolean): void {
         this.appendParam({ multiselect });

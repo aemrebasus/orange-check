@@ -3,7 +3,7 @@ import { DynamicTableConfig } from 'ae-dynamic-table';
 
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { ApplicationState } from './ApplicationState';
+import { ApplicationState, BaseState } from './ApplicationState';
 
 export type EntityActionType =
     | 'selectOne'
@@ -17,6 +17,7 @@ export type EntityActionType =
 
 export class EntityActionHandlers<T = any> {
 
+    public readonly initState$: ActionCreator<any, (props: BaseState) => any>;
     public readonly selectOne$: ActionCreator<any, (props: { id: number }) => any>;
     public readonly deselectOne$: ActionCreator<any, (props: { id: number }) => any>;
     public readonly selectAll$: ActionCreator<any, (props: { ids: number[] }) => any>;
@@ -36,6 +37,7 @@ export class EntityActionHandlers<T = any> {
 
     constructor(private entityName: string, public store: Store<ApplicationState> = null) {
 
+        this.initState$ = createAction(`[${this.entityName}] Init State ${this.entityName}`, props<BaseState>())
         this.selectOne$ = createAction(`[${this.entityName}] Select One ${this.entityName}`, props<{ id: number }>());
         this.deselectOne$ = createAction(`[${this.entityName}] Deselect One ${this.entityName}`, props<{ id: number }>());
         this.selectAll$ = createAction(`[${this.entityName}] Select All ${this.entityName}`, props<{ ids: number[] }>());
@@ -44,8 +46,8 @@ export class EntityActionHandlers<T = any> {
         this.filter$ = createAction(`[${this.entityName}] Filter ${this.entityName}s`, props<{ query: string }>());
         this.setMultiselect$ = createAction(`[${this.entityName}] Set ${this.entityName} Multi Select `, props<{ active: boolean }>());
         this.setView$ = createAction(`[${this.entityName}] Set ${this.entityName} View`, props<{ view: string }>());
-        this.setTableConfig$ = createAction(`[${this.entityName}] Set ${this.entityName} Table Configuration`,
-            props<DynamicTableConfig>());
+        this.setTableConfig$ = createAction(`[${this.entityName}] Set ${this.entityName} Table Configuration`, props<DynamicTableConfig>());
+
 
         // subscriptions
         if (store) {
@@ -60,6 +62,9 @@ export class EntityActionHandlers<T = any> {
                 this.multiselectSnapShot = data.multiselect;
                 this.tableConfigSnapshot = data.tableConfig;
             });
+
+
+
 
         }
 

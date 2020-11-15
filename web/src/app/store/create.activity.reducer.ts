@@ -18,6 +18,8 @@ export function createEntityReducer(name: string): ActionReducer<BaseState> {
     const newActivityReducer = new EntityActionHandlers(name);
     const reducer = createReducer(
         initialState,
+
+        on(newActivityReducer.initState$, (state, payload) => payload),
         on(newActivityReducer.selectOne$, (state, payload) => {
             if (state.selected.includes(payload.id)) {
                 return state;

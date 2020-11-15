@@ -1,8 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CardsComponent } from '@components/cards/cards.component';
-import { TableComponent } from '@components/table/table.component';
 import { RouterService } from '@services/router.service';
 import { ToolbarBuilder, ToolbarItem } from '@services/toolbar.builder';
 import { DynamicTableComponent } from 'ae-dynamic-table';
@@ -27,11 +25,11 @@ export class WrapperComponent implements OnInit {
     .newItem(3).icon('delete').tooltip('Delete').action(() => { console.log('Click works!'); })
 
     .newItem(4).icon('table_view').tooltip('Table View').action(() => {
-      this.component.next(TableComponent);
+      console.log('set table view');
     })
 
     .newItem(5).icon('layers').tooltip('Card View').action(() => {
-      this.component.next(CardsComponent);
+      console.log('set card view');
     })
 
     .getToolbar();

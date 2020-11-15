@@ -29,14 +29,13 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { LogoComponent } from './logo/logo.component';
 import { ConfigComponent } from './config/config.component';
-import { TableComponent } from './table/table.component';
-import { CardsComponent } from './cards/cards.component';
 import { FormComponent } from './form/form.component';
 import { HelpComponent } from './help/help.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { IssuesComponent } from './issues/issues.component';
 import { MessagesComponent } from './messages/messages.component';
 import { UsersComponent } from './users/users.component';
+import { ViewDataComponent } from './view-data/view-data.component';
 
 // Ae Material
 
@@ -48,14 +47,13 @@ import { UsersComponent } from './users/users.component';
     WrapperComponent,
     LogoComponent,
     ConfigComponent,
-    TableComponent,
-    CardsComponent,
     FormComponent,
     HelpComponent,
     ProjectsComponent,
     IssuesComponent,
     MessagesComponent,
     UsersComponent,
+    ViewDataComponent,
   ],
   imports: [
     CommonModule,

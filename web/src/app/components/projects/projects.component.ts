@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 
 import { ProjectActivityService } from '@services/entities.activity.service';
 import { ProjectDataService } from '@services/entities.data.service';
@@ -14,7 +15,11 @@ export class ProjectsComponent implements OnInit {
   data = this.dataService.filteredEntities$;
   config: DynamicTableConfig;
 
-  constructor(private dataService: ProjectDataService, private activityService: ProjectActivityService) { }
+  constructor(
+    private dataService: ProjectDataService,
+    private activityService: ProjectActivityService,
+  ) {
+  }
 
   ngOnInit(): void {
     this.activityService.getTableConfig().subscribe(config => {
@@ -22,7 +27,11 @@ export class ProjectsComponent implements OnInit {
     });
   }
 
-  onRowClick(event): void {
+  onRowClick(event, ): void {
+    console.log(event);
+  }
+
+  onSearched(event): void {
     console.log(event);
   }
 
