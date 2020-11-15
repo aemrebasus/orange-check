@@ -101,8 +101,8 @@ export class UserActivityService extends EntityActionHandlers {
         } else {
             this.setTableConfig({
                 ...DEFAULT_DYNAMICTABLE_CONFIG,
-                displayedColumns: ['id', 'fistName', 'lastName', 'email', 'role', 'created_at', 'updated_at'],
-                filteredColumns: ['id', 'fistName', 'lastName', 'email', 'role', 'created_at', 'updated_at']
+                displayedColumns: ['id', 'firstName', 'lastName', 'email', 'role', 'created_at', 'updated_at'],
+                filteredColumns: ['id', 'firstName', 'lastName', 'email', 'role', 'created_at', 'updated_at']
             });
             this.storeToLocalStorage();
         }

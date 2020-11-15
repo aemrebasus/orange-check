@@ -10,7 +10,6 @@ export class ProjectDataService extends EntityCollectionServiceBase<IProject> {
     constructor(serviceElementFactory: EntityCollectionServiceElementsFactory) {
         super('Project', serviceElementFactory);
         this.getAll();
-
     }
 }
 
