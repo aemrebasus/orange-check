@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToolbarEvents } from '@components/wrapper/wrapper.component';
 import { MessageActivityService } from '@services/entities.activity.service';
 import { MessageDataService } from '@services/entities.data.service';
 import { DynamicTableConfig } from 'ae-dynamic-table';
@@ -29,5 +30,8 @@ export class MessagesComponent implements OnInit {
 
   columnFilterChange(filteredColumns): void {
     this.activityService.setTableFilteredColumns([...filteredColumns]);
+  }
+  toolbarEvent(event: ToolbarEvents): void {
+
   }
 }

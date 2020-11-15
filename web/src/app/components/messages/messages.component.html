@@ -1,4 +1,5 @@
-<app-wrapper [loading]="loading" [isMultiSelect]="isMultiSelect" [activityService]="activityService">
+<app-wrapper [loading]="loading" [isMultiSelect]="isMultiSelect" [activityService]="activityService"
+    (toolbarEvent)="toolbarEvent($event)">
     <ae-dynamic-table [data]="data | async" [config]="config" (selected)="onRowClick($event)"
         (columnFilterChange)="columnFilterChange($event)">
     </ae-dynamic-table>

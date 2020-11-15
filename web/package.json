@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build:site": "ng build --prod --output-path=./dist/orange-check-web --base-href=./orange-check-web",
+    "build:site": "ng build --prod --output-path=./dist/orange-check --base-href=./orange-check",
     "deploy": "gh-pages -d dist/orange-check-web"
   },
   "private": true,
