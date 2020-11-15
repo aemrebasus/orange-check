@@ -30,10 +30,10 @@ export class EntityActionHandlers<T = any> {
 
     public tableConfig$: Observable<DynamicTableConfig>;
 
-
     private viewSnapshot: string;
     private multiselectSnapShot: boolean;
     private tableConfigSnapshot: DynamicTableConfig;
+    private stateSnapshot: BaseState;
 
     constructor(private entityName: string, public store: Store<ApplicationState> = null) {
 
@@ -61,13 +61,14 @@ export class EntityActionHandlers<T = any> {
                 this.viewSnapshot = data.view;
                 this.multiselectSnapShot = data.multiselect;
                 this.tableConfigSnapshot = data.tableConfig;
+                this.stateSnapshot = data;
             });
-
-
-
-
         }
 
+    }
+
+    public initState(state: BaseState): void {
+        this.store.dispatch(this.initState$(state));
     }
 
     public selectOne(id: number): void {
@@ -136,6 +137,22 @@ export class EntityActionHandlers<T = any> {
 
     public getTableConfigSnapshot(): DynamicTableConfig {
         return this.tableConfigSnapshot;
+    }
+
+
+    public storeToLocalStorage(): void {
+        window.localStorage.setItem(this.entityName + 'store', JSON.stringify(this.stateSnapshot));
+    }
+
+    public getStateFromLocalStorage(): BaseState {
+        return JSON.parse(window.localStorage.getItem(this.entityName + 'store'));
+    }
+
+    public loadFromLocalStorage(): void {
+        const localState = window.localStorage.getItem(this.entityName + 'store');
+        if (localState) {
+            this.initState(JSON.parse(localState));
+        }
     }
 
 }

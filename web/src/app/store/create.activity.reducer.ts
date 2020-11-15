@@ -1,3 +1,4 @@
+import { state } from '@angular/animations';
 import { ActionReducer, createReducer, on } from '@ngrx/store';
 import { DEFAULT_DYNAMICTABLE_CONFIG } from 'ae-dynamic-table';
 
@@ -19,7 +20,8 @@ export function createEntityReducer(name: string): ActionReducer<BaseState> {
     const reducer = createReducer(
         initialState,
 
-        on(newActivityReducer.initState$, (state, payload) => payload),
+        // tslint:disable: no-shadowed-variable
+        on(newActivityReducer.initState$, (state, payload) => ({ ...state, state: payload })),
         on(newActivityReducer.selectOne$, (state, payload) => {
             if (state.selected.includes(payload.id)) {
                 return state;
