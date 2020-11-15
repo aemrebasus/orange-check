@@ -32,7 +32,7 @@ function getIssue(): Issue {
 function getMessage(): IMessage {
     return {
         id: guid(),
-        body: lorem.paragraph(100),
+        body: lorem.paragraph(1),
         to: guid(),
         subject: lorem.words(4),
         created_at: date.future(2020).toDateString()
@@ -53,16 +53,16 @@ function getUser(): IUser {
 
 
 function generateMessage(count: number = 20): IMessage[] {
-    return new Array(count).map(e => getMessage());
+    return new Array(count).fill({}).map(e => getMessage());
 }
 function generateIssue(count: number = 20): Issue[] {
-    return new Array(count).map(e => getIssue());
+    return new Array(count).fill({}).map(e => getIssue());
 }
 function generateUser(count: number = 20): IUser[] {
-    return new Array(count).map(e => getUser());
+    return new Array(count).fill({}).map(e => getUser());
 }
 function generateProject(count: number = 20): IProject[] {
-    return new Array(count).map(e => getProject());
+    return new Array(count).fill({}).map(e => getProject());
 }
 
 
@@ -72,10 +72,10 @@ function generateProject(count: number = 20): IProject[] {
 export class SeederService {
 
     constructor(private ps: ProjectDataService, private is: IssueDataService, private us: UserDataService, private ms: MessageDataService) {
-        this.ps.upsertManyInCache(generateIssue(100));
-        this.is.upsertManyInCache(generateIssue(100));
-        this.us.upsertManyInCache(generateUser(100));
-        this.ms.upsertManyInCache(generateMessage(100));
+        this.ps.upsertManyInCache(generateIssue(1000));
+        this.is.upsertManyInCache(generateIssue(1000));
+        this.us.upsertManyInCache(generateUser(1000));
+        this.ms.upsertManyInCache(generateMessage(1000));
     }
 
 }
