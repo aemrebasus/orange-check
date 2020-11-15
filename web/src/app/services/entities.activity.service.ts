@@ -35,6 +35,12 @@ export class CommentActivityService extends EntityActionHandlers {
 export class MessageActivityService extends EntityActionHandlers {
     constructor(store: Store<ApplicationState>) {
         super('Message', store);
+        this.setTableConfig(
+            {
+                ...DEFAULT_DYNAMICTABLE_CONFIG,
+                displayedColumns: ['id', 'subject', 'body', 'to', 'created_at', 'updated_at']
+            }
+        );
     }
 }
 
@@ -44,6 +50,12 @@ export class MessageActivityService extends EntityActionHandlers {
 export class IssueActivityService extends EntityActionHandlers {
     constructor(store: Store<ApplicationState>) {
         super('Issue', store);
+        this.setTableConfig(
+            {
+                ...DEFAULT_DYNAMICTABLE_CONFIG,
+                displayedColumns: ['id', 'title', 'description', 'due', 'assignee', 'status', 'created_at', 'updated_at']
+            }
+        );
     }
 }
 
@@ -53,6 +65,12 @@ export class IssueActivityService extends EntityActionHandlers {
 export class UserActivityService extends EntityActionHandlers {
     constructor(store: Store<ApplicationState>) {
         super('User', store);
+        this.setTableConfig(
+            {
+                ...DEFAULT_DYNAMICTABLE_CONFIG,
+                displayedColumns: ['id', 'fistName', 'lastName', 'email', 'role', 'created_at', 'updated_at']
+            }
+        );
     }
 }
 
