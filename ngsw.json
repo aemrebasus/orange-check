@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1605435631712,
+  "timestamp": 1605438570417,
   "index": "./orange-check-web/index.html",
   "assetGroups": [
     {
@@ -11,15 +11,15 @@
         "ignoreVary": true
       },
       "urls": [
-        "./orange-check-web/4.4bf3e0c17ee62bdd5b95.js",
-        "./orange-check-web/5.2f31ed1a80108a79555b.js",
+        "./orange-check-web/4.589fb3d23c1a9b0b6c02.js",
+        "./orange-check-web/5.8a16f36f322da3ec4f17.js",
         "./orange-check-web/favicon.ico",
         "./orange-check-web/index.html",
-        "./orange-check-web/main.df8b6cd6cb921436e2eb.js",
+        "./orange-check-web/main.35dbb95c2990821f754c.js",
         "./orange-check-web/manifest.webmanifest",
         "./orange-check-web/polyfills.b5c4e956902aef71002b.js",
-        "./orange-check-web/runtime.903f201aaaa3462ac2ef.js",
-        "./orange-check-web/styles.7ce0cf7508ce02057c2d.css"
+        "./orange-check-web/runtime.4e86623d1ecfdea0600a.js",
+        "./orange-check-web/styles.3913546b176a62f7a65d.css"
       ],
       "patterns": []
     },
@@ -51,8 +51,8 @@
   ],
   "dataGroups": [],
   "hashTable": {
-    "./orange-check-web/4.4bf3e0c17ee62bdd5b95.js": "b661ab09b15df081b5d4f502e3a250797e24ec87",
-    "./orange-check-web/5.2f31ed1a80108a79555b.js": "bd4c7198f4193e7af6ab8e6b5674b39ebbdc7d4c",
+    "./orange-check-web/4.589fb3d23c1a9b0b6c02.js": "ef97849a41ca6e6b0e874fdc906ecc80734c0461",
+    "./orange-check-web/5.8a16f36f322da3ec4f17.js": "59af66e21503c0bb997ae6ef9899d69f9427a476",
     "./orange-check-web/assets/api/comments": "1796b7ca2fbb0bd5b3db84feda7cf44d482454e9",
     "./orange-check-web/assets/api/issues": "5416e2b9617a05c6c2421e06b3a6ee083dcc8fff",
     "./orange-check-web/assets/api/messages": "ac4ce4b1147115e41972cc51903acb75df643576",
@@ -68,12 +68,12 @@
     "./orange-check-web/assets/icons/icon-72x72.png": "087ee1f209870436683ec25a8348294df8912668",
     "./orange-check-web/assets/icons/icon-96x96.png": "34cf07764b1846d1fe55affe5381d56d9a6892e4",
     "./orange-check-web/favicon.ico": "8ef4c4df26b1ec16672ac2e7ea9495465fae937d",
-    "./orange-check-web/index.html": "1a611196857043d253f586b8404793b0bcd30e42",
-    "./orange-check-web/main.df8b6cd6cb921436e2eb.js": "bd8227e4731df69f5c0adf9a0ea790953a8bd47a",
+    "./orange-check-web/index.html": "8aaa65cbdf208b82d31877ee08be69b76d76bb4c",
+    "./orange-check-web/main.35dbb95c2990821f754c.js": "302ea8fd3c35bafde47e9b7829ce38ad42fb4772",
     "./orange-check-web/manifest.webmanifest": "8fde99d59a30ca6503754bb651bec16de5ff065e",
     "./orange-check-web/polyfills.b5c4e956902aef71002b.js": "c7c2cba0924481ddf68ea864c783c27435be93c0",
-    "./orange-check-web/runtime.903f201aaaa3462ac2ef.js": "cd6487a23eb878f86a58d14bbcd093fd26e87121",
-    "./orange-check-web/styles.7ce0cf7508ce02057c2d.css": "9ac2d22a2bf8e8955fe7eec7e4ac007a4567fd0e"
+    "./orange-check-web/runtime.4e86623d1ecfdea0600a.js": "47344edaca63177a0107f096240f321d30bd1b44",
+    "./orange-check-web/styles.3913546b176a62f7a65d.css": "5da8efe2b83707bb9b90ff1d1310d1d717990812"
   },
   "navigationUrls": [
     {
