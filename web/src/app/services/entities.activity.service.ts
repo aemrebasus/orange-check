@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { ApplicationState } from '@store/ApplicationState';
 import { EntityActionHandlers } from '@store/EntityActionHandlers';
+import { DEFAULT_DYNAMICTABLE_CONFIG } from 'ae-dynamic-table';
 
 
 @Injectable({
@@ -10,6 +11,12 @@ import { EntityActionHandlers } from '@store/EntityActionHandlers';
 export class ProjectActivityService extends EntityActionHandlers {
     constructor(store: Store<ApplicationState>) {
         super('project', store);
+        this.setTableConfig(
+            {
+                ...DEFAULT_DYNAMICTABLE_CONFIG,
+                displayedColumns: ['id', 'name', 'description', 'created_at', 'updated_at']
+            }
+        );
     }
 }
 

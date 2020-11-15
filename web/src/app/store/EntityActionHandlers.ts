@@ -1,5 +1,6 @@
 import { createAction, props, ActionCreator, Store } from '@ngrx/store';
 import { DynamicTableConfig } from 'ae-dynamic-table';
+
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ApplicationState } from './ApplicationState';
@@ -24,7 +25,10 @@ export class EntityActionHandlers<T = any> {
     public readonly filter$: ActionCreator<any, (props: { query: string }) => any>;
     public readonly setMultiselect$: ActionCreator<any, (props: { active: boolean }) => any>;
     public readonly setView$: ActionCreator<any, (props: { view: string }) => any>;
-    public readonly setTableConfig$: ActionCreator<any, (props: { config: DynamicTableConfig }) => any>;
+    public readonly setTableConfig$: ActionCreator<any, (props: DynamicTableConfig) => any>;
+
+    public tableConfig$: Observable<DynamicTableConfig>;
+
 
     private viewSnapshot: string;
     private multiselectSnapShot: boolean;
@@ -40,12 +44,16 @@ export class EntityActionHandlers<T = any> {
         this.setMultiselect$ = createAction(`[${this.entityName}] Set ${this.entityName} Multi Select `, props<{ active: boolean }>());
         this.setView$ = createAction(`[${this.entityName}] Set ${this.entityName} View`, props<{ view: string }>());
         this.setTableConfig$ = createAction(`[${this.entityName}] Set ${this.entityName} Table Configuration`,
+            props<DynamicTableConfig>());
 
-            props<{ config: DynamicTableConfig }>());
         // subscriptions
         if (store) {
 
+            // Observable fields
+            this.tableConfig$ = this.store.pipe(map(s => ({ ...s.state[this.entityName.toLowerCase()].tableConfig })));
+
             // Subscribing Snapshots.
+            // Snapshot fields
             this.store.pipe(map(s => s.state[this.entityName.toLowerCase()])).subscribe(data => {
                 this.viewSnapshot = data.view;
                 this.multiselectSnapShot = data.multiselect;
@@ -89,15 +97,19 @@ export class EntityActionHandlers<T = any> {
     }
 
     public setTableConfig(config: DynamicTableConfig): void {
-        this.store.dispatch(this.setTableConfig$({ config }));
+        this.store.dispatch(this.setTableConfig$(config));
+    }
+
+    public setTableFilteredColumns(columns: string[]): void {
+        this.store.dispatch(this.setTableConfig$({ ...this.tableConfigSnapshot, filteredColumns: columns }));
     }
 
     public selected(): Observable<T[]> {
-        return this.store.pipe(map(s => s.state[this.entityName].selected));
+        return this.store.pipe(map(s => ({ ...s.state[this.entityName].selected })));
     }
 
     public getView(): Observable<string> {
-        return this.store.pipe(map(s => s.state[this.entityName].view));
+        return this.store.pipe(map(s => ({ ...s.state[this.entityName].view })));
     }
 
     public getViewSnapshot(): string {
@@ -105,14 +117,14 @@ export class EntityActionHandlers<T = any> {
     }
 
     public getMultiselect(): Observable<boolean> {
-        return this.store.pipe(map(s => s.state[this.entityName].multiselect));
+        return this.store.pipe(map(s => ({ ...s.state[this.entityName].multiselect })));
     }
     public getMultiselectSnapshot(): boolean {
         return this.multiselectSnapShot;
     }
 
     public getTableConfig(): Observable<DynamicTableConfig> {
-        return this.store.pipe(map(s => s.state[this.entityName].tableConfig))
+        return this.store.pipe(map(s => ({ ...s.state[this.entityName].tableConfig })));
     }
 
     public getTableConfigSnapshot(): DynamicTableConfig {

@@ -1,1 +1,4 @@
-<app-table></app-table>
+<ae-dynamic-table [data]="data | async" [config]="config" (selected)="onItemClick($event)"
+    (columnFilterChange)="columnFilterChange($event)">
+
+</ae-dynamic-table>

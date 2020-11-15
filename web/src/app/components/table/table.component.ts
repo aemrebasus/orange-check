@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DynamicTableConfig } from 'ae-dynamic-table';
+
 
 
 @Component({
@@ -10,12 +11,12 @@ import { DynamicTableConfig } from 'ae-dynamic-table';
 })
 export class TableComponent implements OnInit {
 
-  data = [{ id: 1 }, { id: 2 }];
+  @Input() data = [{ id: 1 }, { id: 2 }];
   config: DynamicTableConfig = {
     displayedColumns: ['id', 'name']
   };
 
-  constructor(public activatedRoute: ActivatedRoute) {  }
+  constructor(public activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void { }
 

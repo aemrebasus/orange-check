@@ -2,6 +2,7 @@ import { EntityCache } from '@ngrx/data';
 import { ActionReducer } from '@ngrx/store';
 import { DynamicTableConfig } from 'ae-dynamic-table';
 
+
 export interface ApplicationState {
     state: EntityActivityState;
     entityCache: EntityCache;
