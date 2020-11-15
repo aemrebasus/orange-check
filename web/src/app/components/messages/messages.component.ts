@@ -10,17 +10,16 @@ import { DynamicTableConfig } from 'ae-dynamic-table';
 })
 export class MessagesComponent implements OnInit {
 
+  loading = this.dataService.loading$;
+  isMultiSelect = this.activityService.isMultiSelect$;
   data = this.dataService.entities$;
   config: DynamicTableConfig;
 
-  constructor(private dataService: MessageDataService, private activityService: MessageActivityService) { }
+  constructor(public dataService: MessageDataService, public activityService: MessageActivityService) { }
 
   ngOnInit(): void {
     this.activityService.getTableConfig().subscribe(config => {
       this.config = config;
-    });
-    this.dataService.getAll().subscribe(data => {
-      console.log('Messages: ', data);
     });
   }
 

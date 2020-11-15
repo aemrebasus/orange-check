@@ -10,18 +10,16 @@ import { DynamicTableConfig } from 'ae-dynamic-table';
 })
 export class IssuesComponent implements OnInit {
 
-
+  loading = this.dataService.loading$;
+  isMultiSelect = this.activityService.isMultiSelect$;
   data = this.dataService.entities$;
   config: DynamicTableConfig;
 
-  constructor(private dataService: IssueDataService, private activityService: IssueActivityService) { }
+  constructor(public dataService: IssueDataService, public activityService: IssueActivityService) { }
 
   ngOnInit(): void {
     this.activityService.getTableConfig().subscribe(config => {
       this.config = config;
-    });
-    this.dataService.getAll().subscribe(data => {
-      console.log('issues: ', data);
     });
   }
 

@@ -29,7 +29,7 @@ export class EntityActionHandlers<T = any> {
     public readonly setTableConfig$: ActionCreator<any, (props: DynamicTableConfig) => any>;
 
     public tableConfig$: Observable<DynamicTableConfig>;
-
+    public isMultiSelect$: Observable<boolean>;
     private viewSnapshot: string;
     private multiselectSnapShot: boolean;
     private tableConfigSnapshot: DynamicTableConfig;
@@ -54,7 +54,7 @@ export class EntityActionHandlers<T = any> {
 
             // Observable fields
             this.tableConfig$ = this.store.pipe(map(s => ({ ...s.state[this.entityName.toLowerCase()].tableConfig })));
-
+            this.isMultiSelect$ = this.store.pipe(map(s => s.state[this.entityName].multiselect));
             // Subscribing Snapshots.
             // Snapshot fields
             this.store.pipe(map(s => s.state[this.entityName.toLowerCase()])).subscribe(data => {

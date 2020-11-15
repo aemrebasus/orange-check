@@ -1,9 +1,8 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
-import { ActivatedRoute, Router } from '@angular/router';
 import { RouterService } from '@services/router.service';
 import { ToolbarBuilder, ToolbarItem } from '@services/toolbar.builder';
-import { DynamicTableComponent } from 'ae-dynamic-table';
+import { EntityActionHandlers } from '@store/EntityActionHandlers';
 
 @Component({
   selector: 'app-wrapper',
@@ -12,9 +11,14 @@ import { DynamicTableComponent } from 'ae-dynamic-table';
 })
 export class WrapperComponent implements OnInit {
 
-  @ViewChild('componentRef') componentRef: ElementRef;
 
-  loading = false;
+  @Input() loading;
+
+  @Input() activityService: EntityActionHandlers;
+  /**
+   * When this is true, user is able to select multiple items.
+   */
+  @Input() isMultiSelect;
 
   toolbar: ToolbarItem[] = new ToolbarBuilder()
 
@@ -35,29 +39,16 @@ export class WrapperComponent implements OnInit {
     .getToolbar();
 
 
-  component: any = this.routerService.component;
-
-  componentData: DynamicTableComponent;
 
 
-  /**
-   * When this is true, user is able to select multiple items.
-   */
-  isMultiSelect = false;
 
-  constructor(private routerService: RouterService) {
-
-  }
-
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void { }
 
   /**
    * When user toggles the multi-select-toggle, update the isMultiSelect property.
    */
   updateMultiSelect(event: MatSlideToggleChange): void {
-    this.routerService.setMultiselect(event.checked);
-    this.isMultiSelect = event.checked;
+    this.activityService.setMultiselect(event.checked);
   }
+
 }

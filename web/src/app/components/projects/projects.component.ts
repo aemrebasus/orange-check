@@ -8,20 +8,16 @@ import { DynamicTableConfig } from 'ae-dynamic-table';
   styleUrls: ['./projects.component.scss']
 })
 export class ProjectsComponent implements OnInit {
-
+  loading = this.dataService.loading$;
+  isMultiSelect = this.activityService.isMultiSelect$;
   data = this.dataService.entities$;
   config: DynamicTableConfig;
 
-  constructor(private dataService: ProjectDataService, private activityService: ProjectActivityService,) {
-
-  }
+  constructor(public dataService: ProjectDataService, public activityService: ProjectActivityService) { }
 
   ngOnInit(): void {
     this.activityService.getTableConfig().subscribe(config => {
       this.config = config;
-    });
-    this.dataService.getAll().subscribe(data => {
-      console.log('projects: ', data);
     });
   }
 

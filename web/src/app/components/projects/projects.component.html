@@ -1,3 +1,5 @@
-<ae-dynamic-table [data]="data | async" [config]="config" (selected)="onRowClick($event)"
-    (columnFilterChange)="columnFilterChange($event)" (searchInput)="onSearched($event)">
-</ae-dynamic-table>
+<app-wrapper [loading]="loading" [isMultiSelect]="isMultiSelect" [activityService]="activityService">
+    <ae-dynamic-table [data]="data | async" [config]="config" (selected)="onRowClick($event)"
+        (columnFilterChange)="columnFilterChange($event)" (searchInput)="onSearched($event)">
+    </ae-dynamic-table>
+</app-wrapper>

@@ -9,19 +9,16 @@ import { DynamicTableConfig } from 'ae-dynamic-table';
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit, AfterViewInit {
-
+  loading = this.dataService.loading$;
+  isMultiSelect = this.activityService.isMultiSelect$;
   data = this.dataService.entities$;
   config: DynamicTableConfig;
 
-  constructor(private dataService: UserDataService, private activityService: UserActivityService) {
-  }
+  constructor(public dataService: UserDataService, public activityService: UserActivityService) { }
 
   ngOnInit(): void {
     this.activityService.getTableConfig().subscribe(config => {
       this.config = config;
-    });
-    this.dataService.getAll().subscribe(data => {
-      console.log('USers: ', data);
     });
   }
 

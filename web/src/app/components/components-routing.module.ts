@@ -12,28 +12,20 @@ export const routes: Routes = [
 
         children: [
             {
-                path: 'users', component: WrapperComponent,
-                children: [
-                    { path: '**', component: UsersComponent },
-                ]
+                path: 'users', component: UsersComponent
+
             },
             {
-                path: 'projects', component: WrapperComponent,
-                children: [
-                    { path: '', component: ProjectsComponent }
-                ]
+                path: 'projects', component: ProjectsComponent
+
             },
             {
-                path: 'issues', component: WrapperComponent,
-                children: [
-                    { path: '', component: IssuesComponent }
-                ]
+                path: 'issues', component: IssuesComponent
+
             },
             {
-                path: 'messages', component: WrapperComponent,
-                children: [
-                    { path: '', component: MessagesComponent }
-                ]
+                path: 'messages', component: MessagesComponent
+
             },
             { path: 'configuration', component: ConfigComponent },
             { path: 'help', component: HelpComponent }

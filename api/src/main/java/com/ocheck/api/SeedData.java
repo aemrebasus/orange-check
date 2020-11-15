@@ -33,16 +33,19 @@ public class SeedData implements CommandLineRunner {
 
         UserModel admin = new UserModel()
                 .setUserName("admin")
+                .setEmail("email1@email.com")
                 .setPassword(passwordEncoder.encode("password"))
                 .setRoles(UserRoles.ADMIN);
 
         UserModel dev = new UserModel()
                 .setUserName("dev")
+                .setEmail("email2@email.com")
                 .setPassword(passwordEncoder.encode("password"))
                 .setRoles(UserRoles.DEVELOPER);
 
         UserModel sm = new UserModel()
                 .setUserName("sm")
+                .setEmail("emai3@email.com")
                 .setPassword(passwordEncoder.encode("password"))
                 .setRoles(UserRoles.SCRUMMASTER);
 

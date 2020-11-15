@@ -32,7 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
 
-                .antMatchers(HttpMethod.GET, "/", "index", "/css/*", "/js/*").permitAll()
+                .antMatchers(HttpMethod.GET, "/","/*", "/css/*", "/js/*").permitAll()
 
                 .antMatchers(HttpMethod.GET, "/api/v1/users").hasAuthority(USER_READ.getPermission())
                 .antMatchers(HttpMethod.POST, "/api/v1/users").hasAuthority(USER_WRITE.getPermission())
@@ -53,7 +53,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, "/api/v1/messages").hasAuthority(MESSAGE_WRITE.getPermission())
                 .antMatchers(HttpMethod.PUT, "/api/v1/messages").hasAuthority(MESSAGE_WRITE.getPermission())
                 .antMatchers(HttpMethod.DELETE, "/api/v1/messages").hasAuthority(MESSAGE_WRITE.getPermission())
-
 
                 .anyRequest()
                 .authenticated()

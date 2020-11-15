@@ -13,7 +13,7 @@
         <!-- Right Toolbar -->
         <div class="toolbar-right">
             <!-- Multi Select Switch -->
-            <mat-slide-toggle matTooltip="Multi Select" matTooltipPosition="above" [checked]="isMultiSelect"
+            <mat-slide-toggle matTooltip="Multi Select" matTooltipPosition="above" [checked]="isMultiSelect | async"
                 (change)="updateMultiSelect($event)">
             </mat-slide-toggle>
 
@@ -22,12 +22,12 @@
     </mat-toolbar>
 
     <!-- Progress bar -->
-    <mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
-    <mat-progress-bar mode="determinate" value="100" *ngIf="!loading"></mat-progress-bar>
+    <mat-progress-bar mode="indeterminate" *ngIf="loading | async"></mat-progress-bar>
+    <mat-progress-bar mode="determinate" value="100" *ngIf="!(loading | async)"></mat-progress-bar>
 
     <!-- Dynamic Content -->
-    <div class="wrapper-content" *ngIf="component">
-        <router-outlet></router-outlet>
+    <div class="wrapper-content">
+        <ng-content></ng-content>
     </div>
 
 </div>
