@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToolbarEvents } from '@components/wrapper/wrapper.component';
 import { ProjectActivityService } from '@services/entities.activity.service';
 import { ProjectDataService } from '@services/entities.data.service';
 import { DynamicTableConfig } from 'ae-dynamic-table';
@@ -12,6 +13,7 @@ export class ProjectsComponent implements OnInit {
   isMultiSelect = this.activityService.isMultiSelect$;
   data = this.dataService.entities$;
   config: DynamicTableConfig;
+  formOpen;
 
   constructor(public dataService: ProjectDataService, public activityService: ProjectActivityService) { }
 
@@ -31,5 +33,23 @@ export class ProjectsComponent implements OnInit {
 
   columnFilterChange(filteredColumns): void {
     this.activityService.setTableFilteredColumns([...filteredColumns]);
+  }
+
+  toolbarEvent(event: ToolbarEvents): void {
+    switch (event) {
+      case 'add':
+        this.formOpen = true;
+        break;
+
+    }
+  }
+
+  eventHandler(event): void {
+    console.log(event);
+    switch (event) {
+      case 'close-form':
+        this.formOpen = null;
+        break;
+    }
   }
 }

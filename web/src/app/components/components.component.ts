@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { AeRoute } from 'ae-layout';
 import { Subscription } from 'rxjs';
 import { LogoComponent } from './logo/logo.component';
@@ -38,11 +38,6 @@ export class ComponentsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-
-
-
   }
-
-
 
 }

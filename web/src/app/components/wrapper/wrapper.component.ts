@@ -24,9 +24,9 @@ export class WrapperComponent implements OnInit {
 
   toolbar: ToolbarItem[] = new ToolbarBuilder()
 
-    .newItem(2).icon('add').tooltip('Add').action(() => { this.toolbarEvent.emit('add') })
+    .newItem(2).icon('add').tooltip('Add').action(() => { this.toolbarEvent.emit('add'); })
 
-    .newItem(1).icon('select_all').tooltip('Select All').action(() => { this.toolbarEvent.emit('select_all') })
+    .newItem(1).icon('select_all').tooltip('Select All').action(() => { this.toolbarEvent.emit('select_all'); })
 
     .newItem(3).icon('delete').tooltip('Delete').action(() => { this.toolbarEvent.emit('delete'); })
 

@@ -15,6 +15,7 @@ export class MessagesComponent implements OnInit {
   isMultiSelect = this.activityService.isMultiSelect$;
   data = this.dataService.entities$;
   config: DynamicTableConfig;
+  formOpen;
 
   constructor(public dataService: MessageDataService, public activityService: MessageActivityService) { }
 
@@ -31,7 +32,22 @@ export class MessagesComponent implements OnInit {
   columnFilterChange(filteredColumns): void {
     this.activityService.setTableFilteredColumns([...filteredColumns]);
   }
-  toolbarEvent(event: ToolbarEvents): void {
 
+  toolbarEvent(event: ToolbarEvents): void {
+    switch (event) {
+      case 'add':
+        this.formOpen = true;
+        break;
+
+    }
+  }
+
+  eventHandler(event): void {
+    console.log(event);
+    switch (event) {
+      case 'close-form':
+        this.formOpen = null;
+        break;
+    }
   }
 }

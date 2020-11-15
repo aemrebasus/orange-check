@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { ToolbarEvents } from '@components/wrapper/wrapper.component';
 import { UserActivityService } from '@services/entities.activity.service';
 import { UserDataService } from '@services/entities.data.service';
 import { DynamicTableConfig } from 'ae-dynamic-table';
@@ -9,10 +10,12 @@ import { DynamicTableConfig } from 'ae-dynamic-table';
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit, AfterViewInit {
+
   loading = this.dataService.loading$;
   isMultiSelect = this.activityService.isMultiSelect$;
   data = this.dataService.entities$;
   config: DynamicTableConfig;
+  formOpen;
 
   constructor(public dataService: UserDataService, public activityService: UserActivityService) { }
 
@@ -30,5 +33,23 @@ export class UsersComponent implements OnInit, AfterViewInit {
 
   columnFilterChange(filteredColumns): void {
     this.activityService.setTableFilteredColumns([...filteredColumns]);
+  }
+
+  toolbarEvent(event: ToolbarEvents): void {
+    switch (event) {
+      case 'add':
+        this.formOpen = true;
+        break;
+
+    }
+  }
+
+  eventHandler(event): void {
+    console.log(event);
+    switch (event) {
+      case 'close-form':
+        this.formOpen = null;
+        break;
+    }
   }
 }
