@@ -17,34 +17,23 @@ export class FormComponent implements OnInit {
   @ViewChild(AeDynamicFormComponent) formElement: AeDynamicFormComponent;
 
   form = null;
-  servie: EntityCollectionServiceBase<any>;
+  dataService: EntityCollectionServiceBase<any>;
   constructor(
-    private router: Router,
-    private projectDataService: ProjectDataService,
-    private issueDataSevice: IssueDataService,
-    private messageDataSevice: MessageDataService,
-    private userDataSevice: UserDataService,
   ) { }
 
   ngOnInit(): void {
     switch (this.fromType) {
       case 'issue':
         this.form = issueForm;
-        this.servie = this.issueDataSevice;
         break;
       case 'project':
         this.form = projectForm;
-        this.servie = this.projectDataService;
         break;
       case 'user':
         this.form = userForm;
-        this.servie = this.userDataSevice;
         break;
       case 'message':
         this.form = messageForm;
-        this.servie = this.messageDataSevice;
-        break;
-      default:
         break;
     }
   }
@@ -52,7 +41,6 @@ export class FormComponent implements OnInit {
   submitted(formValue): void {
     this.event.emit(formValue);
     this.formElement.reset();
-    this.servie.upsert(formValue);
   }
 
   closeForm(): void {

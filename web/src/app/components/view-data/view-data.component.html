@@ -1,0 +1,7 @@
+<app-wrapper [loading]="loading" [isMultiSelect]="isMultiSelect" [activityService]="activityService"
+    (toolbarEvent)="toolbarEvent($event)">
+    <app-form [fromType]="'project'" *ngIf="formOpen" (event)="eventHandler($event)"></app-form>
+    <ae-dynamic-table [data]="entities | async" [config]="config" (selected)="onRowClick($event)"
+        (columnFilterChange)="columnFilterChange($event)" (searchInput)="onSearched($event)">
+    </ae-dynamic-table>
+</app-wrapper>

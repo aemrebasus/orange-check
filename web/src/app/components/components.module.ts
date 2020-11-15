@@ -8,7 +8,6 @@ import { ComponentsComponent } from './components.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { WrapperComponent } from './wrapper/wrapper.component';
-import { RouterModule } from '@angular/router';
 import { AeDynamicFormModule } from 'ae-dynamic-form';
 
 

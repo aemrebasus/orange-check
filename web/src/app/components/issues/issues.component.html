@@ -1,7 +1,1 @@
-<app-wrapper [loading]="loading" [isMultiSelect]="isMultiSelect" [activityService]="activityService"
-    (toolbarEvent)="toolbarEvent($event)">
-    <app-form [fromType]="'issue'" *ngIf="formOpen" (event)="eventHandler($event)"></app-form>
-    <ae-dynamic-table [data]="data | async" [config]="config" (selected)="onRowClick($event)"
-        (columnFilterChange)="columnFilterChange($event)">
-    </ae-dynamic-table>
-</app-wrapper>
+<app-view-data [dataService]="dataService" [activityService]="activityService"></app-view-data>
