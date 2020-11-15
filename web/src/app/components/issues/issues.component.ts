@@ -11,7 +11,7 @@ import { DynamicTableConfig } from 'ae-dynamic-table';
 export class IssuesComponent implements OnInit {
 
 
-  data = this.dataService.filteredEntities$;
+  data = this.dataService.entities$;
   config: DynamicTableConfig;
 
   constructor(private dataService: IssueDataService, private activityService: IssueActivityService) { }

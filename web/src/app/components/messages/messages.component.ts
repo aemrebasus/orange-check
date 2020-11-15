@@ -10,7 +10,7 @@ import { DynamicTableConfig } from 'ae-dynamic-table';
 })
 export class MessagesComponent implements OnInit {
 
-  data = this.dataService.filteredEntities$;
+  data = this.dataService.entities$;
   config: DynamicTableConfig;
 
   constructor(private dataService: MessageDataService, private activityService: MessageActivityService) { }
