@@ -39,7 +39,8 @@ export class MessageActivityService extends EntityActionHandlers {
         this.setTableConfig(
             {
                 ...DEFAULT_DYNAMICTABLE_CONFIG,
-                displayedColumns: ['id', 'subject', 'body', 'to', 'created_at', 'updated_at']
+                displayedColumns: ['id', 'subject', 'body', 'to', 'created_at', 'updated_at'],
+                filteredColumns: ['id', 'subject', 'body', 'to', 'created_at', 'updated_at'],
             }
         );
     }
@@ -54,7 +55,8 @@ export class IssueActivityService extends EntityActionHandlers {
         this.setTableConfig(
             {
                 ...DEFAULT_DYNAMICTABLE_CONFIG,
-                displayedColumns: ['id', 'title', 'description', 'due', 'assignee', 'status', 'created_at', 'updated_at']
+                displayedColumns: ['id', 'title', 'description', 'due', 'assignee', 'status', 'created_at', 'updated_at'],
+                filteredColumns: ['id', 'title', 'description', 'due', 'assignee', 'status', 'created_at', 'updated_at'],
             }
         );
     }
@@ -69,7 +71,8 @@ export class UserActivityService extends EntityActionHandlers {
         this.setTableConfig(
             {
                 ...DEFAULT_DYNAMICTABLE_CONFIG,
-                displayedColumns: ['id', 'fistName', 'lastName', 'email', 'role', 'created_at', 'updated_at']
+                displayedColumns: ['id', 'fistName', 'lastName', 'email', 'role', 'created_at', 'updated_at'],
+                filteredColumns: ['id', 'fistName', 'lastName', 'email', 'role', 'created_at', 'updated_at']
             }
         );
     }
