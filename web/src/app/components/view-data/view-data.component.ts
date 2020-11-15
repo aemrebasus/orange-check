@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ToolbarEvents } from '@components/wrapper/wrapper.component';
+import { FormEventType } from '@components/form/form.component';
+import { ToolbarEventTypes } from '@components/wrapper/wrapper.component';
 import { EntityCollectionServiceBase } from '@ngrx/data';
 import { EntityActionHandlers } from '@store/EntityActionHandlers';
 import { DynamicTableConfig } from 'ae-dynamic-table';
@@ -44,7 +45,7 @@ export class ViewDataComponent implements OnInit {
         this.activityService.setTableFilteredColumns([...filteredColumns]);
     }
 
-    toolbarEvent(event: ToolbarEvents): void {
+    toolbarEventHandler(event: ToolbarEventTypes): void {
         switch (event) {
             case 'add':
                 this.formOpen = true;
@@ -53,13 +54,13 @@ export class ViewDataComponent implements OnInit {
         }
     }
 
-    eventHandler(event): void {
-        switch (event) {
-            case 'close-form':
+    formEventHandler(event: FormEventType): void {
+        switch (event.type) {
+            case 'close':
                 this.formOpen = null;
                 break;
-            default:
-                this.dataService.upsertOneInCache({ id: Math.floor(Math.random() * 81923871 + 1287319), ...event });
+            case 'submit':
+                this.dataService.upsertOneInCache({ id: Math.floor(Math.random() * 81923871 + 1287319), ...event.data });
         }
     }
 }

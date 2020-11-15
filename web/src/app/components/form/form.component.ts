@@ -1,9 +1,13 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
 import { issueForm, messageForm, projectForm, userForm } from '@components/entity-forms';
 import { EntityCollectionServiceBase } from '@ngrx/data';
-import { IssueDataService, MessageDataService, ProjectDataService, UserDataService } from '@services/entities.data.service';
 import { AeDynamicFormComponent } from 'ae-dynamic-form';
+
+
+export interface FormEventType {
+  type: 'submit' | 'close';
+  data?: any;
+}
 
 @Component({
   selector: 'app-form',
@@ -12,9 +16,11 @@ import { AeDynamicFormComponent } from 'ae-dynamic-form';
 })
 export class FormComponent implements OnInit {
 
-  @Input() fromType: 'issue' | 'project' | 'user' | 'message';
-  @Output() event = new EventEmitter<'close-form'>();
   @ViewChild(AeDynamicFormComponent) formElement: AeDynamicFormComponent;
+
+  @Input() fromType: 'issue' | 'project' | 'user' | 'message';
+
+  @Output() formEvent = new EventEmitter<FormEventType>();
 
   form = null;
   dataService: EntityCollectionServiceBase<any>;
@@ -39,11 +45,16 @@ export class FormComponent implements OnInit {
   }
 
   submitted(formValue): void {
-    this.event.emit(formValue);
+    this.formEvent.emit({
+      type: 'submit',
+      data: formValue
+    });
     this.formElement.reset();
   }
 
   closeForm(): void {
-    this.event.emit('close-form');
+    this.formEvent.emit({
+      type: 'close'
+    });
   }
 }

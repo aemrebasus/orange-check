@@ -3,7 +3,9 @@ import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { ToolbarBuilder, ToolbarItem } from '@services/toolbar.builder';
 import { EntityActionHandlers } from '@store/EntityActionHandlers';
 
-export type ToolbarEvents = 'add' | 'select_all' | 'delete' | 'table_view' | 'card_view';
+export type ToolbarEventTypes = 'add' | 'select_all' | 'delete' | 'table_view' | 'card_view';
+
+
 @Component({
   selector: 'app-wrapper',
   templateUrl: './wrapper.component.html',
@@ -11,7 +13,7 @@ export type ToolbarEvents = 'add' | 'select_all' | 'delete' | 'table_view' | 'ca
 })
 export class WrapperComponent implements OnInit {
 
-  @Output() toolbarEvent = new EventEmitter<ToolbarEvents>();
+  @Output() toolbarEvent = new EventEmitter<ToolbarEventTypes>();
 
   @Input() loading;
 
