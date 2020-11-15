@@ -20,6 +20,9 @@ export class IssuesComponent implements OnInit {
     this.activityService.getTableConfig().subscribe(config => {
       this.config = config;
     });
+    this.dataService.getAll().subscribe(data => {
+      console.log('issues: ', data);
+    });
   }
 
   onRowClick(event): void {

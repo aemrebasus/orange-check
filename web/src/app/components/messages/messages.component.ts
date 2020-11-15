@@ -19,6 +19,9 @@ export class MessagesComponent implements OnInit {
     this.activityService.getTableConfig().subscribe(config => {
       this.config = config;
     });
+    this.dataService.getAll().subscribe(data => {
+      console.log('Messages: ', data);
+    });
   }
 
   onRowClick(event): void {

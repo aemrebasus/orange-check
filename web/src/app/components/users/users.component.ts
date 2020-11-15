@@ -14,14 +14,15 @@ export class UsersComponent implements OnInit, AfterViewInit {
   config: DynamicTableConfig;
 
   constructor(private dataService: UserDataService, private activityService: UserActivityService) {
-
-    this.activityService.getTableConfig().subscribe(config => {
-      this.config = config;
-    });
-
   }
 
   ngOnInit(): void {
+    this.activityService.getTableConfig().subscribe(config => {
+      this.config = config;
+    });
+    this.dataService.getAll().subscribe(data => {
+      console.log('USers: ', data);
+    });
   }
 
   ngAfterViewInit(): void {

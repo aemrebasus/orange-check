@@ -9,7 +9,7 @@ import { DynamicTableConfig } from 'ae-dynamic-table';
 })
 export class ProjectsComponent implements OnInit {
 
-  data = this.dataService.getAll();
+  data = this.dataService.entities$;
   config: DynamicTableConfig;
 
   constructor(private dataService: ProjectDataService, private activityService: ProjectActivityService,) {
@@ -20,9 +20,12 @@ export class ProjectsComponent implements OnInit {
     this.activityService.getTableConfig().subscribe(config => {
       this.config = config;
     });
+    this.dataService.getAll().subscribe(data => {
+      console.log('projects: ', data);
+    });
   }
 
-  onRowClick(event,): void {
+  onRowClick(event): void {
     console.log(event);
   }
 
