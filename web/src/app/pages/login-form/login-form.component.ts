@@ -29,7 +29,6 @@ export class LoginFormComponent implements OnInit {
     .newControl('rememberMe')
     .type('checkbox')
     .label('Remember me')
-    .required()
     .buildFormControl()
 
 
