@@ -32,7 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
 
-                .antMatchers(HttpMethod.GET, "/","/*", "/css/*", "/js/*").permitAll()
+                .antMatchers(HttpMethod.GET, "/", "/*", "/css/*", "/js/*").permitAll()
 
                 .antMatchers(HttpMethod.GET, "/api/v1/users").hasAuthority(USER_READ.getPermission())
                 .antMatchers(HttpMethod.POST, "/api/v1/users").hasAuthority(USER_WRITE.getPermission())
@@ -79,6 +79,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .invalidateHttpSession(true)
                 .deleteCookies()
                 .logoutSuccessUrl("/login");
+
+
     }
 
 }
