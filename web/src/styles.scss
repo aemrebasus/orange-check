@@ -24,6 +24,7 @@ body {
 body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
+    background-color: rgb(173, 173, 173);
 }
 
 .mat-toolbar {
@@ -32,19 +33,5 @@ body {
 .btn {
     border-radius: 0px;
     box-shadow: 0px 0px 3px black;
-    text-transform: capitalize;
-}
-
-input {
-    border-radius: 0px;
-}
-
-a {
-    cursor: pointer;
-    text-transform: capitalize;
-}
-
-.dropdown-menu {
-    border-radius: 0px;
     text-transform: capitalize;
 }

@@ -1,0 +1,91 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+.mat-toolbar {
+  height: 80px;
+  box-shadow: 0px 0px 10px #303030;
+  background: linear-gradient(to right, #303030, #707070) !important;
+  border-bottom: 3px solid orange;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.logo {
+  border-radius: 50%;
+  border-top-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  overflow: hidden;
+  box-shadow: 0px 0px 10px white, inset 0px 0px 10px black;
+  height: 40px;
+  width: 40px;
+}
+
+.logo-button {
+  position: absolute;
+}
+
+button:active,
+button:focus {
+  border: none;
+  outline: none;
+}
+
+.nav-item {
+  border-bottom: thin dotted white;
+  margin-right: 10px;
+  min-width: 100px;
+  text-align: center;
+  transition: all ease-in-out 400ms;
+}
+.nav-item button {
+  width: 100%;
+}
+
+.nav-item:hover {
+  border-bottom-color: orange;
+}
+
+.mat-menu-panel {
+  background-color: transparent !important;
+  box-shadow: none;
+}
+
+.mat-menu-content {
+  position: fixed;
+  display: flex;
+  justify-content: space-around;
+  background: linear-gradient(to top, #303030, #303030, #707070) !important;
+  color: white !important;
+  margin-top: 24px;
+  border-bottom: 3px solid white;
+  box-shadow: 0px 5px 50px #505050;
+  transition: all ease-in-out 400ms;
+  width: 100%;
+  left: 0px;
+}
+.menu-group {
+  width: 30%;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.mat-menu-item {
+  color: white;
+  border-bottom: thin dotted white !important;
+  transition: all ease-in-out 400ms;
+}
+
+.mat-menu-item:hover {
+  border-bottom-color: orange !important;
+}

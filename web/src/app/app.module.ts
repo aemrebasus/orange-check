@@ -23,6 +23,14 @@ import { AboutPageComponent } from '@pages/about-page/about-page.component';
 import { ContactPageComponent } from '@pages/contact-page/contact-page.component';
 import { ErrorComponent } from '@pages/error/error.component';
 import { AppComponent } from './app.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { NavigationComponent } from './navigation/navigation.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
 
 
 @NgModule({
@@ -37,6 +45,7 @@ import { AppComponent } from './app.component';
     AboutPageComponent,
     ContactPageComponent,
     ErrorComponent,
+    NavigationComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,10 +54,17 @@ import { AppComponent } from './app.component';
     MatProgressSpinnerModule,
     HttpClientModule,
     AeDynamicFormModule,
+    MatIconModule,
+    MatButtonModule,
+    MatMenuModule,
     StoreModule.forRoot({}),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     EffectsModule.forRoot([]),
     EntityDataModule.forRoot(entityConfig),
+    LayoutModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: DataInterceptor, multi: true },
