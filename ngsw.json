@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1605527313013,
+  "timestamp": 1605527931435,
   "index": "./orange-check/index.html",
   "assetGroups": [
     {
@@ -14,7 +14,7 @@
         "./orange-check/4.b6b7a007a73be9f551c3.js",
         "./orange-check/favicon.ico",
         "./orange-check/index.html",
-        "./orange-check/main.bb9e83a390697cc25c04.js",
+        "./orange-check/main.7c8afc5f12372047abd2.js",
         "./orange-check/manifest.webmanifest",
         "./orange-check/polyfills.b5c4e956902aef71002b.js",
         "./orange-check/runtime.47fe4dad90bc7a3bca0c.js",
@@ -66,8 +66,8 @@
     "./orange-check/assets/icons/icon-72x72.png": "087ee1f209870436683ec25a8348294df8912668",
     "./orange-check/assets/icons/icon-96x96.png": "34cf07764b1846d1fe55affe5381d56d9a6892e4",
     "./orange-check/favicon.ico": "8ef4c4df26b1ec16672ac2e7ea9495465fae937d",
-    "./orange-check/index.html": "0f5d94a1d93d4baa18a6818dbe49a7c49de79591",
-    "./orange-check/main.bb9e83a390697cc25c04.js": "8b39f3a29b0f51cb3db051fba261016879736cd3",
+    "./orange-check/index.html": "4b8f677c0791d3dd5e77f76c380e6d47b138a6b5",
+    "./orange-check/main.7c8afc5f12372047abd2.js": "24cbe85c7a52674defe18a3a41cdbe3ed8f6f043",
     "./orange-check/manifest.webmanifest": "8fde99d59a30ca6503754bb651bec16de5ff065e",
     "./orange-check/polyfills.b5c4e956902aef71002b.js": "c7c2cba0924481ddf68ea864c783c27435be93c0",
     "./orange-check/runtime.47fe4dad90bc7a3bca0c.js": "c2c20a99259b02c1ce80aeebf0be7059741da087",
