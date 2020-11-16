@@ -1,21 +1,8 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-pages',
-  templateUrl: './pages.component.html',
-  styleUrls: ['./pages.component.scss']
+    selector: 'app-pages',
+    template: '<router-outlet></router-outlet>'
 })
-export class PagesComponent implements OnInit, AfterViewInit {
-
-  constructor(private router: Router) {
-
-  }
-  ngAfterViewInit(): void {
-    this.router.navigate(['home']);
-  }
-  ngOnInit(): void {
-
-  }
+export class PagesComponent {
 }
