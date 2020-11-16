@@ -15,6 +15,7 @@ export class ComponentsComponent implements OnInit, OnDestroy {
   logo = LogoComponent;
 
   routes: AeRoute[] = [
+
     { path: 'users' },
     { path: 'projects' },
     { path: 'issues' },

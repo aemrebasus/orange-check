@@ -36,6 +36,7 @@ import { MessagesComponent } from './messages/messages.component';
 import { UsersComponent } from './users/users.component';
 import { ViewDataComponent } from './view-data/view-data.component';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -58,7 +59,6 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     FormsModule,
     ComponentsStoreModule,
-    ComponentsRoutingModule,
     OverlayModule,
 
     // Ae material
@@ -84,8 +84,9 @@ import { FormsModule } from '@angular/forms';
 
     // Form Builder Module
     AeDynamicFormModule,
-
+    RouterModule,
+    ComponentsRoutingModule,
   ],
-  providers: []
+  exports: [ComponentsComponent]
 })
 export class ComponentsModule { }

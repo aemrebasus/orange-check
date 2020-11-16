@@ -16,34 +16,36 @@ const routes: Routes = [
   {
     path: '', component: PagesComponent,
     children: [
-      { path: '', component: HomeComponent },
+      { path: 'home', component: HomeComponent },
       { path: 'about', component: AboutPageComponent },
       { path: 'contact', component: ContactPageComponent },
       { path: 'chat-with-us', component: ChatWithUsComponent },
       { path: 'login', component: LoginFormComponent },
-      { path: 'subscription', component: SubscriptionFormComponent },
+      { path: 'subscribe', component: SubscriptionFormComponent },
       { path: 'error', component: ErrorComponent },
+      { path: '**', redirectTo: '/error' },
     ]
-  }
-
+  },
 ];
 
 @NgModule({
   declarations: [
+    PagesComponent,
+    NavbarComponent,
+    HomeComponent,
     LoginFormComponent,
     SubscriptionFormComponent,
     ChatWithUsComponent,
     AboutPageComponent,
     ContactPageComponent,
-    PagesComponent,
-    NavbarComponent,
     ErrorComponent,
-    HomeComponent,
   ],
   imports: [
     CommonModule,
+    RouterModule,
     StoreModule.forFeature('pages', {}),
-    RouterModule.forChild(routes)
-  ]
+    RouterModule.forChild(routes),
+  ],
+  exports: [PagesComponent]
 })
 export class PagesModule { }

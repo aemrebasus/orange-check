@@ -5,30 +5,16 @@ import { HelpComponent } from './help/help.component';
 
 export const routes: Routes = [
     {
-        path: '',
-        component: ComponentsComponent,
-
+        path: '', component: ComponentsComponent,
         children: [
-            {
-                path: 'users', component: UsersComponent
-
-            },
-            {
-                path: 'projects', component: ProjectsComponent
-
-            },
-            {
-                path: 'issues', component: IssuesComponent
-
-            },
-            {
-                path: 'messages', component: MessagesComponent
-
-            },
+            { path: 'users', component: UsersComponent },
+            { path: 'projects', component: ProjectsComponent },
+            { path: 'issues', component: IssuesComponent },
+            { path: 'messages', component: MessagesComponent },
             { path: 'configuration', component: ConfigComponent },
             { path: 'help', component: HelpComponent }
         ]
-    }
+    },
 ];
 
 import { NgModule } from '@angular/core';
@@ -41,6 +27,5 @@ import { MessagesComponent } from './messages/messages.component';
     declarations: [],
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule],
-
 })
 export class ComponentsRoutingModule { }

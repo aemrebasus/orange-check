@@ -1,5 +1,10 @@
-<div
-    style="width: 100%; height: 500px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-    <a class="btn btn-success" routerLink="/login">Login</a>
-    <a class="btn btn-danger" routerLink="/subscribe">Subscribe</a>
+<div class="jumbotron text-light" style="background-color: transparent;">
+    <h1 class="display-3 ">Welcome to Orange Check</h1>
+    <p class="lead">Jumbo helper text</p>
+    <hr class="my-2 bg-light">
+    <p>Let's get you started!</p>
+    <p class="lead">
+        <a class="btn btn-success" [routerLink]="['/login']">Login</a>
+        <a class="btn btn-danger" [routerLink]="['/subscribe']">Subscribe</a>
+    </p>
 </div>

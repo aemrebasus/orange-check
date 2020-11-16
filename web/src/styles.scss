@@ -1,6 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 * {
     box-sizing: border-box;
+    text-shadow: 0px 0px 1.7px black;
+}
+
+*::selection {
+    color: white;
+    background-color: #30303098;
 }
 
 html {
@@ -21,4 +27,24 @@ body {
 }
 
 .mat-toolbar {
+}
+
+.btn {
+    border-radius: 0px;
+    box-shadow: 0px 0px 3px black;
+    text-transform: capitalize;
+}
+
+input {
+    border-radius: 0px;
+}
+
+a {
+    cursor: pointer;
+    text-transform: capitalize;
+}
+
+.dropdown-menu {
+    border-radius: 0px;
+    text-transform: capitalize;
 }

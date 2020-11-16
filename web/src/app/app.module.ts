@@ -13,9 +13,10 @@ import { DispacherComponent } from './controller/dispacher.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { DataInterceptor } from '@services/http.intercepter.service';
-import { SeederService } from '@services/seeder.service';
 import { PagesModule } from '@pages/pages.module';
+import { RouterModule } from '@angular/router';
 import { ComponentsModule } from '@components/components.module';
+import { AeDynamicFormModule } from 'ae-dynamic-form';
 
 
 @NgModule({
@@ -25,16 +26,18 @@ import { ComponentsModule } from '@components/components.module';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
     MatProgressSpinnerModule,
-    ComponentsModule,
-    PagesModule,
     HttpClientModule,
+    AeDynamicFormModule,
     StoreModule.forRoot({}),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     EffectsModule.forRoot([]),
     EntityDataModule.forRoot(entityConfig),
+    RouterModule,
+    AppRoutingModule,
+    PagesModule,
+    ComponentsModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: DataInterceptor, multi: true },
@@ -44,5 +47,5 @@ import { ComponentsModule } from '@components/components.module';
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(private seeder: SeederService) { }
+  constructor() { }
 }
