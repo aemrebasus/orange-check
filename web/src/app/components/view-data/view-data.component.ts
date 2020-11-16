@@ -27,10 +27,11 @@ export class ViewDataComponent implements OnInit {
         this.activityService.getTableConfig().subscribe(config => {
             this.config = config;
         });
-
         this.loading = this.dataService.loading$;
         this.isMultiSelect = this.activityService.isMultiSelect$;
-        this.entities = this.dataService.filteredEntities$;
+        this.entities = this.dataService.entities$;
+
+        this.dataService.getAll();
     }
 
     onRowClick(event): void {

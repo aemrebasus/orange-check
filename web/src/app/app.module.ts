@@ -34,6 +34,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { TermsAndConditionsComponent } from './pages/terms-and-conditions/terms-and-conditions.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { PaymentComponent } from './pages/payment/payment.component';
+import { SeederService } from '@services/seeder.service';
 
 
 @NgModule({
@@ -80,5 +81,7 @@ import { PaymentComponent } from './pages/payment/payment.component';
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor() { }
+  constructor(public seeder: SeederService) {
+
+  }
 }

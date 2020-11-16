@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { AeRoute } from 'ae-layout';
 import { Subscription } from 'rxjs';
@@ -8,7 +8,8 @@ import { LogoComponent } from './logo/logo.component';
 @Component({
   selector: 'app-components',
   templateUrl: './components.component.html',
-  styleUrls: ['./components.component.scss']
+  styleUrls: ['./components.component.scss'],
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class ComponentsComponent implements OnInit, OnDestroy {
 

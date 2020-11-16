@@ -6,17 +6,17 @@
   width: 200px;
 }
 
-.sidenav .mat-toolbar {
+.sidenav .mat-toolbar00 {
   background: inherit;
 }
-.mat-toolbar {
+.mat-toolbar00 {
   height: 80px;
   box-shadow: 0px 0px 10px #303030;
   background: linear-gradient(to right, #505252, #909090) !important;
   border-bottom: 3px solid orange;
 }
 
-.mat-toolbar.mat-primary {
+.mat-toolbar00.mat-primary {
   position: sticky;
   top: 0;
   z-index: 1;
@@ -42,18 +42,18 @@ button:focus {
   outline: none;
 }
 
-.nav-item {
+.nav-item00 {
   border-bottom: thin dotted white;
   margin-right: 10px;
   min-width: 100px;
   text-align: center;
   transition: all ease-in-out 400ms;
 }
-.nav-item button {
+.nav-item00 button {
   width: 100%;
 }
 
-.nav-item:hover {
+.nav-item00:hover {
   border-bottom-color: orange;
 }
 
