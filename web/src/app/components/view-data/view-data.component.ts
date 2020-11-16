@@ -1,10 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormEventType } from '@components/form/form.component';
 import { ToolbarEventTypes } from '@components/wrapper/wrapper.component';
-import { EntityCollectionServiceBase } from '@ngrx/data';
+import { EntityCollectionServiceBase, MergeStrategy } from '@ngrx/data';
 import { EntityActionHandlers } from '@store/EntityActionHandlers';
 import { DynamicTableConfig } from 'ae-dynamic-table';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 @Component({
     selector: 'app-view-data',
@@ -30,7 +30,7 @@ export class ViewDataComponent implements OnInit {
 
         this.loading = this.dataService.loading$;
         this.isMultiSelect = this.activityService.isMultiSelect$;
-        this.entities = this.dataService.entities$;
+        this.entities = this.dataService.filteredEntities$;
     }
 
     onRowClick(event): void {
@@ -50,7 +50,6 @@ export class ViewDataComponent implements OnInit {
             case 'add':
                 this.formOpen = true;
                 break;
-
         }
     }
 
@@ -60,7 +59,10 @@ export class ViewDataComponent implements OnInit {
                 this.formOpen = null;
                 break;
             case 'submit':
-                this.dataService.upsertOneInCache({ id: Math.floor(Math.random() * 10000 + 1099999183), ...event.data });
+                this.formOpen = null;
+                const ndata = { id: Math.floor(Math.random() * 10000 + 1099999183), ...event.data };
+                this.dataService.upsert(ndata);
+                this.dataService.upsertOneInCache(ndata, { isOptimistic: true, mergeStrategy: MergeStrategy.PreserveChanges });
                 break;
         }
     }

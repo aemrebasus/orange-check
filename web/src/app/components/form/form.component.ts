@@ -45,10 +45,32 @@ export class FormComponent implements OnInit {
     }
   }
 
+  getXSRF(): string {
+    return this.getCookie('XSRF-TOKEN');
+  }
+
+  getCookie(cname): string {
+    const name = cname + '=';
+    const decodedCookie = decodeURIComponent(document.cookie);
+    const ca = decodedCookie.split(';');
+    for (let c of ca) {
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return '';
+  }
+
   submitted(formValue): void {
     this.formEvent.emit({
       type: 'submit',
-      data: formValue
+      data: {
+        _csrf: this.getXSRF(),
+        ...formValue
+      }
     });
     this.formElement.reset();
   }

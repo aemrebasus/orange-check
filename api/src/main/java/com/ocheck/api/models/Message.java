@@ -22,15 +22,15 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Message{
+public class Message {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Long orgId;
 
-    private String message;
-    private String tags;
+    private String subject;
+    private String body;
 
     private Long to_whom;
     private Long from_who;
@@ -39,5 +39,5 @@ public class Message{
     private Date created_at;
 
     @UpdateTimestamp
-    private Date  updated_at;
+    private Date updated_at;
 }

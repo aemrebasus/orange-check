@@ -72,10 +72,10 @@ function generateProject(count: number = 20): IProject[] {
 export class SeederService {
 
     constructor(private ps: ProjectDataService, private is: IssueDataService, private us: UserDataService, private ms: MessageDataService) {
-        this.ps.upsertManyInCache(generateIssue(1000));
-        this.is.upsertManyInCache(generateIssue(1000));
-        this.us.upsertManyInCache(generateUser(1000));
-        this.ms.upsertManyInCache(generateMessage(1000));
+        this.ps.upsertManyInCache(generateIssue(50));
+        this.is.upsertManyInCache(generateIssue(50));
+        this.us.upsertManyInCache(generateUser(50));
+        this.ms.upsertManyInCache(generateMessage(50));
     }
 
 }

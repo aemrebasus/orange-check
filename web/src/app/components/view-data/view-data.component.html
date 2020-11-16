@@ -2,8 +2,14 @@
     (toolbarEvent)="toolbarEventHandler($event)">
     <app-form [fromType]="dataService.entityName" *ngIf="formOpen" (formEvent)="formEventHandler($event)">
     </app-form>
-    <ae-dynamic-table *ngIf="entities | async" [data]="entities | async" [config]="config"
-        (selected)="onRowClick($event)" (columnFilterChange)="columnFilterChange($event)"
-        (searchInput)="onSearched($event)">
+    <ae-dynamic-table 
+    
+    [data]="entities | async" 
+    [config]="config" 
+    (selected)="onRowClick($event)"
+    (columnFilterChange)="columnFilterChange($event)" 
+    (searchInput)="onSearched($event)"
+
+    >
     </ae-dynamic-table>
 </app-wrapper>

@@ -49,14 +49,11 @@ export const issueForm = new AeFormBuilder()
     .buildForm();
 
 
-
 export const messageForm = new AeFormBuilder()
     .newControl('subject')
-    .autocomplete('off')
-    .label('Subject')
     .placeholder('Type Subject')
+    .label('Subject')
     .autocomplete('off')
-
     .required()
     .icon('subject')
     .buildFormControl()

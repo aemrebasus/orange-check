@@ -35,6 +35,7 @@ import { IssuesComponent } from './issues/issues.component';
 import { MessagesComponent } from './messages/messages.component';
 import { UsersComponent } from './users/users.component';
 import { ViewDataComponent } from './view-data/view-data.component';
+import { FormsModule } from '@angular/forms';
 
 // Ae Material
 
@@ -57,6 +58,7 @@ import { ViewDataComponent } from './view-data/view-data.component';
   imports: [
     CommonModule,
     HttpClientModule,
+    FormsModule,
     ComponentsStoreModule,
     ComponentsRoutingModule,
     OverlayModule,
