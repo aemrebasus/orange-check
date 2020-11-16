@@ -8,12 +8,5 @@ import { Component } from '@angular/core';
 })
 export class PagesComponent {
 
-  ngOnInit(): void {
-
-  }
-
-  ngOnDestroy(): void {
-
-  }
 
 }
