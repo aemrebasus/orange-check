@@ -1,1 +1,10 @@
-<h3>Subscription</h3>
+<div class="container">
+    <h1 style="text-align: center; color: #303030;">Subscribe</h1>
+    <hr>
+    <ae-dynamic-form [input]="form"> </ae-dynamic-form>
+    <hr>
+    <p>Submitting this form, you accept <span class="terms" (click)="openDialog()"> terms and conditions</span> enforced
+        by the owner
+        of this site. Are you sure to
+        submit this form?</p>
+</div>

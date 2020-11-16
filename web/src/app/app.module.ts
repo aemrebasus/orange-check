@@ -31,6 +31,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
+import { TermsAndConditionsComponent } from './pages/terms-and-conditions/terms-and-conditions.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { PaymentComponent } from './pages/payment/payment.component';
 
 
 @NgModule({
@@ -46,6 +49,8 @@ import { MatMenuModule } from '@angular/material/menu';
     ContactPageComponent,
     ErrorComponent,
     NavigationComponent,
+    TermsAndConditionsComponent,
+    PaymentComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,6 +62,7 @@ import { MatMenuModule } from '@angular/material/menu';
     MatIconModule,
     MatButtonModule,
     MatMenuModule,
+    MatDialogModule,
     StoreModule.forRoot({}),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     EffectsModule.forRoot([]),
