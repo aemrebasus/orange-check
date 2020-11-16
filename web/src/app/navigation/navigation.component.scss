@@ -12,7 +12,7 @@
 .mat-toolbar {
   height: 80px;
   box-shadow: 0px 0px 10px #303030;
-  background: linear-gradient(to right, #303030, #707070) !important;
+  background: linear-gradient(to right, #505252, #909090) !important;
   border-bottom: 3px solid orange;
 }
 
@@ -66,11 +66,10 @@ button:focus {
   position: fixed;
   display: flex;
   justify-content: space-around;
-  background: linear-gradient(to top, #303030, #303030, #707070) !important;
+  background-color: rgb(110, 107, 107) !important;
   color: white !important;
   margin-top: 24px;
-  border-bottom: 3px solid white;
-  box-shadow: 0px 5px 50px #505050;
+  box-shadow: 0px 5px 50px #505050 !important;
   transition: all ease-in-out 400ms;
   width: 100%;
   left: 0px;
