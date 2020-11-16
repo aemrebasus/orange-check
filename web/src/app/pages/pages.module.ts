@@ -11,12 +11,14 @@ import { PagesComponent } from './pages.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { StoreModule } from '@ngrx/store';
 import { reducer } from './reducers';
+import { ErrorComponent } from './error/error.component';
 
 const routes: Routes = [
   {
     path: '', component: PagesComponent,
     children: [
       { path: '', component: HomePageComponent },
+      { path: 'error', component: ErrorComponent },
       { path: 'about', component: AboutPageComponent },
       { path: 'contact', component: ContactPageComponent },
       { path: 'chat-with-us', component: ChatWithUsComponent },
@@ -37,6 +39,7 @@ const routes: Routes = [
     ContactPageComponent,
     PagesComponent,
     NavbarComponent,
+    ErrorComponent,
   ],
   imports: [
     CommonModule,

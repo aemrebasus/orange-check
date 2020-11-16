@@ -7,6 +7,5 @@ import { MessageDataService } from '@services/entities.data.service';
   templateUrl: './messages.component.html',
 })
 export class MessagesComponent {
-
   constructor(public dataService: MessageDataService, public activityService: MessageActivityService) { }
 }

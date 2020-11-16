@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { ComponentsRoutingModule, routes } from './components-routing.module';
+import { ComponentsRoutingModule } from './components-routing.module';
 import { ComponentsStoreModule } from '@store/components.store';
 
 import { ComponentsComponent } from './components.component';
@@ -36,8 +36,6 @@ import { MessagesComponent } from './messages/messages.component';
 import { UsersComponent } from './users/users.component';
 import { ViewDataComponent } from './view-data/view-data.component';
 import { FormsModule } from '@angular/forms';
-
-// Ae Material
 
 
 @NgModule({
