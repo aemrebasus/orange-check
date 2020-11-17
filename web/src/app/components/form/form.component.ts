@@ -19,7 +19,7 @@ export class FormComponent implements OnInit {
 
   @ViewChild(AeDynamicFormComponent) formElement: AeDynamicFormComponent;
 
-  @Input() fromType: EntityNames;
+  @Input() formType: EntityNames;
 
   @Output() formEvent = new EventEmitter<FormEventType>();
 
@@ -29,7 +29,7 @@ export class FormComponent implements OnInit {
 
 
   ngOnInit(): void {
-    switch (this.fromType) {
+    switch (this.formType) {
       case 'Issue':
         this.form = issueForm;
         break;

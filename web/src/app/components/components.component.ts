@@ -1,3 +1,4 @@
+import { AfterViewInit } from '@angular/core';
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { AeRoute } from 'ae-layout';
@@ -11,7 +12,7 @@ import { LogoComponent } from './logo/logo.component';
   styleUrls: ['./components.component.scss'],
   encapsulation: ViewEncapsulation.Emulated
 })
-export class ComponentsComponent implements OnInit, OnDestroy {
+export class ComponentsComponent implements OnInit, OnDestroy, AfterViewInit {
 
   logo = LogoComponent;
 
@@ -27,9 +28,19 @@ export class ComponentsComponent implements OnInit, OnDestroy {
 
   routerSubscription: Subscription;
 
-  constructor(
-    private router: Router
-  ) { }
+  constructor(private router: Router) {
+    if (window.localStorage.getItem('loading') === 'true') {
+      window.localStorage.setItem('loading', '');
+    } else {
+      window.localStorage.setItem('loading', 'true');
+      location.reload();
+    }
+  }
+
+
+  ngAfterViewInit(): void {
+
+  }
 
   ngOnInit(): void {
 

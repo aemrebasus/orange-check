@@ -1,15 +1,11 @@
-<div class="card-container">
-    <div class="card">
-        <div class="card-header">
-            <span> Create {{fromType | titlecase}} </span>
-            <button mat-icon-button (click)="closeForm()">
-                <mat-icon>close</mat-icon>
-            </button>
-        </div>
-
-        <div class="card-content">
-            <ae-dynamic-form #formElement [input]="form" (submitted)="submitted($event)"> </ae-dynamic-form>
-        </div>
-    </div>
-
-</div>
+<mat-card class="form-card">
+    <button mat-icon-button style="position: absolute; right: 0px; top: 0px;" (click)="closeForm()">
+        <mat-icon>close</mat-icon>
+    </button>
+    <mat-card-header>
+        <mat-card-title>{{formType}} Form</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <ae-dynamic-form #formElement [input]="form" (submitted)="submitted($event)"> </ae-dynamic-form>
+    </mat-card-content>
+</mat-card>

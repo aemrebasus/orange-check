@@ -8,7 +8,8 @@ import { Observable, Subject } from 'rxjs';
 
 @Component({
     selector: 'app-view-data',
-    templateUrl: './view-data.component.html'
+    templateUrl: './view-data.component.html',
+    styleUrls: ['./view-data.component.scss']
 })
 export class ViewDataComponent implements OnInit {
 

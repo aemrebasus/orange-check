@@ -1,15 +1,10 @@
 <app-wrapper [loading]="loading" [isMultiSelect]="isMultiSelect" [activityService]="activityService"
     (toolbarEvent)="toolbarEventHandler($event)">
-    <app-form [fromType]="dataService.entityName" *ngIf="formOpen" (formEvent)="formEventHandler($event)">
-    </app-form>
-    <ae-dynamic-table 
-    
-    [data]="entities | async" 
-    [config]="config" 
-    (selected)="onRowClick($event)"
-    (columnFilterChange)="columnFilterChange($event)" 
-    (searchInput)="onSearched($event)"
-
-    >
+    <div class="form-dialog" *ngIf="formOpen">
+        <app-form [formType]="dataService.entityName" *ngIf="formOpen" (formEvent)="formEventHandler($event)">
+        </app-form>
+    </div>
+    <ae-dynamic-table [data]="entities | async" [config]="config" (selected)="onRowClick($event)"
+        (columnFilterChange)="columnFilterChange($event)" (searchInput)="onSearched($event)">
     </ae-dynamic-table>
 </app-wrapper>
