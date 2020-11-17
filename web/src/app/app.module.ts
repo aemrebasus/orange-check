@@ -14,14 +14,6 @@ import { DataInterceptor } from '@services/http.intercepter.service';
 import { AeDynamicFormModule } from 'ae-dynamic-form';
 
 // Pages
-import { PagesComponent } from '@pages/pages.component';
-import { HomeComponent } from '@pages/home/home.component';
-import { LoginFormComponent } from '@pages/login-form/login-form.component';
-import { SubscriptionFormComponent } from '@pages/subscription-form/subscription-form.component';
-import { ChatWithUsComponent } from '@pages/chat-with-us/chat-with-us.component';
-import { AboutPageComponent } from '@pages/about-page/about-page.component';
-import { ContactPageComponent } from '@pages/contact-page/contact-page.component';
-import { ErrorComponent } from '@pages/error/error.component';
 import { AppComponent } from './app.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -31,27 +23,15 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
-import { TermsAndConditionsComponent } from './pages/terms-and-conditions/terms-and-conditions.component';
 import { MatDialogModule } from '@angular/material/dialog';
-import { PaymentComponent } from './pages/payment/payment.component';
+
 import { SeederService } from '@services/seeder.service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-
-    PagesComponent,
-    HomeComponent,
-    LoginFormComponent,
-    SubscriptionFormComponent,
-    ChatWithUsComponent,
-    AboutPageComponent,
-    ContactPageComponent,
-    ErrorComponent,
     NavigationComponent,
-    TermsAndConditionsComponent,
-    PaymentComponent,
   ],
   imports: [
     BrowserModule,
